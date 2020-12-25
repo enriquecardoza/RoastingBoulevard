@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.careradish.roastingbulevard"
+        applicationId "com.careradish.roastingboulevard"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1

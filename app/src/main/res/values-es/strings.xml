@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Roasting Boulevard</string>
+    <string name="init">Inicio</string>
+    <string name="combos">Combos</string>
+    <string name="dishes">Platos</string>
+    <string name="information">Información</string>
+    <string name="account">Perfil</string>
+
+
+</resources>
