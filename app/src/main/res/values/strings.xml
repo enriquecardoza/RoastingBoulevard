@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">Roasting Boulevard</string>
+    <string name="app_name" translatable="false">Roasting Boulevard</string>
     <string name="init">Init</string>
     <string name="combos">Combos</string>
     <string name="dishes">Dishes</string>
     <string name="information">Information</string>
-    <string name="account">Profile</string>
+    <string name="profile">Profile</string>
+    <string name="start_order">Start order</string>
+    <string name="init_welcome">Welcome User</string>
+    <string name="init_question">What do you want to order today?</string>
 </resources>
