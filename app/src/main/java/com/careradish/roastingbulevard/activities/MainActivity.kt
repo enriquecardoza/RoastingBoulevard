@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        miRecicler=recliclador
+       /* miRecicler=recliclador
         miRecicler.setHasFixedSize(true)
        // miRecicler.layoutManager = GridLayoutManager(this,2);
 
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Failed to read value.", Toast.LENGTH_SHORT)
                     .show()
             }
-        })
+        })*/
     }
 
 
