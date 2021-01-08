@@ -1,4 +1,4 @@
-package com.careradish.roastingbulevard
+package com.careradish.roastingboulevard
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.careradish.roastingbulevard.R
+import com.careradish.roastingboulevard.classes.Food
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -50,12 +52,12 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater: LayoutInflater? = LayoutInflater.from(parent.context)
         val view: View? = inflater?.inflate(R.layout.fooditemcard, parent, false)
-        return FoodAdapter.ViewHolder(view!!)
+        return ViewHolder(view!!)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val food = comidas[position]
-        holder.name.text = food.nombre
-        holder.image.setImageResource(food.image)
+        holder.name.text = food.name
+        holder.image.setImageResource(food.photo)
 
     }
 

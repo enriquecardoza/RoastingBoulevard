@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RoastingBulevard">
-        <activity android:name=".activities.InitActivity"></activity>
-        <activity android:name=".activities.OffertsActivity" />
-        <activity android:name=".activities.MainActivity">
+        android:theme="@style/Theme.RoastingBoulevard">
+        <activity android:name="com.careradish.roastingboulevard.activities.InitActivity"></activity>
+        <activity android:name="com.careradish.roastingboulevard.activities.OffertsActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

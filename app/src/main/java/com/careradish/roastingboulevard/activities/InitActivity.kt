@@ -1,4 +1,4 @@
-package com.careradish.roastingbulevard.activities
+package com.careradish.roastingboulevard.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

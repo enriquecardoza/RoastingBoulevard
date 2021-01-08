@@ -1,4 +1,4 @@
-package com.careradish.roastingbulevard
+package com.careradish.roastingboulevard
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

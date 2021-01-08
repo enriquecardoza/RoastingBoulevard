@@ -1,4 +1,4 @@
-package com.careradish.roastingbulevard.classes
+package com.careradish.roastingboulevard.classes
 
 import java.util.*
 import kotlin.collections.ArrayList
