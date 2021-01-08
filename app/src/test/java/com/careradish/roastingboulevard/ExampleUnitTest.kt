@@ -1,4 +1,4 @@
-package com.careradish.roastingbulevard
+package com.careradish.roastingboulevard
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.careradish.roastingbulevard
+package com.careradish.roastingboulevard
 
 import android.os.Bundle
 import android.widget.Toast
