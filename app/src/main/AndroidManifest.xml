@@ -11,7 +11,7 @@
         android:theme="@style/Theme.RoastingBoulevard">
         <activity android:name="com.careradish.roastingboulevard.activities.InitActivity"></activity>
         <activity android:name="com.careradish.roastingboulevard.activities.OffertsActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -2,7 +2,7 @@ package com.careradish.roastingboulevard.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.careradish.roastingbulevard.R
+import com.careradish.roastingboulevard.R
 
 class OffertsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

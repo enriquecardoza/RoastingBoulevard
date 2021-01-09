@@ -1,14 +1,14 @@
-package com.careradish.roastingboulevard
+package com.careradish.roastingboulevard.activities
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
+import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.fragments.BlankFragment
+import com.careradish.roastingboulevard.fragments.InitFragment
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,29 +17,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var miRecicler: RecyclerView
-    private lateinit var miAdapter: RecyclerView.Adapter<*>
 
     private lateinit var tableLayout: TabLayout
-
+    var blankFragment=BlankFragment()
+    var initFragment=InitFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tableLayout = tabsMain
+        changeFragment(0)
         tableLayout.addOnTabSelectedListener(object :
             TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
-
-                val fragmentManager: android.app.FragmentManager = fragmentManager
-                val transaction: android.app.FragmentTransaction = fragmentManager.beginTransaction()
-                var bf=BlankFragment()
-                transaction.add(R.id.layoutParent,bf)
-                transaction.commit()
-
-                //if (tab.position == 0)
-
+                changeFragment(tab.position)
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab) {
 
             }
@@ -61,34 +52,20 @@ class MainActivity : AppCompatActivity() {
         es.shutdown()
 */
 
-        /* miRecicler=recliclador
-         miRecicler.setHasFixedSize(true)
-        // miRecicler.layoutManager = GridLayoutManager(this,2);
-
-         miAdapter = FoodAdapter(DatosClientes())
-
-         miRecicler.adapter = miAdapter;
-
-
-
-
-        // myRef.setValue("Hello, World!")
-
-         myRef.addValueEventListener(object : ValueEventListener {
-             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                 // This method is called once with the initial value and again
-                 // whenever data at this location is updated.
-                 val value = dataSnapshot.getValue(String::class.java)
-                 Toast.makeText(applicationContext, "Value is: $value", Toast.LENGTH_SHORT).show()
-             }
-
-             override fun onCancelled(error: DatabaseError) {
-                 Toast.makeText(applicationContext, "Failed to read value.", Toast.LENGTH_SHORT)
-                     .show()
-             }
-         })*/
     }
+    private fun changeFragment(tab: Int) {
+        val fragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
 
+
+        when (tab){
+            0-> transaction.replace(R.id.layoutParent, initFragment)
+            1-> transaction.replace(R.id.layoutParent, blankFragment)
+            else-> transaction.replace(R.id.layoutParent, initFragment)
+        }
+
+        transaction.commit()
+    }
 
     private fun DatosClientes(): List<Food> {
         val Lista: MutableList<Food> = ArrayList()
@@ -103,8 +80,8 @@ class MainActivity : AppCompatActivity() {
         return Lista
     }
 
-    public fun ShowToast(texto: String) {
-        Toast.makeText(applicationContext, texto, Toast.LENGTH_SHORT).show()
+    public fun showToast(text: String) {
+        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
     }
 
 }

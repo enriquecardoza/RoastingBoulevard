@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.careradish.roastingbulevard.R
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.careradish.roastingboulevard.FoodAdapter
+import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.classes.Food
+import kotlinx.android.synthetic.main.fragment_init.*
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -18,15 +20,12 @@ private const val ARG_PARAM2 = "param2"
  */
 class InitFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var miRecycler: RecyclerView
+    private lateinit var miAdapter: RecyclerView.Adapter<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -34,26 +33,46 @@ class InitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_init, container, false)
+        var tempInflater= inflater.inflate(R.layout.fragment_init, container, false)
+        miRecycler=tempInflater.findViewById(R.id.recyclerViewInit)
+        miRecycler.setHasFixedSize(true)
+        miAdapter = FoodAdapter(DatosClientes())
+
+        miRecycler.adapter = miAdapter;
+        return tempInflater
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InitFragment.
-         */
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             InitFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+
             }
+    }
+
+    private fun DatosClientes(): List<Food> {
+        val Lista: MutableList<Food> = ArrayList()
+        Lista.add(
+            Food(
+                0, "Rey", "a", arrayListOf("patatas", "huevo", "leche"), arrayListOf(
+                    "huevos",
+                    "lacteos"
+                ), R.mipmap.shrek, 0f
+            )
+        )
+        Lista.add(
+            Food(
+                1, "a", "b", arrayListOf("a", "b", "c"), arrayListOf(
+                    "a",
+                    "v"
+                ), R.mipmap.shrek, 0f
+            )
+        )
+        return Lista
     }
 }
