@@ -8,10 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.classes.Food
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
@@ -25,21 +24,45 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
         var name: TextView = itemView.findViewById(R.id.foodItemName)
         var image: ImageView = itemView.findViewById(R.id.foodItemPhoto)
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("Foods/" + "Migas")
-        var ss:String="test"
+        val myRef = database.getReference("Foods/" + "0")
         init {
-
             itemView.setOnClickListener {
-                myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        ss = dataSnapshot.getValue().toString()
+
+                val job = GlobalScope.launch { // launch a new coroutine and keep a reference to its Job
+                        //delay(1000L)
+                    myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            var food: Food? =dataSnapshot.getValue(Food::class.java)
+                            Toast.makeText(name.context, food?.name, Toast.LENGTH_SHORT).show()
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            // ...
+                        }
+                    })
+                    }
+
+
+
+
+                /*myRef.addChildEventListener(object : ChildEventListener {
+
+                    override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                         Toast.makeText(name.context, ss, Toast.LENGTH_SHORT).show()
                     }
 
-                    override fun onCancelled(databaseError: DatabaseError) {
-                        // ...
+                    override fun onChildChanged(
+                        snapshot: DataSnapshot,
+                        previousChildName: String?
+                    ) {
                     }
-                })
+
+                    override fun onChildRemoved(snapshot: DataSnapshot) {}
+                    override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+                    override fun onCancelled(error: DatabaseError) {}
+                })*/
+
+
 
             }
 

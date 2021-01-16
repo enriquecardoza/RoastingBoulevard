@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.fragments.BlankFragment
@@ -12,15 +11,16 @@ import com.careradish.roastingboulevard.fragments.InitFragment
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
 
 
-
     private lateinit var tableLayout: TabLayout
-    var blankFragment=BlankFragment()
-    var initFragment=InitFragment()
+    var blankFragment = BlankFragment()
+    var initFragment = InitFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 changeFragment(tab.position)
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab) {
 
             }
@@ -53,15 +54,19 @@ class MainActivity : AppCompatActivity() {
 */
 
     }
+
     private fun changeFragment(tab: Int) {
         val fragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
 
 
-        when (tab){
-            0-> transaction.replace(R.id.layoutParent, initFragment)
-            1-> transaction.replace(R.id.layoutParent, blankFragment)
-            else-> transaction.replace(R.id.layoutParent, initFragment)
+        when (tab) {
+            0 -> transaction.replace(R.id.layoutParent, initFragment)
+            1 -> transaction.replace(R.id.layoutParent, blankFragment)
+            2 -> {
+
+            }
+            else -> transaction.replace(R.id.layoutParent, initFragment)
         }
 
         transaction.commit()
