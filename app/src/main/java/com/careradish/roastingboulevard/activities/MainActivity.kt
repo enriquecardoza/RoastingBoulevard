@@ -1,29 +1,35 @@
 package com.careradish.roastingboulevard.activities
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
-import com.careradish.roastingboulevard.fragments.BlankFragment
-import com.careradish.roastingboulevard.fragments.InitFragment
+import com.careradish.roastingboulevard.fragments.*
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
 
 
     private lateinit var tableLayout: TabLayout
-    var blankFragment = BlankFragment()
+
     var initFragment = InitFragment()
+    var foodsFragment = FoodssFragment()
+    var combosFragment = CombosFragment()
+    var informationFragment = InformationFragment()
+    var profileFragment = ProfileFragment()
+    private val firebase: FirebaseConnection= FirebaseConnection(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         setContentView(R.layout.activity_main)
+        actionBar?.hide()
         tableLayout = tabsMain
         changeFragment(0)
         tableLayout.addOnTabSelectedListener(object :
@@ -42,17 +48,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        val firebase: FirebaseConnection = FirebaseConnection()
+
         //firebase.writeFood(DatosClientes().get(0))
-
-
-/*
-        val es: ExecutorService = Executors.newCachedThreadPool()
-        es.execute(EjemploRunnable(firebase))
-        es.execute(EjemploRunnable(this.applicationContext))
-        es.shutdown()
-*/
-
+        //firebase.readFood(0)
     }
 
     private fun changeFragment(tab: Int) {
@@ -61,32 +59,22 @@ class MainActivity : AppCompatActivity() {
 
 
         when (tab) {
-            0 -> transaction.replace(R.id.layoutParent, initFragment)
-            1 -> transaction.replace(R.id.layoutParent, blankFragment)
-            2 -> {
-
-            }
-            else -> transaction.replace(R.id.layoutParent, initFragment)
+            0 -> transaction.replace(R.id.mainFragmentParent, initFragment)
+            1 -> {transaction.replace(R.id.mainFragmentParent,combosFragment )}
+            2 -> transaction.replace(R.id.mainFragmentParent, foodsFragment)
+            3 -> transaction.replace(R.id.mainFragmentParent, informationFragment)
+            4 -> transaction.replace(R.id.mainFragmentParent, profileFragment)
+            else -> transaction.replace(R.id.mainFragmentParent, initFragment)
         }
 
         transaction.commit()
     }
 
-    private fun DatosClientes(): List<Food> {
-        val Lista: MutableList<Food> = ArrayList()
-        Lista.add(
-            Food(
-                0, "Rey", "a", arrayListOf("patatas", "huevo", "leche"), arrayListOf(
-                    "huevos",
-                    "lacteos"
-                ), R.mipmap.shrek, 0f
-            )
-        )
-        return Lista
-    }
 
     public fun showToast(text: String) {
         Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
     }
+
+
 
 }

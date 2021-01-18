@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoastingBoulevard">
-        <activity android:name="com.careradish.roastingboulevard.activities.InitActivity"></activity>
         <activity android:name="com.careradish.roastingboulevard.activities.OffertsActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

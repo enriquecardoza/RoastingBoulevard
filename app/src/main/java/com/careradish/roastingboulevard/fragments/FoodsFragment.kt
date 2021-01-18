@@ -6,31 +6,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.careradish.roastingboulevard.adapters.FoodAdapter
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.adapters.FoodAdapter
 import com.careradish.roastingboulevard.classes.Food
-import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.firebase.database.*
-
 
 /**
  * A simple [Fragment] subclass.
- * Use the [InitFragment.newInstance] factory method to
+ * Use the [FoodssFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class InitFragment : Fragment() {
+class FoodssFragment : Fragment() {
 
     private lateinit var miRecycler: RecyclerView
     private lateinit var miAdapter: RecyclerView.Adapter<*>
     private  lateinit var lista:MutableList<Food>
     private lateinit var database: FirebaseDatabase
     lateinit var referenceRoot: DatabaseReference
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lista= mutableListOf()
         database = FirebaseDatabase.getInstance()
         referenceRoot = database.getReference("").child("Foods")
-        referenceRoot.addValueEventListener(object :ValueEventListener {
+        referenceRoot.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (i in snapshot.children){
@@ -38,13 +38,15 @@ class InitFragment : Fragment() {
                 }
                 miAdapter = FoodAdapter(lista)
                 miRecycler.adapter = miAdapter;
-               // miAdapter.notifyDataSetChanged()
+                // miAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
 
             }
         })
+
+
     }
 
     override fun onCreateView(
@@ -52,45 +54,13 @@ class InitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var tempInflater= inflater.inflate(R.layout.fragment_init, container, false)
-        miRecycler=tempInflater.findViewById(R.id.recyclerViewInit)
+        var tempInflater= inflater.inflate(R.layout.fragment_foods, container, false)
+        miRecycler=tempInflater.findViewById(R.id.recyclerViewFoods)
         miRecycler.setHasFixedSize(true)
 
         return tempInflater
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
     companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InitFragment().apply {
-
-            }
     }
-
-    private fun DatosClientes(): List<Food> {
-        val Lista: MutableList<Food> = ArrayList()
-        Lista.add(
-            Food(
-                0, "Rey", "a", arrayListOf("patatas", "huevo", "leche"), arrayListOf(
-                    "huevos",
-                    "lacteos"
-                ), R.mipmap.shrek, 0f
-            )
-        )
-        Lista.add(
-            Food(
-                1, "a", "b", arrayListOf("a", "b", "c"), arrayListOf(
-                    "a",
-                    "v"
-                ), R.mipmap.shrek, 0f
-            )
-        )
-        return Lista
-    }
-
 }

@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
+
     <LinearLayout
-        android:id="@+id/layoutParent"
+        android:id="@+id/mainFragmentParent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/tabsMain"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabsMain"
@@ -31,26 +33,31 @@
         app:tabTextColor="@color/black">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/initTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/information" />
+            android:text="@string/init" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/combos" />
-
-        <com.google.android.material.tabs.TabItem
+            android:id="@+id/combosTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/combos" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/dishesTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dishes" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/informationTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/information" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/profileTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile" />
