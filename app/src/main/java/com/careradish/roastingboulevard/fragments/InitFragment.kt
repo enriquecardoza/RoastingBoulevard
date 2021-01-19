@@ -1,15 +1,14 @@
 package com.careradish.roastingboulevard.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.careradish.roastingboulevard.adapters.FoodAdapter
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.adapters.FoodAdapter
 import com.careradish.roastingboulevard.classes.Food
-import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.firebase.database.*
 
 
@@ -25,26 +24,15 @@ class InitFragment : Fragment() {
     private  lateinit var lista:MutableList<Food>
     private lateinit var database: FirebaseDatabase
     lateinit var referenceRoot: DatabaseReference
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lista= mutableListOf()
         database = FirebaseDatabase.getInstance()
-        referenceRoot = database.getReference("").child("Foods")
-        referenceRoot.addValueEventListener(object :ValueEventListener {
+        referenceRoot = database.getReference("").child("Food")
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children){
-                    lista.add(i.getValue(Food::class.java)!!)
-                }
-                miAdapter = FoodAdapter(lista)
-                miRecycler.adapter = miAdapter;
-               // miAdapter.notifyDataSetChanged()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
     }
 
     override fun onCreateView(
@@ -55,13 +43,26 @@ class InitFragment : Fragment() {
         var tempInflater= inflater.inflate(R.layout.fragment_init, container, false)
         miRecycler=tempInflater.findViewById(R.id.recyclerViewInit)
         miRecycler.setHasFixedSize(true)
+        referenceRoot.addValueEventListener(object : ValueEventListener {
 
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (i in snapshot.children) {
+                    lista.add(i.getValue(Food::class.java)!!)
+                }
+                miAdapter = FoodAdapter(lista)
+                miRecycler.adapter = miAdapter;
+                // miAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
         return tempInflater
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
     companion object {
 
@@ -72,6 +73,7 @@ class InitFragment : Fragment() {
             }
     }
 
+    /*
     private fun DatosClientes(): List<Food> {
         val Lista: MutableList<Food> = ArrayList()
         Lista.add(
@@ -92,5 +94,5 @@ class InitFragment : Fragment() {
         )
         return Lista
     }
-
+*/
 }
