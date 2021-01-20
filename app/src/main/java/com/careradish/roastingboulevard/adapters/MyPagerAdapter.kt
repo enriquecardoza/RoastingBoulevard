@@ -21,7 +21,7 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(f
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> InitFragment()
-            1 -> CombosFragment()
+            1 ->ProfileFragment()// CombosFragment()
             2 -> FoodsFragment()
             3 -> InformationFragment()
             4 -> ProfileFragment()

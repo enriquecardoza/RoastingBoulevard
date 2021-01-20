@@ -106,19 +106,5 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
     }
 
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-        override fun getCount(): Int = NUM_PAGES
-
-        override fun getItem(position: Int): Fragment {
-            return when (position) {
-                0 -> initFragment
-                1 -> combosFragment
-                2 -> foodsFragment
-                3 -> informationFragment
-                4 -> profileFragment
-                else -> initFragment
-            }
-        }
-    }
 
 }

@@ -21,17 +21,17 @@ class InitFragment : Fragment() {
 
     private lateinit var miRecycler: RecyclerView
     private lateinit var miAdapter: RecyclerView.Adapter<*>
-    private  lateinit var lista:MutableList<Food>
+    //private  lateinit var lista:MutableList<Food>
     private lateinit var database: FirebaseDatabase
-    lateinit var referenceRoot: DatabaseReference
+    //lateinit var referenceRoot: DatabaseReference
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lista= mutableListOf()
+        //lista= mutableListOf()
         database = FirebaseDatabase.getInstance()
-        referenceRoot = database.getReference("").child("Food")
+        //referenceRoot = database.getReference("").child("Food")
 
     }
 
@@ -43,6 +43,7 @@ class InitFragment : Fragment() {
         var tempInflater= inflater.inflate(R.layout.fragment_init, container, false)
         miRecycler=tempInflater.findViewById(R.id.recyclerViewInit)
         miRecycler.setHasFixedSize(true)
+        /*
         referenceRoot.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -57,7 +58,7 @@ class InitFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
 
             }
-        })
+        })*/
         return tempInflater
     }
 

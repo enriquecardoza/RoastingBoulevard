@@ -1,6 +1,6 @@
 package com.careradish.roastingboulevard.classes
 
-data class Category(var id:Int,var name:String,var foods:ArrayList<Food>){
+data class Category(var id:Int,var name:String,var foods:ArrayList<Int>){
 
 
     constructor(category: Category):this(category.id,category.name,category.foods){}
