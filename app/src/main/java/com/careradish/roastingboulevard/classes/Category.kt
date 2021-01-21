@@ -1,6 +1,8 @@
 package com.careradish.roastingboulevard.classes
 
-data class Category(var id:Int,var name:String,var foods:ArrayList<Int>){
+import java.io.Serializable
+
+data class Category(var id:Int,var name:String,var foods:ArrayList<Int>):Serializable{
 
 
     constructor(category: Category):this(category.id,category.name,category.foods){}

@@ -45,6 +45,11 @@
             android:text="Tab6" />
     </com.google.android.material.tabs.TabLayout>
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerFoods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFoods"
         android:layout_width="match_parent"
