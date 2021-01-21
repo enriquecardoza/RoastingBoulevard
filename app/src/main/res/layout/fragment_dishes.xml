@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.FoodsFragment">
+    tools:context=".fragments.DishesFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -26,38 +26,11 @@
             android:layout_height="wrap_content"
             android:text="Tuesday" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wednesday" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tab5" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:overScrollMode="always"
-            android:text="Tab6" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pagerFoods"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFoods"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/teal_200"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

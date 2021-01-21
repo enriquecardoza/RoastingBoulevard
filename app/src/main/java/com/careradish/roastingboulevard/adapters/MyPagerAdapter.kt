@@ -1,6 +1,5 @@
 package com.careradish.roastingboulevard.adapters
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -22,7 +21,7 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(f
         return when (position) {
             0 -> InitFragment()
             1 ->ProfileFragment()// CombosFragment()
-            2 -> FoodsFragment()
+            2 -> DishesFragment()
             3 -> InformationFragment()
             4 -> ProfileFragment()
             else -> InitFragment()

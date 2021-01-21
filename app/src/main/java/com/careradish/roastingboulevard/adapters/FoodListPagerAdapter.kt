@@ -10,19 +10,27 @@ import com.careradish.roastingboulevard.tools.Strings
 
 class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager!!)  {
 
-
-    public var NUM_ITEMS = 5
-    private var listaFoodList= mutableListOf<FoodListFragment>()
     private var listaCategory= mutableListOf<Category>()
     // Returns total number of pages
+
     override fun getCount(): Int {
-        return NUM_ITEMS
+        return listaCategory.count()
     }
 
+    constructor(listaCategory: MutableList<Category>,fragmentManager: FragmentManager?):this(fragmentManager){
+        this.listaCategory=listaCategory
+    }
 
     // Returns the fragment to display for that page
     override fun getItem(position: Int): Fragment {
-        return listaFoodList.get(position)
+        var fragment: FoodListFragment? =null
+        for (i in 0..listaCategory.count()){
+            if (i == position){
+                fragment = FoodListFragment.newInstance(listaCategory[position])
+                break
+            }
+        }
+        return fragment!!
     }
 
     // Returns the page title for the top indicator
@@ -30,9 +38,4 @@ class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAda
         return listaCategory.get(position).name
     }
 
-    public  fun SetArr(listaCategory:MutableList<Category>,list:MutableList<FoodListFragment>){
-        this.listaCategory=listaCategory
-        listaFoodList=list
-
-    }
 }

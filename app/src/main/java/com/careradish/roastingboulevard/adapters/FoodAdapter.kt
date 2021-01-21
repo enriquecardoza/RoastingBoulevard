@@ -14,10 +14,6 @@ import com.squareup.picasso.Picasso
 class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
     //  database.child("users").child(userId).setValue(user)
 
-    init {
-        comidas = comidas
-    }
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.foodItemName)
         var image: ImageView = itemView.findViewById(R.id.foodItemImage)
@@ -38,7 +34,6 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val food = comidas[position]
         holder.name.text = food.name
-        //holder.image.setImageResource(food.photo)
         Picasso.get().load(food.photo).fit().into(holder.image)
        // Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
     }
