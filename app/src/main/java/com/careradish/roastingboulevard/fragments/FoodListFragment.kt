@@ -16,9 +16,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.fragment_food_list.*
-import kotlinx.android.synthetic.main.fragment_food_list.view.*
-import kotlinx.android.synthetic.main.fragment_foods.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -60,7 +57,6 @@ class FoodListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(view.context, "dddd", Toast.LENGTH_LONG).show()
     }
 
     companion object {
@@ -92,6 +88,7 @@ class FoodListFragment : Fragment() {
                         if (counter == counterNotNull - 1) {
                             var miAdapter = FoodAdapter(listaFoods)
                             miRecycler.adapter = miAdapter
+
                         }
                         counter++
                         referenceRoot.removeEventListener(this)

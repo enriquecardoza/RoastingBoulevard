@@ -36,26 +36,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         actionBar?.hide()
         tableLayout = tabsMain
-        //changeFragment(0)
-        /*tableLayout.addOnTabSelectedListener(object :
-            TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                changeFragment(tab.position)
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
-
-        })*/
         mPager = findViewById(R.id.pager)
         mPager.setPageTransformer(true, ZoomOutPageTransformer())
         var adapterViewPager = MyPagerAdapter(supportFragmentManager)
-        mPager.adapter = adapterViewPager;
+        mPager.adapter = adapterViewPager
         /*mPager.addOnPageChangeListener(object : OnPageChangeListener {
             // This method will be invoked when a new page becomes selected.
             override fun onPageSelected(position: Int) {
