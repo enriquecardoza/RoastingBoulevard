@@ -8,5 +8,6 @@
     <string name="start_order">Empezar orden</string>
     <string name="init_welcome">Bienvenido Usuario</string>
     <string name="init_question">¿Que quieres pedir hoy?</string>
+    <string name="order_now">Pedir ahora</string>
 
 </resources>

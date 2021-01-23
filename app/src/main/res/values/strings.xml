@@ -8,6 +8,5 @@
     <string name="start_order">Start order</string>
     <string name="init_welcome">Welcome User</string>
     <string name="init_question">What do you want to order today?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_now">Order now</string>
 </resources>
