@@ -3,13 +3,13 @@ package com.careradish.roastingboulevard.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.app.myapplication.CustomSnackbar
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
 import com.squareup.picasso.Picasso
 
@@ -20,12 +20,17 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.foodItemName)
         var image: ImageView = itemView.findViewById(R.id.foodItemImage)
-        /*
-        init {
-            itemView.setOnClickListener {
-            }
 
-        }*/
+
+        public  fun setClickListener(food: Food){
+            itemView.setOnClickListener {
+                val snackbar=CustomSnackbar.makeSnackbarFood(App.contentView,food)
+                App.foodSnackBar=snackbar
+                snackbar.show()
+            }
+        }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,6 +45,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
         Picasso.get().load(food.photo).fit().into(holder.image)
         val delay=(position*Constants.DELAY_INCREMENT).toLong()
         setFadeAnimation(holder.itemView,delay);
+        holder.setClickListener(food)
         // Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
     }
 
@@ -51,7 +57,8 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
         super.onAttachedToRecyclerView(recyclerView!!)
     }
     private fun setFadeAnimation(view: View,delay: Long) {
-        val scaleAnim = ScaleAnimation(
+
+       /* val scaleAnim = ScaleAnimation(
             0f,
             1f,
             0f,
@@ -63,7 +70,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
         )
         scaleAnim.startOffset=delay
         scaleAnim.duration = Constants.ANIM_DURATION
-        view.startAnimation(scaleAnim)
+        view.startAnimation(scaleAnim)*/
 
     }
 }

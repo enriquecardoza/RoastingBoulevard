@@ -1,7 +1,7 @@
 package com.careradish.roastingboulevard.classes
 import java.io.Serializable
 
-data class Food(var id:Int, var name:String, var decriptions:String, var ingredients:ArrayList<String>, var allergens:ArrayList<String>, var photo:Int, var price:Float):Serializable
+data class Food(var id:Int, var name:String, var decriptions:String, var ingredients:ArrayList<String>, var allergens:ArrayList<Int>, var photo:Int, var price:Float):Serializable
 {
 
     override fun toString(): String {

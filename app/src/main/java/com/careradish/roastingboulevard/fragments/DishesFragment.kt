@@ -4,18 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
-import android.view.animation.AnimationSet
-import android.view.animation.ScaleAnimation
 import androidx.fragment.app.Fragment
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.FoodListPagerAdapter
 import com.careradish.roastingboulevard.classes.Category
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_dishes.view.*
 
@@ -78,8 +77,9 @@ class DishesFragment : Fragment() {
                 tabLayout.setupWithViewPager(pager)
 
 
-               val vg = tabLayout.getChildAt(0) as ViewGroup
+                val vg = tabLayout.getChildAt(0) as ViewGroup
                 val tabsCount = vg.childCount
+
                 for (i in 0 until tabsCount) {
                     val delay = i * Constants.DELAY_INCREMENT
                     val vgTab = vg.getChildAt(i) as ViewGroup
@@ -100,6 +100,16 @@ class DishesFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
 
             }
+        })
+
+        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+               App.hideFoodSnackbar()
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
         })
     }
 
