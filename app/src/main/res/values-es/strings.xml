@@ -27,5 +27,8 @@
     <string name="lets_create">¡Vamos a crear tu perfil!</string>
     <string name="please_introduce">Por favor introduce tus datos</string>
     <string name="forgot_password"><u>¿Ha olvidado la contraseña?</u></string>
+    <string name="access_profile">Accede a tu perfil</string>
+    <string name="log_on">Acceder</string>
+    <string name="register">Registrarse</string>
 
 </resources>

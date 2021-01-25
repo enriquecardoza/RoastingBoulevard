@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.loginFragment">
+    tools:context=".fragments.LoginFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_weight="1"
                     android:gravity="fill|fill_horizontal"
                     android:paddingStart="20dp"
-                    android:text="Accede a tu perfil"
+                    android:text="@string/access_profile"
                     android:textSize="24sp" />
 
             </LinearLayout>
@@ -80,19 +80,20 @@
             <Button
                 android:id="@+id/button11"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:background="@color/transparent"
-                android:gravity="fill"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="0dp"
                 android:text="@string/forgot_password"
                 android:textColor="@color/black"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acceder" />
+                android:text="@string/log_on" />
 
             <Space
                 android:layout_width="match_parent"
@@ -101,14 +102,14 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="310dp"
+                android:layout_height="276dp"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/registerLoginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registrarse" />
+                android:text="@string/register" />
         </LinearLayout>
     </LinearLayout>
 

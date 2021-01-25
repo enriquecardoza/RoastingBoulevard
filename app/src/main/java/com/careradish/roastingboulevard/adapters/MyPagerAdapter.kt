@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.fragments.*
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Strings
 
 
@@ -23,7 +24,12 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(f
             1 ->ProfileFragment()// CombosFragment()
             2 -> DishesFragment()
             3 -> InformationFragment()
-            4 -> ProfileFragment()
+            4 -> {
+                if (!App.logged)
+                    LoginFragment()
+                    else
+                    ProfileFragment()
+            }
             else -> InitFragment()
         }
     }

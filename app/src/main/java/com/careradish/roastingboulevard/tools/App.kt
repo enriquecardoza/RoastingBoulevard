@@ -13,7 +13,7 @@ class App : Application() {
         lateinit var contentView: View
         var foodSnackBar: CustomSnackbar?=null
         lateinit var tabLayout: TabLayout
-
+        var logged=false
         fun hideFoodSnackbar() {
             if(foodSnackBar!=null) {
                 foodSnackBar!!.dismiss()
