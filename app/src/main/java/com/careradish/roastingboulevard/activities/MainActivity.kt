@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val adapterViewPager = MyPagerAdapter(supportFragmentManager)
         mPager.adapter = adapterViewPager
         tableLayout.setupWithViewPager(pager)
+        App.tabLayout=tableLayout
     }
 
 

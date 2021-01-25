@@ -6,8 +6,26 @@
     <string name="information">Información</string>
     <string name="profile">Perfil</string>
     <string name="start_order">Empezar orden</string>
-    <string name="init_welcome">Bienvenido Usuario</string>
+    <string name="init_welcome">Bienvenido</string>
     <string name="init_question">¿Que quieres pedir hoy?</string>
     <string name="order_now">Pedir ahora</string>
+    <string name="profile_welcome">Hola</string>
+    <string name="payment_method">Método de pago</string>
+    <string name="changue_delivery">Dirección de entrega</string>
+    <string name="personal_data">Datos personales</string>
+    <string name="my_orders">Mis pedidos</string>
+    <string name="configuration">Configuracion</string>
+    <string name="close_session">Cerrar sesión</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellidos</string>
+    <string name="postalCode">Codigo postal</string>
+    <string name="city">Ciudad</string>
+    <string name="address">Dirección</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="phone">Telefono</string>
+    <string name="lets_create">¡Vamos a crear tu perfil!</string>
+    <string name="please_introduce">Por favor introduce tus datos</string>
+    <string name="forgot_password"><u>¿Ha olvidado la contraseña?</u></string>
 
 </resources>

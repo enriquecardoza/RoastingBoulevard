@@ -132,7 +132,7 @@ class CustomSnackbar(
                     App.hideFoodSnackbar()
                 }
 
-
+                App.LockTabs()
                 val orderButton = getView().orderButtonSnack
                 orderButton.setOnClickListener {
                     Toast.makeText(orderButton.context, "texto", Toast.LENGTH_LONG).show()
