@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.fragments.*
 import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.Strings
+import com.careradish.roastingboulevard.tools.TranslationStrings
 
 
 class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager!!) {
@@ -37,12 +37,12 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(f
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> Strings.get(R.string.init)
-            1 -> Strings.get(R.string.combos)
-            2 -> Strings.get(R.string.dishes)
-            3 -> Strings.get(R.string.information)
-            4 -> Strings.get(R.string.profile)
-            else -> Strings.get(R.string.init)
+            0 -> TranslationStrings.get(R.string.init)
+            1 -> TranslationStrings.get(R.string.combos)
+            2 -> TranslationStrings.get(R.string.dishes)
+            3 -> TranslationStrings.get(R.string.information)
+            4 -> TranslationStrings.get(R.string.profile)
+            else -> TranslationStrings.get(R.string.init)
         }
     }
 

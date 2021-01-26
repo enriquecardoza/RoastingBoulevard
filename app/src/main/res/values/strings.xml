@@ -31,4 +31,8 @@
     <string name="access_profile">Access to your profile</string>
     <string name="log_on">Log on</string>
     <string name="register">Register</string>
+    <string name="ErrorFieldsFilled">Error: All fields must be filled</string>
+    <string name="ErrorPasswordNotMatch">Error: Passwords must match</string>
+    <string name="ErrorEmail">Error: the email format is not correct</string>
+    <string name="registered">Registered correctly</string>
 </resources>

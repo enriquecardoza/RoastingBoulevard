@@ -30,5 +30,9 @@
     <string name="access_profile">Accede a tu perfil</string>
     <string name="log_on">Acceder</string>
     <string name="register">Registrarse</string>
+    <string name="ErrorFieldsFilled">Error: Todos los campos tienen que estar llenos</string>
+    <string name="ErrorPasswordNotMatch">Error: Las contraseñas deben coincidir</string>
+    <string name="ErrorEmail">Error: el formato de email no es correcto</string>
+    <string name="registered">Registrado correctamente</string>
 
 </resources>

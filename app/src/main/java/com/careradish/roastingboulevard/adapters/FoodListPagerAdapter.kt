@@ -3,10 +3,8 @@ package com.careradish.roastingboulevard.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.fragments.*
-import com.careradish.roastingboulevard.tools.Strings
 
 class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager!!)  {
 

@@ -9,10 +9,9 @@ data class User(
     var address: String,
     var city: String,
     var postalCode: Int,
-    var email: ContactsContract.CommonDataKinds.Email,
-    var password: String,
+    var email: String,
     var phone: Int,
-    var paymentMethod: PaymentMethod,
+    var password: String,
 
     ) {
     private fun Getpassword(): String {
