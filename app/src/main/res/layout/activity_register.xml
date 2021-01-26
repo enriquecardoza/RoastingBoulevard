@@ -152,7 +152,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center|fill_horizontal"
-                    android:text="@string/city" />
+                    android:text="@string/postalCode" />
 
                 <EditText
                     android:id="@+id/editTextPostalCode"
@@ -161,8 +161,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="center|fill_horizontal"
-                    android:hint="@string/city"
-                    android:inputType="textPersonName" />
+                    android:hint="@string/postalCode"
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
@@ -178,7 +178,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center|fill_horizontal"
-                    android:text="@string/postalCode" />
+                    android:text="@string/city" />
 
                 <EditText
                     android:id="@+id/editTextCity"
@@ -187,8 +187,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="center|fill_horizontal"
-                    android:hint="@string/postalCode"
-                    android:inputType="number"
+                    android:hint="@string/city"
+                    android:inputType="text"
                     android:maxLength="7" />
             </LinearLayout>
 

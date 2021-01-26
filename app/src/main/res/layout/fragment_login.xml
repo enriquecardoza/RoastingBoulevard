@@ -73,9 +73,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/password"
                 android:inputType="textPersonName|textPassword"
-                android:password="true"
-                android:text="@string/password" />
+                android:password="true" />
 
             <Button
                 android:id="@+id/button11"

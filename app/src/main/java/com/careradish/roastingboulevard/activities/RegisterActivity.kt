@@ -54,7 +54,8 @@ class RegisterActivity : AppCompatActivity() {
                     textName.text.toString(),
                     textSurname.text.toString(),
                     textAddress.text.toString(),
-                    textCity.text.toString(),textPostalCode.text.toString().toInt(),
+                    textCity.text.toString(),
+                    textPostalCode.text.toString().toInt(),
                     textEmail.text.toString(),
                     textPhone.text.toString().toInt(),
                     textPassword.text.toString())
