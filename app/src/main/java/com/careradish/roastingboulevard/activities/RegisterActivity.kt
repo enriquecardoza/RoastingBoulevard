@@ -7,6 +7,8 @@ import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.User
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.TranslationStrings
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -15,15 +17,15 @@ import java.util.regex.Pattern
 class RegisterActivity : AppCompatActivity() {
 
 
-    private lateinit var textName:EditText
-    private  lateinit var textSurname:EditText
-    private  lateinit var textAddress:EditText
-    private  lateinit var textCity:EditText
-    private  lateinit var textPostalCode:EditText
-    private  lateinit var textEmail:EditText
-    private  lateinit var textPassword:EditText
-    private  lateinit var textConfirmPassword:EditText
-    private  lateinit var textPhone:EditText
+    private lateinit var textName: EditText
+    private lateinit var textSurname: EditText
+    private lateinit var textAddress: EditText
+    private lateinit var textCity: EditText
+    private lateinit var textPostalCode: EditText
+    private lateinit var textEmail: EditText
+    private lateinit var textPassword: EditText
+    private lateinit var textConfirmPassword: EditText
+    private lateinit var textPhone: EditText
 
     private lateinit var buttonCreate: Button
     private lateinit var buttonBack: ImageButton
@@ -35,21 +37,21 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         AsingVariables()
         textInfo.text = ""
-        buttonBack.setOnClickListener { finish() }
+        buttonBack.setOnClickListener { finish()
+            MainActivity.ForceUpdatePagerAdapter(4) }
         buttonCreate.setOnClickListener {
 
-            if (!allFieldFilled()){
+            if (!allFieldFilled()) {
                 textInfo.text = TranslationStrings.get(R.string.ErrorFieldsFilled)
 
-            }else if(!isEmailValid(textEmail.text.toString())){
+            } else if (!isEmailValid(textEmail.text.toString())) {
 
                 textInfo.text = TranslationStrings.get(R.string.ErrorEmail)
-            }
-            else if (!passwordConfirmed()){
+            } else if (!passwordConfirmed()) {
 
                 textInfo.text = TranslationStrings.get(R.string.ErrorPasswordNotMatch)
-            }else{
-                val user=User(
+            } else {
+                val user = User(
                     0,
                     textName.text.toString(),
                     textSurname.text.toString(),
@@ -58,10 +60,35 @@ class RegisterActivity : AppCompatActivity() {
                     textPostalCode.text.toString().toInt(),
                     textEmail.text.toString(),
                     textPhone.text.toString().toInt(),
-                    textPassword.text.toString())
-                App.user=user
-                finish()
-                Toast.makeText(App.context, TranslationStrings.get(R.string.registered),Toast.LENGTH_SHORT).show()
+                    textPassword.text.toString()
+                )
+                App.user = user
+
+
+
+
+                App.auth?.createUserWithEmailAndPassword(user.email, user.password)
+                    ?.addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(
+                                App.context,
+                                TranslationStrings.get(R.string.registered),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            MainActivity.ForceUpdatePagerAdapter(4)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                App.context,
+                                "Error",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        // ...
+                    }
+
+
             }
         }
     }
@@ -72,34 +99,34 @@ class RegisterActivity : AppCompatActivity() {
         textAddress = editTextAddress
         textPostalCode = editTextPostalCode
         textEmail = editTextEmail
-        textCity=editTextCity
+        textCity = editTextCity
         textPassword = editTextPassword
         textConfirmPassword = editTextPasswordRepeat
         textPhone = editTextPhone
         buttonCreate = buttonRegister
         buttonBack = closeRegister
-        textInfo=info_register
+        textInfo = info_register
     }
 
-    fun allFieldFilled():Boolean{
-        var comp=true
+    fun allFieldFilled(): Boolean {
+        var comp = true
 
         when {
-            textName.text.isNullOrEmpty() -> comp=false
-            textSurname.text.isNullOrEmpty() -> comp=false
-            textAddress.text.isNullOrEmpty() -> comp=false
-            textCity.text.isNullOrEmpty() -> comp=false
-            textPostalCode.text.isNullOrEmpty() -> comp=false
-            textEmail.text.isNullOrEmpty() -> comp=false
-            textPassword.text.isNullOrEmpty() -> comp=false
-            textConfirmPassword.text.isNullOrEmpty() -> comp=false
-            textPhone.text.isNullOrEmpty() -> comp=false
+            textName.text.isNullOrEmpty() -> comp = false
+            textSurname.text.isNullOrEmpty() -> comp = false
+            textAddress.text.isNullOrEmpty() -> comp = false
+            textCity.text.isNullOrEmpty() -> comp = false
+            textPostalCode.text.isNullOrEmpty() -> comp = false
+            textEmail.text.isNullOrEmpty() -> comp = false
+            textPassword.text.isNullOrEmpty() -> comp = false
+            textConfirmPassword.text.isNullOrEmpty() -> comp = false
+            textPhone.text.isNullOrEmpty() -> comp = false
         }
-        return  comp
+        return comp
     }
 
-    fun passwordConfirmed():Boolean{
-        val comp=textPassword.text.toString().equals(textConfirmPassword.text.toString())
+    fun passwordConfirmed(): Boolean {
+        val comp = textPassword.text.toString().equals(textConfirmPassword.text.toString())
 
         return comp
     }

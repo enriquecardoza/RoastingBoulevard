@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var tableLayout: TabLayout
 
-    private lateinit var mPager: ViewPager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         tableLayout = tabsMain
         mPager = findViewById(R.id.pager)
         mPager.setPageTransformer(true, ZoomOutPageTransformer())
-        val adapterViewPager = MyPagerAdapter(supportFragmentManager)
+        adapterViewPager = MyPagerAdapter(supportFragmentManager)
         mPager.adapter = adapterViewPager
         tableLayout.setupWithViewPager(pager)
         App.tabLayout=tableLayout
@@ -40,5 +39,19 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
     }
 
+
+    companion object{
+        private lateinit var adapterViewPager: MyPagerAdapter
+        private lateinit var mPager: ViewPager
+        fun ForceUpdatePagerAdapter(){
+            adapterViewPager.notifyDataSetChanged()
+        }
+        fun ForceUpdatePagerAdapter(pos:Int){
+
+            mPager.adapter = adapterViewPager
+            adapterViewPager.notifyDataSetChanged()
+            mPager.currentItem=pos
+        }
+    }
 
 }

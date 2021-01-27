@@ -7,15 +7,18 @@ import androidx.annotation.StringRes
 import com.app.myapplication.CustomSnackbar
 import com.careradish.roastingboulevard.classes.User
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class App : Application() {
     companion object {
+        var auth: FirebaseAuth?=null
         var user:User?=null
         lateinit var context: Context
         lateinit var contentView: View
         var foodSnackBar: CustomSnackbar?=null
         lateinit var tabLayout: TabLayout
-        val logged=user!=null
+        val logged:Boolean get()= user!=null
         fun hideFoodSnackbar() {
             if(foodSnackBar!=null) {
                 foodSnackBar!!.dismiss()
@@ -25,10 +28,15 @@ class App : Application() {
         }
 
         fun LockTabs(){
-            tabLayout.isClickable=false
+            tabLayout.visibility=View.GONE
         }
         fun UnlockTabs(){
-            tabLayout.isClickable=true
+            tabLayout.visibility=View.VISIBLE
+        }
+
+        fun  Init(contexto: Context){
+            context=contexto
+            auth  = FirebaseAuth.getInstance()
         }
     }
 

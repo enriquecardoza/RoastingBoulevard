@@ -3,13 +3,14 @@ package com.careradish.roastingboulevard.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.fragments.*
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
 
-class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager!!) {
+class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdapter(fragmentManager!!) {
 
     // Returns total number of pages
     override fun getCount(): Int {
@@ -21,19 +22,30 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(f
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> InitFragment()
-            1 ->ProfileFragment()// CombosFragment()
+            1 -> ProfileFragment()// CombosFragment()
             2 -> DishesFragment()
             3 -> InformationFragment()
             4 -> {
                 if (!App.logged)
                     LoginFragment()
-                    else
+                else
                     ProfileFragment()
             }
             else -> InitFragment()
         }
     }
 
+    override fun getItemPosition(`object`: Any): Int {
+
+        if(`object` is LoginFragment&&App.logged){
+            return super.getItemPosition(ProfileFragment())
+        }else  if(`object` is ProfileFragment&&!App.logged)
+        {
+            return super.getItemPosition(LoginFragment())
+        }else
+
+        return super.getItemPosition( `object`)
+    }
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
