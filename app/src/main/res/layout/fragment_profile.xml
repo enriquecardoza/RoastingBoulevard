@@ -65,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/payment_method"
             android:textAlignment="textStart"
             android:textColor="@color/black" />
@@ -80,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/changue_delivery"
             android:textAlignment="textStart"
             android:textColor="@color/black" />
@@ -93,6 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/personal_data"
             android:textAlignment="textStart"
             android:textColor="@color/black" />
@@ -113,6 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/my_orders"
             android:textAlignment="textStart"
             android:textColor="@color/black" />
@@ -126,6 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/configuration"
             android:textAlignment="textStart"
             android:textColor="@color/black" />
@@ -139,6 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/close_session"
             android:textAlignment="textStart"
             android:textColor="@color/black" />

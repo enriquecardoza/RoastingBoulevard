@@ -3,7 +3,7 @@ package com.careradish.roastingboulevard.classes
 import android.provider.ContactsContract
 
 data class User(
-    var id: Int,
+    var id: String,
     var name: String,
     var surname: String,
     var address: String,

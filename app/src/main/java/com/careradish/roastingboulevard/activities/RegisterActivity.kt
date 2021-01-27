@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                 textInfo.text = TranslationStrings.get(R.string.ErrorPasswordNotMatch)
             } else {
                 val user = User(
-                    0,
+                    "0",
                     textName.text.toString(),
                     textSurname.text.toString(),
                     textAddress.text.toString(),
@@ -63,12 +63,11 @@ class RegisterActivity : AppCompatActivity() {
                     textPassword.text.toString()
                 )
                 App.user = user
+                textInfo.text = ""
 
 
 
-
-                App.auth?.createUserWithEmailAndPassword(user.email, user.password)
-                    ?.addOnCompleteListener(this) { task ->
+                App.auth?.createUserWithEmailAndPassword(user.email, user.password)?.addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(
                                 App.context,
@@ -77,6 +76,16 @@ class RegisterActivity : AppCompatActivity() {
                             ).show()
                             MainActivity.ForceUpdatePagerAdapter(4)
                             finish()
+
+                            App.auth?.signInWithEmailAndPassword(user.email, user.password)!!
+                                .addOnCompleteListener(this) { task ->
+                                    if (task.isSuccessful) {
+                                        user.id = App.auth!!.currentUser?.uid.toString()
+                                    } else {
+                                        Toast.makeText(baseContext, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show()
+                                    }
+                                }
                         } else {
                             Toast.makeText(
                                 App.context,
@@ -127,7 +136,6 @@ class RegisterActivity : AppCompatActivity() {
 
     fun passwordConfirmed(): Boolean {
         val comp = textPassword.text.toString().equals(textConfirmPassword.text.toString())
-
         return comp
     }
 

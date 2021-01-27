@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        App.context = this
+        App.Init(this)
+
         App.contentView = findViewById(android.R.id.content)
         actionBar?.hide()
         tableLayout = tabsMain
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         mPager.adapter = adapterViewPager
         tableLayout.setupWithViewPager(pager)
         App.tabLayout=tableLayout
+
     }
 
 
@@ -46,12 +48,13 @@ class MainActivity : AppCompatActivity() {
         fun ForceUpdatePagerAdapter(){
             adapterViewPager.notifyDataSetChanged()
         }
-        fun ForceUpdatePagerAdapter(pos:Int){
+        fun ForceUpdatePagerAdapter(pos: Int){
 
             mPager.adapter = adapterViewPager
             adapterViewPager.notifyDataSetChanged()
             mPager.currentItem=pos
         }
     }
+
 
 }
