@@ -8,7 +8,7 @@ data class Delivery(
     var foods: ArrayList<Food>,
     var user: User,
     var bill: Bill,
-    var direction:Direction,
+    var direction:Address,
     var createdDate: Date,
     var deliveryDate: Date,
     var amount:Float,

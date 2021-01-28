@@ -9,5 +9,6 @@ class Constants {
         const val foodsTittle:String="Food"
         const val usersTittle:String="User"
         const val categoryTittle:String="Category"
+        const val addressTittle:String="Address"
     }
 }

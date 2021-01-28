@@ -11,14 +11,14 @@
     <string name="order_now">Pedir ahora</string>
     <string name="profile_welcome">Hola</string>
     <string name="payment_method">Método de pago</string>
-    <string name="changue_delivery">Dirección de entrega</string>
+    <string name="changue_delivery">Direcciones de entrega</string>
     <string name="personal_data">Datos personales</string>
     <string name="my_orders">Mis pedidos</string>
-    <string name="configuration">Configuracion</string>
+    <string name="configuration">Configuración</string>
     <string name="close_session">Cerrar sesión</string>
     <string name="name">Nombre</string>
     <string name="surname">Apellidos</string>
-    <string name="postalCode">Codigo postal</string>
+    <string name="postal_code">Codigo postal</string>
     <string name="city">Ciudad</string>
     <string name="address">Dirección</string>
     <string name="password">Contraseña</string>
@@ -30,11 +30,16 @@
     <string name="access_profile">Accede a tu perfil</string>
     <string name="log_on">Acceder</string>
     <string name="register">Registrarse</string>
-    <string name="ErrorFieldsFilled">Error: Todos los campos tienen que estar llenos</string>
-    <string name="ErrorPasswordNotMatch">Error: Las contraseñas deben coincidir</string>
-    <string name="ErrorEmail">Error: el formato de email no es correcto</string>
+    <string name="errorFieldsFilled">Error: Todos los campos tienen que estar llenos</string>
+    <string name="errorPasswordNotMatch">Error: Las contraseñas deben coincidir</string>
+    <string name="errorEmail">Error: el formato de email no es correcto</string>
     <string name="registered">Registrado correctamente</string>
-    <string name="ErrorLogin">Autentificación fallida</string>
-    <string name="ErrorLenghtPassword">Error: La contraseña debe tener 6 digitos o más</string>
+    <string name="errorLogin">Autentificación fallida</string>
+    <string name="errorLenghtPassword">Error: La contraseña debe tener 6 digitos o más</string>
+    <string name="label">Etiqueta</string>
+    <string name="street_name">Nombre de la calle</string>
+    <string name="street_number">Numero de la calle</string>
+    <string name="example_address_types">Portal/Escalerar/Piso</string>
+    <string name="create_address">Crear direccion</string>
 
 </resources>

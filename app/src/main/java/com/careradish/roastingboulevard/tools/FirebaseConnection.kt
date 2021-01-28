@@ -1,16 +1,14 @@
 package com.careradish.roastingboulevard.tools
 
-import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.Constants
-import com.careradish.roastingboulevard.tools.TranslationStrings
 import android.app.Activity
 import android.content.Context
 import android.widget.Toast
+import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.classes.Address
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.classes.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.careradish.roastingboulevard.R
 
 class FirebaseConnection(var context: Context) {
 
@@ -24,6 +22,7 @@ class FirebaseConnection(var context: Context) {
         var referenceRoot: DatabaseReference = database.getReference("")
 
 
+//region user
 
         fun writeUser(user: User) {
 
@@ -49,7 +48,7 @@ class FirebaseConnection(var context: Context) {
                     } else {
                         Toast.makeText(
                             activity.applicationContext,
-                            TranslationStrings.get(R.string.ErrorLogin),
+                            TranslationStrings.get(R.string.errorLogin),
                             Toast.LENGTH_SHORT
                         ).show()
                         if (loginFail != null) {
@@ -117,8 +116,17 @@ class FirebaseConnection(var context: Context) {
             })
         }
 
-    }
+//endregion
 
+        //region address
+        fun writeAddress(user: User,direction:Address) {
+
+            referenceRoot.child(Constants.usersTittle).child(user.id).child(Constants.addressTittle).child(direction.label).setValue(user)
+
+        }
+        //endregion
+
+    }
 
     fun writeFood(food: Food) {
 

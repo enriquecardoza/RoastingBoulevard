@@ -1,7 +1,10 @@
 package com.careradish.roastingboulevard.activities
 
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.User
@@ -43,16 +46,16 @@ class RegisterActivity : AppCompatActivity() {
         buttonCreate.setOnClickListener {
 
             if (!allFieldFilled()) {
-                textInfo.text = TranslationStrings.get(R.string.ErrorFieldsFilled)
+                textInfo.text = TranslationStrings.get(R.string.errorFieldsFilled)
 
             } else if (!isEmailValid(textEmail.text.toString())) {
 
-                textInfo.text = TranslationStrings.get(R.string.ErrorEmail)
+                textInfo.text = TranslationStrings.get(R.string.errorEmail)
             } else if (!passwordSizeCorrect()) {
-                textInfo.text = TranslationStrings.get(R.string.ErrorLenghtPassword)
+                textInfo.text = TranslationStrings.get(R.string.errorLenghtPassword)
             }else if (!passwordConfirmed()) {
 
-                textInfo.text = TranslationStrings.get(R.string.ErrorPasswordNotMatch)
+                textInfo.text = TranslationStrings.get(R.string.errorPasswordNotMatch)
             } else {
                 val user = User(
                     "0",
