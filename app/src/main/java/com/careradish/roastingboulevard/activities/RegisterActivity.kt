@@ -48,7 +48,9 @@ class RegisterActivity : AppCompatActivity() {
             } else if (!isEmailValid(textEmail.text.toString())) {
 
                 textInfo.text = TranslationStrings.get(R.string.ErrorEmail)
-            } else if (!passwordConfirmed()) {
+            } else if (!passwordSizeCorrect()) {
+                textInfo.text = TranslationStrings.get(R.string.ErrorLenghtPassword)
+            }else if (!passwordConfirmed()) {
 
                 textInfo.text = TranslationStrings.get(R.string.ErrorPasswordNotMatch)
             } else {
@@ -56,17 +58,13 @@ class RegisterActivity : AppCompatActivity() {
                     "0",
                     textName.text.toString(),
                     textSurname.text.toString(),
-                    textAddress.text.toString(),
-                    textCity.text.toString(),
-                    textPostalCode.text.toString().toInt(),
                     textEmail.text.toString(),
                     textPhone.text.toString().toInt(),
-                    textPassword.text.toString()
                 )
                 textInfo.text = ""
 
 
-                FirebaseConnection.createUser(user, this, {
+                FirebaseConnection.createUser(user, textPassword.text.toString(),this, {
 
                     MainActivity.ForceUpdatePagerAdapter(4)
                     finish()
@@ -80,10 +78,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun AsingVariables() {
         textName = editTextName
         textSurname = editTextSurname
-        textAddress = editTextAddress
-        textPostalCode = editTextPostalCode
         textEmail = editTextEmail
-        textCity = editTextCity
         textPassword = editTextPassword
         textConfirmPassword = editTextPasswordRepeat
         textPhone = editTextPhone
@@ -119,5 +114,9 @@ class RegisterActivity : AppCompatActivity() {
         val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
         val matcher: Matcher = pattern.matcher(email)
         return matcher.matches()
+    }
+    fun passwordSizeCorrect(): Boolean {
+        val comp = textPassword.text.toString().length>=6
+        return comp
     }
 }

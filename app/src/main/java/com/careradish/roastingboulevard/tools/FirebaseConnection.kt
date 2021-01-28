@@ -60,12 +60,12 @@ class FirebaseConnection(var context: Context) {
         }
 
         fun createUser(
-            user: User,
+            user: User,password:String,
             activity: Activity,
             createSuccess: () -> Unit,
             createFail: (() -> Unit)? = null
         ) {
-            auth?.createUserWithEmailAndPassword(user.email, user.password)
+            auth?.createUserWithEmailAndPassword(user.email, password)
                 ?.addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
@@ -75,7 +75,7 @@ class FirebaseConnection(var context: Context) {
                         ).show()
 
 
-                        LoginUser(user.email,user.password, activity, {
+                        LoginUser(user.email,password, activity, {
                             createSuccess()
                             val userId= auth!!.currentUser?.uid.toString()
                             App.user=user

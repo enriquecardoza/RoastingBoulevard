@@ -35,5 +35,6 @@
     <string name="ErrorEmail">Error: el formato de email no es correcto</string>
     <string name="registered">Registrado correctamente</string>
     <string name="ErrorLogin">Autentificación fallida</string>
+    <string name="ErrorLenghtPassword">Error: La contraseña debe tener 6 digitos o más</string>
 
 </resources>

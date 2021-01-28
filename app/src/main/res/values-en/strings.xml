@@ -35,4 +35,5 @@
     <string name="ErrorEmail">"Error: the email format is not correct "</string>
     <string name="registered">Registered correctly</string>
     <string name="ErrorLogin">Authentication failed</string>
+    <string name="ErrorLenghtPassword">Error: Passwords must be 6 or higher</string>
 </resources>
