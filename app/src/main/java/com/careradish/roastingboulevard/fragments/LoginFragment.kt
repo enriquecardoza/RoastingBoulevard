@@ -8,8 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.activities.RegisterActivity
+import com.careradish.roastingboulevard.classes.User
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.FirebaseConnection
+import com.careradish.roastingboulevard.tools.TranslationStrings
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 class LoginFragment : Fragment() {
@@ -31,16 +36,20 @@ class LoginFragment : Fragment() {
             val intent=Intent(App.context,RegisterActivity::class.java)
             startActivity(intent)
         }
-        /*
-        App.auth?.signInWithEmailAndPassword(user.email, user.password)!!
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    user.id = App.auth!!.currentUser?.uid.toString()
-                } else {
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }*/
+
+        val buttonLogin=tempInflater.logOnButton
+        buttonLogin.setOnClickListener{
+            val email=editTextEmailLogin.text.toString()
+            val password=editTextPasswordLogin.text.toString()
+
+           FirebaseConnection.LoginUser(email, password, this.activity!!, {
+               FirebaseConnection.readUser(App.user!!.id, {
+                   MainActivity.ForceUpdatePagerAdapter(4)
+               } )
+
+           })
+
+        }
 
         return tempInflater
     }

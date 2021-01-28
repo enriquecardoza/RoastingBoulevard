@@ -12,6 +12,8 @@ import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.FoodAdapter
 import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.classes.Food
+import com.careradish.roastingboulevard.tools.Constants
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -32,7 +34,6 @@ class FoodListFragment : Fragment() {
 
     private var param1: Category? = null
     private lateinit var miRecycler: RecyclerView
-    private lateinit var database: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,6 @@ class FoodListFragment : Fragment() {
         var tempInflater = inflater.inflate(R.layout.fragment_food_list, container, false)
         miRecycler=tempInflater.findViewById(R.id.recyclerFoodList)
         miRecycler.setLayoutManager(GridLayoutManager(inflater.context, 2))
-        database = FirebaseDatabase.getInstance()
         miRecycler.setHasFixedSize(true)
         ReadFoodsFromCategory(param1!!)
         // Inflate the layout for this fragment
@@ -80,7 +80,7 @@ class FoodListFragment : Fragment() {
         }
         for (id in category.foods) {
             if (id != null) {
-                var referenceRoot = database.getReference("").child("Food").child(id.toString())
+                var referenceRoot = FirebaseConnection.referenceRoot.child(Constants.foodsTittle).child(id.toString())
                 referenceRoot.addListenerForSingleValueEvent(object : ValueEventListener {
 
                     override fun onDataChange(snapshot: DataSnapshot) {

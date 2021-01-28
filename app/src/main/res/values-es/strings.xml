@@ -34,5 +34,6 @@
     <string name="ErrorPasswordNotMatch">Error: Las contraseñas deben coincidir</string>
     <string name="ErrorEmail">Error: el formato de email no es correcto</string>
     <string name="registered">Registrado correctamente</string>
+    <string name="ErrorLogin">Autentificación fallida</string>
 
 </resources>

@@ -12,13 +12,14 @@ import com.google.firebase.ktx.Firebase
 
 class App : Application() {
     companion object {
-        var auth: FirebaseAuth?=null
-        var user:User?=null
+
+        var user:User=User()
         lateinit var context: Context
         lateinit var contentView: View
         var foodSnackBar: CustomSnackbar?=null
         lateinit var tabLayout: TabLayout
-        val logged:Boolean get()= user!=null
+        val logged:Boolean get()= user.id!=""
+
         fun hideFoodSnackbar() {
             if(foodSnackBar!=null) {
                 foodSnackBar!!.dismiss()
@@ -36,7 +37,6 @@ class App : Application() {
 
         fun  Init(contexto: Context){
             context=contexto
-            auth  = FirebaseAuth.getInstance()
         }
     }
 

@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.User
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.TranslationStrings
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -37,8 +36,10 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         AsingVariables()
         textInfo.text = ""
-        buttonBack.setOnClickListener { finish()
-            MainActivity.ForceUpdatePagerAdapter(4) }
+        buttonBack.setOnClickListener {
+            finish()
+            MainActivity.ForceUpdatePagerAdapter(4)
+        }
         buttonCreate.setOnClickListener {
 
             if (!allFieldFilled()) {
@@ -62,41 +63,15 @@ class RegisterActivity : AppCompatActivity() {
                     textPhone.text.toString().toInt(),
                     textPassword.text.toString()
                 )
-                App.user = user
                 textInfo.text = ""
 
 
+                FirebaseConnection.createUser(user, this, {
 
-                App.auth?.createUserWithEmailAndPassword(user.email, user.password)?.addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(
-                                App.context,
-                                TranslationStrings.get(R.string.registered),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            MainActivity.ForceUpdatePagerAdapter(4)
-                            finish()
-
-                            App.auth?.signInWithEmailAndPassword(user.email, user.password)!!
-                                .addOnCompleteListener(this) { task ->
-                                    if (task.isSuccessful) {
-                                        user.id = App.auth!!.currentUser?.uid.toString()
-                                    } else {
-                                        Toast.makeText(baseContext, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                        } else {
-                            Toast.makeText(
-                                App.context,
-                                "Error",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-
-                        // ...
-                    }
-
+                    MainActivity.ForceUpdatePagerAdapter(4)
+                    finish()
+                    val user=App.user
+                })
 
             }
         }

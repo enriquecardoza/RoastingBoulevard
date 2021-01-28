@@ -12,6 +12,7 @@ import com.careradish.roastingboulevard.adapters.FoodListPagerAdapter
 import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -27,7 +28,6 @@ import kotlinx.android.synthetic.main.fragment_dishes.view.*
 class DishesFragment : Fragment() {
 
 
-    private lateinit var database: FirebaseDatabase
     private lateinit var tabLayout: TabLayout
     private lateinit var listaCategory: MutableList<Category>
     private  lateinit var pager:ViewPager
@@ -35,7 +35,6 @@ class DishesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         listaCategory = mutableListOf<Category>()
-        database = FirebaseDatabase.getInstance()
 
     }
 
@@ -56,7 +55,7 @@ class DishesFragment : Fragment() {
     }
 
     private fun CreateTabs() {
-        var referenceRoot = database.getReference("").child("Category")
+        var referenceRoot = FirebaseConnection.referenceRoot.child(Constants.categoryTittle)
         referenceRoot.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {

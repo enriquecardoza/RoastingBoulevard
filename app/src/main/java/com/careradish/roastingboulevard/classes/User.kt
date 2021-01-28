@@ -10,16 +10,11 @@ data class User(
     var city: String,
     var postalCode: Int,
     var email: String,
-    var phone: Int,
-    var password: String,
+    var phone: Int) {
 
-    ) {
-    private fun Getpassword(): String {
-        return password
-    }
+    var deliveries:MutableList<Delivery>?= mutableListOf()
 
-    public fun Setpassword(newPassword: String) {
-        password = newPassword
-    }
+    constructor():this("","","","","",-1,"",-1)
+
 }
 

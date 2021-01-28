@@ -1,39 +1,139 @@
 package com.careradish.roastingboulevard.tools
 
+import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.Constants
+import com.careradish.roastingboulevard.tools.TranslationStrings
+import android.app.Activity
 import android.content.Context
 import android.widget.Toast
-import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.classes.Food
+import com.careradish.roastingboulevard.classes.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.careradish.roastingboulevard.R
 
-class FirebaseConnection (var context: Context) {
+class FirebaseConnection(var context: Context) {
 
-    private var database:FirebaseDatabase
-    var referenceRoot:DatabaseReference
-    lateinit var activity:MainActivity
     init {
-        database= FirebaseDatabase.getInstance()
         referenceRoot = database.getReference("")
     }
+
     companion object {
-        const val foodsTittle:String="Foods"
+        var auth = FirebaseAuth.getInstance()
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        var referenceRoot: DatabaseReference = database.getReference("")
+
+
+
+        fun writeUser(user: User) {
+
+            referenceRoot.child(Constants.usersTittle).child(user.id.toString()).setValue(user)
+
+        }
+
+        fun LoginUser(
+            email:String,password:String,
+            activity: Activity,
+            loginSuccess: (() -> Unit)? = null,
+            loginFail: (() -> Unit)? = null
+        ) {
+            auth?.signInWithEmailAndPassword(email,password)!!
+                .addOnCompleteListener(activity) { task ->
+                    if (task.isSuccessful) {
+                        if (loginSuccess != null) {
+                            val userId= auth!!.currentUser?.uid.toString()
+                            App.user!!.id=userId
+                            loginSuccess()
+                        }
+
+                    } else {
+                        Toast.makeText(
+                            activity.applicationContext,
+                            TranslationStrings.get(R.string.ErrorLogin),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        if (loginFail != null) {
+                            loginFail()
+                        }
+                    }
+                }
+        }
+
+        fun createUser(
+            user: User,
+            activity: Activity,
+            createSuccess: () -> Unit,
+            createFail: (() -> Unit)? = null
+        ) {
+            auth?.createUserWithEmailAndPassword(user.email, user.password)
+                ?.addOnCompleteListener(activity) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(
+                            activity.applicationContext,
+                            TranslationStrings.get(R.string.registered),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+
+                        LoginUser(user.email,user.password, activity, {
+                            createSuccess()
+                            val userId= auth!!.currentUser?.uid.toString()
+                            App.user=user
+                            App.user!!.id=userId
+                            writeUser(App.user!!)
+                        })
+
+                    } else {
+                        Toast.makeText(
+                            App.context,
+                            "Error",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        if (createFail != null) {
+                            createFail()
+                        }
+                    }
+
+                }
+        }
+
+        fun readUser(userId:String,readSucces: (() -> Unit)? = null,readFail: (() -> Unit)? = null){
+
+            val ref = referenceRoot.child(Constants.usersTittle).child(userId)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (readSucces != null) {
+                        readSucces()
+                    }
+                    App.user= snapshot.getValue(User::class.java)!!
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    if (readFail != null) {
+                        readFail()
+                    }
+                }
+            })
+        }
+
     }
 
 
-    public fun writeFood(food: Food){
+    fun writeFood(food: Food) {
 
-        referenceRoot.child(foodsTittle).child(food.id.toString()).setValue(food)
+        referenceRoot.child(Constants.foodsTittle).child(food.id.toString()).setValue(food)
 
     }
+
     public fun readFood(id: Int): Food? {
 
         var food: Food = Food()
-        val foodRef = referenceRoot.child(foodsTittle).child(id.toString())
+        val foodRef = referenceRoot.child(Constants.foodsTittle).child(id.toString())
         foodRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                var food: Food? =snapshot.getValue(Food::class.java)
-                showToast(food?.name.toString());
+                var food: Food? = snapshot.getValue(Food::class.java)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -43,34 +143,8 @@ class FirebaseConnection (var context: Context) {
         return food
     }
 
-    public fun getDishes(): List<Food>  {
-        val Lista: MutableList<Food> = ArrayList()
-        referenceRoot.child(foodsTittle).addListenerForSingleValueEvent(object : ValueEventListener {
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children){
-                    Lista.add(i.getValue(Food::class.java)!!)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
-        return Lista
-    }
-
-
-
-
-
-    public fun showToast(text:String){
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-    }
 }
-
-
-
 
 
 /*myRef.addChildEventListener(object : ChildEventListener {
