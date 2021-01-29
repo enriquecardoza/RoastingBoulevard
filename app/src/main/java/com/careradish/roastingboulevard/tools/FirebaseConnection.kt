@@ -124,6 +124,34 @@ class FirebaseConnection(var context: Context) {
             referenceRoot.child(Constants.usersTittle).child(user.id).child(Constants.addressTittle).child(direction.label).setValue(user)
 
         }
+        fun loadAddresses(readSucces: (() -> Unit)? = null,readFail: (() -> Unit)? = null){
+
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle)
+            ref.addListenerForSingleValueEvent(object : ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    App.user.addresses?.clear()
+                    if (readSucces != null) {
+                        for (i in snapshot.children) {
+                            var address: Address = i.getValue(Address::class.java)!!
+                            App.user.addresses?.add(address)
+                        }
+                        readSucces()
+                    }
+
+                    App.user= snapshot.getValue(User::class.java)!!
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    if (readFail != null) {
+                        readFail()
+                    }
+                }
+            })
+        }
+
+
+
         //endregion
 
     }

@@ -11,6 +11,8 @@ data class User(
 
     var deliveries:MutableList<Delivery>?= mutableListOf()
     var paymentMethods:PaymentMethod?=PaymentMethod()
+    var addresses:MutableList<Address>?= mutableListOf()
+
 
     constructor():this("","","","",-1)
 

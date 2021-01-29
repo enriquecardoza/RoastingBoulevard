@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:gravity="bottom|center"
+                android:gravity="bottom"
                 android:paddingTop="10dp"
                 android:text="@string/street_name" />
 

@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.Group
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="button,button4,button3,button6,button5,button2" />
+        app:constraint_referenced_ids="button,button4,button3,button6,button5,buttonAddresses" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,7 +77,7 @@
             android:background="@android:color/darker_gray" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonAddresses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
