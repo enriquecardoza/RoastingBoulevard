@@ -118,10 +118,43 @@ class FirebaseConnection(var context: Context) {
 
 //endregion
 
-        //region address
-        fun writeAddress(address:Address) {
+//region address
 
-            referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle).child(address.label).setValue(address)
+        fun eraseAddress(address:Address,
+                         success: (() -> Unit)? = null,
+                         fail: (() -> Unit)? = null){
+            val task=referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle).child(address.label).removeValue()
+            task.addOnCompleteListener {
+                if (task.isSuccessful) {
+                    if (success != null) {
+                        success()
+                    }
+
+                } else {
+                    if (fail != null) {
+                        fail()
+                    }
+                }
+            }
+        }
+
+        fun writeAddress(address:Address,
+                         success: (() -> Unit)? = null,
+                         fail: (() -> Unit)? = null) {
+
+            val task=referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle).child(address.label).setValue(address)
+            task.addOnCompleteListener {
+                if (task.isSuccessful) {
+                    if (success != null) {
+                        success()
+                    }
+
+                } else {
+                    if (fail != null) {
+                        fail()
+                    }
+                }
+            }
 
         }
         fun loadAddresses(readSucces: (() -> Unit)? = null,readFail: (() -> Unit)? = null){

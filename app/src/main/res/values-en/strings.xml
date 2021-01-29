@@ -41,4 +41,8 @@
     <string name="street_number">Street number</string>
     <string name="example_address_types">Portal/Ladder/Floor</string>
     <string name="create_address">Create address</string>
+    <string name="edit_address">Edit address</string>
+    <string name="yes">Yes</string>
+    <string name="No">No</string>
+    <string name="are_you_sure">Are you sure?</string>
 </resources>

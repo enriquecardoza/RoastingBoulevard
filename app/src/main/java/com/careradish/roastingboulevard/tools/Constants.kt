@@ -10,5 +10,6 @@ class Constants {
         const val usersTittle:String="User"
         const val categoryTittle:String="Category"
         const val addressTittle:String="Address"
+        const val addressToEdit:String="EditAddress"
     }
 }

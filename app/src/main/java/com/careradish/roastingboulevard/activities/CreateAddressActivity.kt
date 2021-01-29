@@ -8,7 +8,7 @@ import com.careradish.roastingboulevard.classes.Address
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import kotlinx.android.synthetic.main.activity_create_address.*
 
-class CreateDirectionActivity : AppCompatActivity() {
+class CreateAddressActivity : AppCompatActivity() {
 
     lateinit var editTextLabel: EditText
     lateinit var editTextName: EditText
@@ -25,7 +25,7 @@ class CreateDirectionActivity : AppCompatActivity() {
         editTextLabel = editTextNewLabel
         editTextName = editTextNewStreetName
         editTextNumber = editTextNewStreetNumber
-        editTextType = editTextNewPostalCode
+        editTextType = editTextNewAddressType
         editTextPostalCode = editTextNewPostalCode
         editTextCity = editTextNewCity
 
@@ -40,10 +40,11 @@ class CreateDirectionActivity : AppCompatActivity() {
                 editTextPostalCode.text.toString().toInt(),
                 editTextCity.text.toString()
             )
-
+            DirectionListActivity.dataCreated(address)
             FirebaseConnection.writeAddress(address)
             finish()
         }
+
 
     }
 }

@@ -41,5 +41,9 @@
     <string name="street_number">Numero de la calle</string>
     <string name="example_address_types">Portal/Escalerar/Piso</string>
     <string name="create_address">Crear direccion</string>
+    <string name="edit_address">Editar dirección</string>
+    <string name="yes">Si</string>
+    <string name="No">No</string>
+    <string name="are_you_sure">¿Estas seguro?</string>
 
 </resources>
