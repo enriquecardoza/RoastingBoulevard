@@ -27,7 +27,7 @@ class AddressAdapter(var addresses: List<Address>): RecyclerView.Adapter<Address
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater: LayoutInflater? = LayoutInflater.from(parent.context)
-        val view: View? = inflater?.inflate(R.layout.item_food, parent, false)
+        val view: View? = inflater?.inflate(R.layout.item_address, parent, false)
         return ViewHolder(view!!)
     }
 
@@ -35,7 +35,7 @@ class AddressAdapter(var addresses: List<Address>): RecyclerView.Adapter<Address
         val address = addresses[position]
         holder.label.text=address.label
         holder.addresWithNumber.text=address.address+" Nº"+address.number
-        holder.postalCodeCity.text=address.postalCde+" "+address.city
+        holder.postalCodeCity.text=address.postalCode.toString()+" "+address.city
         holder.addresType.text=address.zoneType
     }
 
