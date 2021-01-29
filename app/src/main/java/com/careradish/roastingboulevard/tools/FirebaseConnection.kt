@@ -119,9 +119,9 @@ class FirebaseConnection(var context: Context) {
 //endregion
 
         //region address
-        fun writeAddress(user: User,direction:Address) {
+        fun writeAddress(address:Address) {
 
-            referenceRoot.child(Constants.usersTittle).child(user.id).child(Constants.addressTittle).child(direction.label).setValue(user)
+            referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle).child(address.label).setValue(address)
 
         }
         fun loadAddresses(readSucces: (() -> Unit)? = null,readFail: (() -> Unit)? = null){
@@ -139,7 +139,6 @@ class FirebaseConnection(var context: Context) {
                         readSucces()
                     }
 
-                    App.user= snapshot.getValue(User::class.java)!!
                 }
 
                 override fun onCancelled(error: DatabaseError) {
