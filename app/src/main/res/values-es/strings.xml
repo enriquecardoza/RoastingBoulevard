@@ -45,5 +45,10 @@
     <string name="yes">Si</string>
     <string name="No">No</string>
     <string name="are_you_sure">¿Estas seguro?</string>
+    <string name="bolasPollo">a</string>
+    <string name="descriptbolasPollo">a</string>
+    <string name="ingredientsbolasPollo">a</string>
+    <string name="croquetasJamon">Croquetas de jamón</string>
+    <string name="hi_user">Hola %1$s</string>
 
 </resources>

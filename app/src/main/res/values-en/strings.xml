@@ -45,4 +45,6 @@
     <string name="yes">Yes</string>
     <string name="No">No</string>
     <string name="are_you_sure">Are you sure?</string>
+    <string name="croquetasJamon">Ham croquettes</string>
+    <string name="hi_user">Hi %1$s</string>
 </resources>

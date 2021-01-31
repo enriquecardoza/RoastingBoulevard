@@ -186,13 +186,17 @@ class FirebaseConnection(var context: Context) {
 
         //endregion
 
+
+        //region Food
+        fun writeFood(food: Food) {
+
+            referenceRoot.child(Constants.foodsTittle).child(food.id.toString()).setValue(food)
+
+        }
+        //endregion
     }
 
-    fun writeFood(food: Food) {
 
-        referenceRoot.child(Constants.foodsTittle).child(food.id.toString()).setValue(food)
-
-    }
 
     public fun readFood(id: Int): Food? {
 
