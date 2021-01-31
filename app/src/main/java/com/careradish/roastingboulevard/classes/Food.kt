@@ -12,7 +12,7 @@ data class Food(var id:Int, var name:Int, var decriptions:Int, var ingredients:I
 
 
     enum class Allergens(val pos: Int) {
-        Gluten(0), Huevos(1), FrutosSecos(2), Pescado(3), Marisco(4)
+        Gluten(0), Huevos(1), Leche(2), FrutosSecos(3), Pescado(4), Marisco(5)
     }
 
 }

@@ -17,9 +17,18 @@ class DeveloperFreshData {
                     R.string.croquetasJamon,
                     R.string.descript_croquetasPollo,
                     R.string.ingredientsCroquetasJamon,
-                    arrayListOf(),
+                    arrayListOf(Food.Allergens.Leche.pos,Food.Allergens.Gluten.pos),
                     0,
-                    2.0f
+                    3.0f
+                ),
+                Food(
+                    1,
+                    R.string.bolasPollo,
+                    R.string.descript_bolasPollo,
+                    R.string.ingredientsbolasPollo,
+                    arrayListOf(Food.Allergens.Leche.pos,Food.Allergens.Gluten.pos),
+                    0,
+                    3.0f
                 ),
             )
         }

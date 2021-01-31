@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -121,8 +122,8 @@ class CustomSnackbar(
             view: View,food: Food): CustomSnackbar {
             val customSnackbar = createCustomSnackbar(view).apply {
                 setDuration(Snackbar.LENGTH_INDEFINITE)
-                setTitle(food.name)
-                setDescription(food.decriptions)
+                setTitle(TranslationStrings.get( food.name))
+                setDescription(TranslationStrings.get( food.decriptions))
                 setImage(food.photo)
                 setAllergens(food.allergens)
                 setprice(food.price)

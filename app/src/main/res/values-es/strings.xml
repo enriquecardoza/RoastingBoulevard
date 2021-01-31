@@ -45,10 +45,19 @@
     <string name="yes">Si</string>
     <string name="No">No</string>
     <string name="are_you_sure">¿Estas seguro?</string>
-    <string name="bolasPollo">a</string>
+    <string name="bolasPollo">Bolitas de pollo</string>
     <string name="descriptbolasPollo">a</string>
     <string name="ingredientsbolasPollo">a</string>
     <string name="croquetasJamon">Croquetas de jamón</string>
     <string name="hi_user">Hola %1$s</string>
+    <string name="descriptCroquetasJamon">Croquetas rellenas de bechamel mezclada con jamón iberico rebozadas de pan rallado.</string>
+    <string name="ingredientsCroquetasJamon">Pan rallado, harina, leche, sal, jamón</string>
+    <string name="ingredients_bolasPollo">Huevo, ajo, pimienta, harina, pan rallado, pollo</string>
+    <string name="nuggets">Nuggets de pollo</string>
+    <string name="ingredients_nuggets">Huevo, harina, pollo, leche,pan rallado ,sal</string>
+    <string name="croquetasPollo">Croquetas de pollo</string>
+    <string name="descript_bolasPollo">Bolitas de pollo creadas con una mezcla de leche con pollo, ajo y pimienta  rebozado de pan rallado.</string>
+    <string name="descript_nuggets">Nuggets  de pollo creados con una mezcla de leche con pollo rebozado de pan rallado.</string>
+    <string name="descript_croquetasPollo">Croquetas rellenas de bechamel mezclada con pollo rebozadas de pan rallado.</string>
 
 </resources>

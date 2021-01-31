@@ -11,6 +11,7 @@ import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.squareup.picasso.Picasso
 
 
@@ -41,7 +42,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val food = comidas[position]
-        holder.name.text = food.name
+        holder.name.text = TranslationStrings.get(food.name)
         Picasso.get().load(food.photo).fit().into(holder.image)
         val delay=(position*Constants.DELAY_INCREMENT).toLong()
         setFadeAnimation(holder.itemView,delay);

@@ -47,4 +47,14 @@
     <string name="are_you_sure">Are you sure?</string>
     <string name="croquetasJamon">Ham croquettes</string>
     <string name="hi_user">Hi %1$s</string>
+    <string name="descriptCroquetasJamon">Croquettes filled with bechamel sauce mixed with Iberian ham and bread crumbs.</string>
+    <string name="ingredientsCroquetasJamon">Bread crumbs, flour, milk, milk, salt, ham</string>
+    <string name="bolasPollo">Chicken dumplings</string>
+    <string name="ingredients_bolasPollo">Egg, garlic, pepper, flour, bread crumbs, chicken</string>
+    <string name="nuggets">Chicken Nuggets</string>
+    <string name="ingredients_nuggets">Egg, flour, chicken, milk, bread crumbs, salt</string>
+    <string name="croquetasPollo">Chicken croquettes</string>
+    <string name="descript_bolasPollo">Chicken dumplings created with a mixture of chicken, milk, garlic and pepper in a breadcrumb breadcrumb batter</string>
+    <string name="descript_nuggets">Chicken nuggets created with a mixture of chicken and milk in a breadcrumb breadcrumb batter</string>
+    <string name="descript_croquetasPollo">Croquettes filled with bechamel sauce mixed with chicken and bread crumbs.</string>
 </resources>
