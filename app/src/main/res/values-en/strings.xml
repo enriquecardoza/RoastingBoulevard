@@ -91,4 +91,17 @@
     <string name="alitas">Chicken wings</string>
     <string name="descript_alitas">Battered chicken wings.</string>
     <string name="ingredients_alitas">Chicken, egg, salt, bread</string>
+    <string name="macedonia">Fruit salad</string>
+    <string name="descript_macedonia">Various cut fruits mixed with syrup.</string>
+    <string name="ingredients_macedonia">Banana, orange, kiwi, pineapple, apple, mandarin orange</string>
+    <string name="tartaQueso">Cheesecake</string>
+    <string name="ingredients_tartaQueso">Cream cheese, cream, butter, butter, eggs, suggar</string>
+    <string name="tartaChocolate">Chocolatte cake</string>
+    <string name="snack">Snack</string>
+    <string name="portion">Portion</string>
+    <string name="chicken">Chicken</string>
+    <string name="desserts">Desserts</string>
+    <string name="descript_tartaQueso">Baked cheese, cream and egg mixture.</string>
+    <string name="descript_tartaChocolate">Dark chocolate and cream mix ready to go.</string>
+    <string name="ingredients_tartaChocolate">Butter, chocolate, cream, gelatin</string>
 </resources>

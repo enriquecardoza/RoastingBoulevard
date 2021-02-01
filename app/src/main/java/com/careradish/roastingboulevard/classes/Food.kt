@@ -10,9 +10,4 @@ data class Food(var id:Int, var name:Int, var decriptions:Int, var ingredients:I
     constructor(food: Food):this(food.id,food.name,food.decriptions,food.ingredients,food.allergens,food.photo,food.price){}
     constructor():this(-1,-1,-1,-1, arrayListOf(),0,0f){}
 
-
-    enum class Allergens(val pos: Int) {
-        Gluten(0), Huevos(1), Leche(2), FrutosSecos(3), Pescado(4), Marisco(5)
-    }
-
 }

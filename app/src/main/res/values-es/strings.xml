@@ -91,5 +91,18 @@
     <string name="alitas">Alitas de pollo</string>
     <string name="descript_alitas">Alitas de pollo rebozadas.</string>
     <string name="ingredients_alitas">Pollo, huevo, sal, pan</string>
+    <string name="macedonia">Macedonia de frutas</string>
+    <string name="descript_macedonia">Varias frutas cortadas mezclada con almibar.</string>
+    <string name="ingredients_macedonia">Platano, naranja, kiwi, piña, manzana, mandarina</string>
+    <string name="tartaQueso">Tarta de queso</string>
+    <string name="ingredients_tartaQueso">Crema de queso, nata, matequilla, huevos, azucar</string>
+    <string name="tartaChocolate">Tarta de chocolate</string>
+    <string name="snack">Snack</string>
+    <string name="portion">Ración</string>
+    <string name="chicken">Pollo</string>
+    <string name="desserts">Postres</string>
+    <string name="descript_tartaQueso">Mezcla de queso, nata y huevos horneada.</string>
+    <string name="descript_tartaChocolate">Mezcla de chocolate negro y nata listo para llevar.</string>
+    <string name="ingredients_tartaChocolate">Mantequilla, chocolate, nata, gelatina.</string>
 
 </resources>
