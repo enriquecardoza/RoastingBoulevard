@@ -49,11 +49,11 @@
     <string name="hi_user" formatted="false">Hi %1$s</string>
 
     <string name="croquetasJamon">Ham croquettes</string>
-    <string name="descriptCroquetasJamon">Croquettes filled with bechamel sauce mixed with Iberian ham and bread crumbs.</string>
+    <string name="descriptCroquetasJamon">Croquettes filled with bechamel sauce mixed with Iberian ham</string>
     <string name="ingredientsCroquetasJamon">Bread crumbs, flour, milk, milk, salt, ham</string>
 
     <string name="bolasPollo">Chicken dumplings</string>
-    <string name="descript_bolasPollo">Chicken dumplings created with a mixture of chicken, milk, garlic and pepper in a breadcrumb breadcrumb batter.</string>
+    <string name="descript_bolasPollo">Chicken dumplings created with a mixture of chicken, milk, garlic and pepper.</string>
     <string name="ingredients_bolasPollo">Egg, garlic, pepper, flour, bread crumbs, chicken</string>
 
     <string name="nuggets">Chicken Nuggets</string>
@@ -62,55 +62,65 @@
 
     <string name="croquetasPollo">Chicken croquettes</string>
     <string name="descript_croquetasPollo">Croquettes filled with bechamel sauce mixed with chicken and bread crumbs.</string>
-    <string name="ingredients_croquetasPollo">a</string>
+    <string name="ingredients_croquetasPollo">Bread crumbs, flour, milk, milk, salt, ham</string>
 
-    <string name="patatasFritas">a</string>
-    <string name="descript_patatasFritas">a</string>
-    <string name="ingredients_patatasFritas">a</string>
+    <string name="patatasFritas">French fries</string>
+    <string name="descript_patatasFritas">Potatoes cut into thin strips and fried.</string>
+    <string name="ingredients_patatasFritas">Potatoes</string>
 
-    <string name="patatasPanaderas">a</string>
-    <string name="descript_patatasPanaderas">a</string>
-    <string name="ingredients_patatasPanaderas">a</string>
+    <string name="patatasPanaderas">" Baked potatoes"</string>
+    <string name="descript_patatasPanaderas">Sliced potatoes with strips of peppers and onion.</string>
+    <string name="ingredients_patatasPanaderas">Potatoes, peppers, onion.</string>
 
-    <string name="costillas">a</string>
-    <string name="descript_costillas">a</string>
-    <string name="ingredients_costillas">a</string>
+    <string name="costillas">Ribs</string>
+    <string name="descript_costillas">Half pork ribs sprinkled with barbecue sauce.</string>
+    <string name="ingredients_costillas">Pork, barbecue sauce</string>
 
-    <string name="paella">a</string>
-    <string name="descript_paella">a</string>
-    <string name="ingredients_paella">a</string>
+    <string name="paella">Paella</string>
+    <string name="descript_paella">Mixed paella with chicken, peas, shrimps, mussels and squid.</string>
+    <string name="ingredients_paella">Chicken, peas, shrimps, mussels, squid and rice</string>
 
-    <string name="cachopo">a</string>
-    <string name="descript_cachopo">a</string>
-    <string name="ingredients_cachopo">a</string>
+    <string name="cachopo">Cachopo</string>
+    <string name="descript_cachopo">Two veal fillets with Serrano ham and cheese between them, breaded with bread crumbs.</string>
+    <string name="ingredients_cachopo">Beef, ham, cheese, breadcrumbs, egg</string>
 
-    <string name="nuggets">Chicken Nuggets</string>
-    <string name="descriptbolasPollo">a</string>
-    <string name="ingredientsbolasPollo">a</string>
+    <string name="bacalao">Cod with ratatouille</string>
+    <string name="descript_bacalao">Cod with a mixture of different vegetables.</string>
+    <string name="ingredients_bacalao">Codfish, zucchini, bell bell pepper, tomato, onion and garlic</string>
 
-    <string name="bacalao">a</string>
-    <string name="descript_bacalao">a</string>
-    <string name="ingredients_bacalao">a</string>
+    <string name="ensaladilla">Olivier salad</string>
+    <string name="descript_ensaladilla">Mixture of various cooked vegetables with mayonnaise.</string>
+    <string name="ingredients_ensaladilla">Boiled potato, peas, egg, carrot, peppers, tuna, mayonnaise</string>
 
-    <string name="ensaladilla">a</string>
-    <string name="descript_ensaladilla">a</string>
-    <string name="ingredients_ensaladilla">a</string>
+    <string name="pollo">Roasted chicken</string>
+    <string name="descript_pollo">Roasted chicken with lemon and spice sauce</string>
+    <string name="ingredients_pollo">Chicken, lemon, salt, pepper, oil.</string>
 
-    <string name="pollo">a</string>
-    <string name="descript_pollo">a</string>
-    <string name="ingredients_pollo">a</string>
+    <string name="filetePollo">Chicken fillet</string>
+    <string name="descript_filetePollo">Battered and fried chicken fillet.</string>
+    <string name="ingredients_filetePollo">Chicken, egg, salt, bread.</string>
 
-    <string name="filetePollo">a</string>
-    <string name="descript_filetePollo">a</string>
-    <string name="ingredients_filetePollo">a</string>
+    <string name="librito">Stuffed Chicken Loin</string>
+    <string name="descript_librito">Two chicken fillets with cheese between them, all in batter.</string>
+    <string name="ingredients_librito">Chicken, cheese, egg, bread</string>
 
-    <string name="librito">a</string>
-    <string name="descript_librito">a</string>
-    <string name="ingredients_librito">a</string>
+    <string name="alitas">Chicken wings</string>
+    <string name="descript_alitas">Battered chicken wings.</string>
+    <string name="ingredients_alitas">Chicken, egg, salt, bread</string>
 
-    <string name="alitas">a</string>
-    <string name="descript_alitas">a</string>
-    <string name="ingredients_alitas">a</string>
+    <string name="macedonia">Stuffed Chicken Loin</string>
+    <string name="descript_macedonia">Two chicken fillets with cheese between them, all in batter.</string>
+    <string name="ingredients_macedonia">Chicken, cheese, egg, bread</string>
+    <string name="tartaQueso">Stuffed Chicken Loin</string>
+    <string name="descript_tartaQueso">Two chicken fillets with cheese between them, all in batter.</string>
+    <string name="ingredients_tartaQueso">Chicken, cheese, egg, bread</string>
+    <string name="tartaChocolate">Stuffed Chicken Loin</string>
+    <string name="descript_tartaChocolate">Two chicken fillets with cheese between them, all in batter.</string>
+    <string name="ingredients_tartaChocolate">Chicken, cheese, egg, bread</string>
 
 
+    <string name="snack">Snack</string>
+    <string name="portion">Portion</string>
+    <string name="chicken">Chicken</string>
+    <string name="desserts">Desserts</string>
 </resources>
