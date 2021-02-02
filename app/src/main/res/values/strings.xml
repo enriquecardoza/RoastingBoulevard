@@ -123,4 +123,5 @@
     <string name="desserts">Desserts</string>
     <string name="descript_tartaQueso">Baked cheese, cream and egg mixture.</string>
     <string name="descript_tartaChocolate">Dark chocolate and cream mix ready to go.</string>
+    <string name="your_order">Your order</string>
 </resources>

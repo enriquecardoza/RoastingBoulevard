@@ -104,4 +104,5 @@
     <string name="descript_tartaQueso">Baked cheese, cream and egg mixture.</string>
     <string name="descript_tartaChocolate">Dark chocolate and cream mix ready to go.</string>
     <string name="ingredients_tartaChocolate">Butter, chocolate, cream, gelatin</string>
+    <string name="your_order">Yout order</string>
 </resources>

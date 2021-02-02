@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.fragments.*
+import com.careradish.roastingboulevard.tools.TranslationStrings
 
 class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager!!)  {
 
@@ -33,7 +34,7 @@ class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAda
 
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence? {
-        return listaCategory.get(position).name
+        return TranslationStrings.get( listaCategory.get(position).name)
     }
 
 }

@@ -7,8 +7,7 @@ import androidx.annotation.StringRes
 import com.app.myapplication.CustomSnackbar
 import com.careradish.roastingboulevard.classes.User
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
+
 
 class App : Application() {
     companion object {
@@ -44,8 +43,19 @@ class App : Application() {
         super.onCreate()
         context = this
     }
+    val PREFS_NAME: String = "MyPrefsFile"
+    var test = false
 
+    private fun store() {
+        val settings = getSharedPreferences(PREFS_NAME, 0)
+        val editor = settings.edit()
+        editor.putBoolean("test", test) // Commit editings editor.commit();
+    }
 
+    private fun recover() {
+        val settings = getSharedPreferences(PREFS_NAME, 0)
+        test = settings.getBoolean("test", false)
+    }
 }
 
 object TranslationStrings {

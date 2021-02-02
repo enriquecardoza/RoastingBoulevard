@@ -104,5 +104,6 @@
     <string name="descript_tartaQueso">Mezcla de queso, nata y huevos horneada.</string>
     <string name="descript_tartaChocolate">Mezcla de chocolate negro y nata listo para llevar.</string>
     <string name="ingredients_tartaChocolate">Mantequilla, chocolate, nata, gelatina.</string>
+    <string name="your_order">Tu pedido</string>
 
 </resources>
