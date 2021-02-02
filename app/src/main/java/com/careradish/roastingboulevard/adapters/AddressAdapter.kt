@@ -60,7 +60,7 @@ class AddressAdapter(var addresses: List<Address>) :
 
             builder.setPositiveButton(
                 R.string.yes
-            ) { dialog, which ->
+            ) { dialog, _ ->
                 FirebaseConnection.eraseAddress(address)
                 DirectionListActivity.adapterErased(address)
                 dialog.dismiss()
@@ -68,7 +68,7 @@ class AddressAdapter(var addresses: List<Address>) :
 
             builder.setNegativeButton(
                 R.string.No
-            ) { dialog, which ->
+            ) { dialog, _ ->
                 dialog.dismiss()
             }
 
@@ -84,12 +84,12 @@ class AddressAdapter(var addresses: List<Address>) :
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView!!)
+        super.onAttachedToRecyclerView(recyclerView)
     }
 
-    private fun setFadeAnimation(view: View, delay: Long) {
+   /* private fun setFadeAnimation(view: View, delay: Long) {
 
-        /* val scaleAnim = ScaleAnimation(
+         val scaleAnim = ScaleAnimation(
              0f,
              1f,
              0f,
@@ -101,9 +101,9 @@ class AddressAdapter(var addresses: List<Address>) :
          )
          scaleAnim.startOffset=delay
          scaleAnim.duration = Constants.ANIM_DURATION
-         view.startAnimation(scaleAnim)*/
+         view.startAnimation(scaleAnim)
 
-    }
+    }*/
 
 
 }

@@ -105,4 +105,6 @@
     <string name="descript_tartaChocolate">Dark chocolate and cream mix ready to go.</string>
     <string name="ingredients_tartaChocolate">Butter, chocolate, cream, gelatin</string>
     <string name="your_order">Yout order</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="allergens">Allergens</string>
 </resources>

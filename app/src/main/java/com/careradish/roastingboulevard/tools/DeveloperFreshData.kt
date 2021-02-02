@@ -11,7 +11,7 @@ class DeveloperFreshData {
     companion object {
 
 
-        fun getCategoies():ArrayList<Category> {
+        fun getCategories():ArrayList<Category> {
             return arrayListOf(
                 Category(0,R.string.snack, arrayListOf(0,1,2,3,4,5)),
                 Category(1,R.string.portion, arrayListOf(6,7,8,9,10)),
@@ -19,7 +19,6 @@ class DeveloperFreshData {
                 Category(3,R.string.desserts, arrayListOf(15,16,17,18)),
             )
         }
-
 
         fun getSnacks():ArrayList<Food> {
             return arrayListOf(
@@ -74,7 +73,7 @@ class DeveloperFreshData {
                     R.string.descript_patatasPanaderas,
                     R.string.ingredients_patatasPanaderas,
                     arrayListOf(),
-                    R.mipmap.nuggets_pollo,
+                    R.mipmap.patatas_panaderas,
                     1.5f
                 ),
             )
@@ -106,7 +105,7 @@ class DeveloperFreshData {
                     R.string.descript_cachopo,
                     R.string.ingredients_cachopo,
                     arrayListOf(Allergens.Leche.pos,Allergens.Gluten.pos),
-                    R.mipmap.nuggets_pollo,
+                    R.mipmap.cachopo,
                     4.0f
                 ),
                 Food(
@@ -169,6 +168,56 @@ class DeveloperFreshData {
                     3.0f
                 ),
             )
+        }
+
+        fun getDessets():ArrayList<Food> {
+            return arrayListOf(
+                Food(
+                    15,
+                    R.string.macedonia,
+                    R.string.descript_macedonia,
+                    R.string.ingredients_macedonia,
+                    arrayListOf(),
+                    R.mipmap.macedonia,
+                    2.0f
+                ),
+                Food(
+                    16,
+                    R.string.tartaQueso,
+                    R.string.descript_tartaQueso,
+                    R.string.ingredients_tartaQueso,
+                    arrayListOf(Allergens.Leche.pos),
+                    R.mipmap.tarta_queso,
+                    2.0f
+                ),
+                Food(
+                    17,
+                    R.string.tartaChocolate,
+                    R.string.descript_tartaChocolate,
+                    R.string.ingredients_tartaChocolate,
+                    arrayListOf(Allergens.Leche.pos),
+                    R.mipmap.tarta_chocolate,
+                    2.0f
+                )
+            )
+        }
+
+        public fun  UploadAllData(){
+          // for (i in getCategories()){
+          //     FirebaseConnection.writeCategory(i)
+          // }
+            for (i in getSnacks()){
+                FirebaseConnection.writeFood(i)
+            }
+            for (i in getPortions()){
+                FirebaseConnection.writeFood(i)
+            }
+            for (i in getFood()){
+                FirebaseConnection.writeFood(i)
+            }
+            for (i in getDessets()){
+                FirebaseConnection.writeFood(i)
+            }
         }
 
     }

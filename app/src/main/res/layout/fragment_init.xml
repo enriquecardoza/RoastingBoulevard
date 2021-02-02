@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.careradish.roastingboulevard.fragments.InitFragment">
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context="com.careradish.roastingboulevard.fragments.InitFragment"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="117dp"
+            android:background="@color/paleBrown"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="291dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textViewInitWelcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center|fill_horizontal"
                     android:text="@string/init_welcome" />
 
                 <TextView
@@ -35,17 +35,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center|fill_horizontal"
                     android:text="@string/init_question" />
 
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/imageViewInitUser"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@android:mipmap/sym_def_app_icon"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@mipmap/ic_launcher_round" />
 
         </LinearLayout>
 
@@ -66,5 +66,3 @@
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
-
-</FrameLayout>

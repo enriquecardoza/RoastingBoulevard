@@ -5,6 +5,7 @@ import android.content.Context
 import android.widget.Toast
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Address
+import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.classes.User
 import com.google.firebase.auth.FirebaseAuth
@@ -31,17 +32,17 @@ class FirebaseConnection(var context: Context) {
         }
 
         fun LoginUser(
-            email:String,password:String,
+            email: String, password: String,
             activity: Activity,
             loginSuccess: (() -> Unit)? = null,
             loginFail: (() -> Unit)? = null
         ) {
-            auth?.signInWithEmailAndPassword(email,password)!!
+            auth?.signInWithEmailAndPassword(email, password)!!
                 .addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         if (loginSuccess != null) {
-                            val userId= auth!!.currentUser?.uid.toString()
-                            App.user!!.id=userId
+                            val userId = auth!!.currentUser?.uid.toString()
+                            App.user!!.id = userId
                             loginSuccess()
                         }
 
@@ -59,7 +60,7 @@ class FirebaseConnection(var context: Context) {
         }
 
         fun createUser(
-            user: User,password:String,
+            user: User, password: String,
             activity: Activity,
             createSuccess: () -> Unit,
             createFail: (() -> Unit)? = null
@@ -74,11 +75,11 @@ class FirebaseConnection(var context: Context) {
                         ).show()
 
 
-                        LoginUser(user.email,password, activity, {
+                        LoginUser(user.email, password, activity, {
                             createSuccess()
-                            val userId= auth!!.currentUser?.uid.toString()
-                            App.user=user
-                            App.user!!.id=userId
+                            val userId = auth!!.currentUser?.uid.toString()
+                            App.user = user
+                            App.user!!.id = userId
                             writeUser(App.user!!)
                         })
 
@@ -96,7 +97,11 @@ class FirebaseConnection(var context: Context) {
                 }
         }
 
-        fun readUser(userId:String,readSucces: (() -> Unit)? = null,readFail: (() -> Unit)? = null){
+        fun readUser(
+            userId: String,
+            readSucces: (() -> Unit)? = null,
+            readFail: (() -> Unit)? = null
+        ) {
 
             val ref = referenceRoot.child(Constants.usersTittle).child(userId)
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -105,7 +110,7 @@ class FirebaseConnection(var context: Context) {
                     if (readSucces != null) {
                         readSucces()
                     }
-                    App.user= snapshot.getValue(User::class.java)!!
+                    App.user = snapshot.getValue(User::class.java)!!
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -120,10 +125,13 @@ class FirebaseConnection(var context: Context) {
 
 //region address
 
-        fun eraseAddress(address:Address,
-                         success: (() -> Unit)? = null,
-                         fail: (() -> Unit)? = null){
-            val task=referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle).child(address.label).removeValue()
+        fun eraseAddress(
+            address: Address,
+            success: (() -> Unit)? = null,
+            fail: (() -> Unit)? = null
+        ) {
+            val task = referenceRoot.child(Constants.usersTittle).child(App.user.id)
+                .child(Constants.addressTittle).child(address.label).removeValue()
             task.addOnCompleteListener {
                 if (task.isSuccessful) {
                     if (success != null) {
@@ -138,11 +146,14 @@ class FirebaseConnection(var context: Context) {
             }
         }
 
-        fun writeAddress(address:Address,
-                         success: (() -> Unit)? = null,
-                         fail: (() -> Unit)? = null) {
+        fun writeAddress(
+            address: Address,
+            success: (() -> Unit)? = null,
+            fail: (() -> Unit)? = null
+        ) {
 
-            val task=referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle).child(address.label).setValue(address)
+            val task = referenceRoot.child(Constants.usersTittle).child(App.user.id)
+                .child(Constants.addressTittle).child(address.label).setValue(address)
             task.addOnCompleteListener {
                 if (task.isSuccessful) {
                     if (success != null) {
@@ -157,9 +168,11 @@ class FirebaseConnection(var context: Context) {
             }
 
         }
-        fun loadAddresses(readSucces: (() -> Unit)? = null,readFail: (() -> Unit)? = null){
 
-            val ref = referenceRoot.child(Constants.usersTittle).child(App.user.id).child(Constants.addressTittle)
+        fun loadAddresses(readSucces: (() -> Unit)? = null, readFail: (() -> Unit)? = null) {
+
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user.id)
+                .child(Constants.addressTittle)
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -183,7 +196,6 @@ class FirebaseConnection(var context: Context) {
         }
 
 
-
         //endregion
 
 
@@ -193,9 +205,18 @@ class FirebaseConnection(var context: Context) {
             referenceRoot.child(Constants.foodsTittle).child(food.id.toString()).setValue(food)
 
         }
-        //endregion
-    }
+//endregion
 
+        //region Food
+        fun writeCategory(category: Category) {
+
+            referenceRoot.child(Constants.categoryTittle).child(category.id.toString())
+                .setValue(category)
+
+        }
+//endregion
+
+    }
 
 
     public fun readFood(id: Int): Food? {

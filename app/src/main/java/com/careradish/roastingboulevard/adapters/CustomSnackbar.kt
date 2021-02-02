@@ -1,4 +1,4 @@
-package com.app.myapplication
+package com.careradish.roastingboulevard.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.classes.Allergens
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.TranslationStrings
@@ -41,7 +42,7 @@ class CustomSnackbar(
     }
     private fun setprice(price: Float): CustomSnackbar {
         val textView = getView().priceSnack
-        textView.text = price.toString()
+        textView.text = price.toString()+"€"
         return this
     }
 
@@ -53,7 +54,7 @@ class CustomSnackbar(
     }
     private fun setImage(photo: Int): CustomSnackbar {
         val image = getView().findViewById<ImageView>(R.id.foodImageSnack)
-        Picasso.get().load(photo).fit().into(image)
+        Picasso.get().load(photo).fit().centerCrop().into(image)
         return this
     }
     private fun setAllergens(allergens: ArrayList<Int>): CustomSnackbar {
@@ -62,25 +63,37 @@ class CustomSnackbar(
         val image2 = getView().icon2
         val image3 = getView().icon3
         val image4 = getView().icon4
-        if (allergens.contains(0)){
+        val image5 = getView().icon5
+        val image6 = getView().icon6
+        if (allergens.contains(Allergens.Gluten)){
             image1.visibility=View.VISIBLE
         }else {
             image1.visibility = View.GONE
         }
-        if (allergens.contains(1)){
+        if (allergens.contains(Allergens.Huevos)){
             image2.visibility=View.VISIBLE
         } else {
             image2.visibility = View.GONE
         }
-        if (allergens.contains(2)){
+        if (allergens.contains(Allergens.Leche)){
             image3.visibility=View.VISIBLE
         } else {
             image3.visibility = View.GONE
         }
-        if (allergens.contains(3)){
+        if (allergens.contains(Allergens.FrutosSecos)){
             image4.visibility=View.VISIBLE
         }else {
             image4.visibility = View.GONE
+        }
+        if (allergens.contains(Allergens.Pescado)){
+            image5.visibility=View.VISIBLE
+        }else {
+            image5.visibility = View.GONE
+        }
+        if (allergens.contains(Allergens.Marisco)){
+            image6.visibility=View.VISIBLE
+        }else {
+            image6.visibility = View.GONE
         }
         return this
     }
@@ -123,7 +136,7 @@ class CustomSnackbar(
             val customSnackbar = createCustomSnackbar(view).apply {
                 setDuration(Snackbar.LENGTH_INDEFINITE)
                 setTitle(TranslationStrings.get( food.name))
-                setDescription(TranslationStrings.get( food.decriptions))
+                setDescription(TranslationStrings.get( food.decription))
                 setImage(food.photo)
                 setAllergens(food.allergens)
                 setprice(food.price)

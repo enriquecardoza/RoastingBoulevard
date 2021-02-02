@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.adapters.FoodAdapter
-import com.careradish.roastingboulevard.classes.Food
-import com.google.firebase.database.*
+import com.careradish.roastingboulevard.tools.DeveloperFreshData
+import kotlinx.android.synthetic.main.fragment_init.view.*
 
 
 /**
@@ -37,13 +36,16 @@ class InitFragment : Fragment() {
         var tempInflater= inflater.inflate(R.layout.fragment_init, container, false)
         miRecycler=tempInflater.findViewById(R.id.recyclerViewInit)
         miRecycler.setHasFixedSize(true)
-
+        tempInflater.buttonInitStartOrder.setOnClickListener {
+            DeveloperFreshData.UploadAllData()
+        }
 
         return tempInflater
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
     companion object {
 

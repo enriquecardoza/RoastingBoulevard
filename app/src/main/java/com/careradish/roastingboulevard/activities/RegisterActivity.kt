@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.User
-import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.activity_register.*
@@ -71,7 +70,6 @@ class RegisterActivity : AppCompatActivity() {
 
                     MainActivity.ForceUpdatePagerAdapter(4)
                     finish()
-                    val user=App.user
                 })
 
             }

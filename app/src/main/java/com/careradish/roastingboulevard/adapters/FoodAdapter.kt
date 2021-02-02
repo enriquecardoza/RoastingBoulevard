@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.app.myapplication.CustomSnackbar
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
@@ -25,7 +24,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
 
         public  fun setClickListener(food: Food){
             itemView.setOnClickListener {
-                val snackbar=CustomSnackbar.makeSnackbarFood(App.contentView,food)
+                val snackbar= CustomSnackbar.makeSnackbarFood(App.contentView, food)
                 App.foodSnackBar=snackbar
                 snackbar.show()
             }
@@ -41,11 +40,12 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val food = comidas[position]
         holder.name.text = TranslationStrings.get(food.name)
-        Picasso.get().load(food.photo).fit().into(holder.image)
+        Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
         val delay=(position*Constants.DELAY_INCREMENT).toLong()
-        setFadeAnimation(holder.itemView,delay);
+        setFadeAnimation(holder.itemView, delay);
         holder.setClickListener(food)
         // Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
     }
@@ -57,7 +57,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView!!)
     }
-    private fun setFadeAnimation(view: View,delay: Long) {
+    private fun setFadeAnimation(view: View, delay: Long) {
 
        /* val scaleAnim = ScaleAnimation(
             0f,

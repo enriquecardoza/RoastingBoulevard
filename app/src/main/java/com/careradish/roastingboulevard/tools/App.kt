@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.view.View
 import androidx.annotation.StringRes
-import com.app.myapplication.CustomSnackbar
+import com.careradish.roastingboulevard.adapters.CustomSnackbar
 import com.careradish.roastingboulevard.classes.User
 import com.google.android.material.tabs.TabLayout
 

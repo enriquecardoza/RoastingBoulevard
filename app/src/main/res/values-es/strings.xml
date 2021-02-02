@@ -105,5 +105,7 @@
     <string name="descript_tartaChocolate">Mezcla de chocolate negro y nata listo para llevar.</string>
     <string name="ingredients_tartaChocolate">Mantequilla, chocolate, nata, gelatina.</string>
     <string name="your_order">Tu pedido</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="allergens">Alergenos</string>
 
 </resources>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +15,6 @@ import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
@@ -82,7 +80,6 @@ class FoodListFragment : Fragment() {
             if (id != null) {
                 var referenceRoot = FirebaseConnection.referenceRoot.child(Constants.foodsTittle).child(id.toString())
                 referenceRoot.addListenerForSingleValueEvent(object : ValueEventListener {
-
                     override fun onDataChange(snapshot: DataSnapshot) {
                         listaFoods.add(snapshot.getValue(Food::class.java)!!)
                         if (counter == counterNotNull - 1) {

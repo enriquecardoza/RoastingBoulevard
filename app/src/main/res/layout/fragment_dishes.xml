@@ -11,20 +11,31 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabsFoods"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:tabMode="scrollable">
+        android:background="@color/cream"
+        android:outlineProvider="none"
+        app:tabBackground="@color/paleBrown"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/paleRed"
+        app:tabIndicatorGravity="bottom"
+        app:tabMaxWidth="0dp"
+        app:tabMode="scrollable"
+        app:tabPaddingEnd="10dp"
+        app:tabPaddingStart="10dp"
+        app:tabRippleColor="@color/black"
+        app:tabSelectedTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="@string/temp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:text="@string/temp" />
 
     </com.google.android.material.tabs.TabLayout>
 
