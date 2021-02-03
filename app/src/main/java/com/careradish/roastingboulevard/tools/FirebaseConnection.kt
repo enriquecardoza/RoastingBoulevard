@@ -65,8 +65,8 @@ class FirebaseConnection(var context: Context) {
             createSuccess: () -> Unit,
             createFail: (() -> Unit)? = null
         ) {
-            auth?.createUserWithEmailAndPassword(user.email, password)
-                ?.addOnCompleteListener(activity) { task ->
+            auth.createUserWithEmailAndPassword(user.email, password)
+                .addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
                             activity.applicationContext,
@@ -77,10 +77,10 @@ class FirebaseConnection(var context: Context) {
 
                         LoginUser(user.email, password, activity, {
                             createSuccess()
-                            val userId = auth!!.currentUser?.uid.toString()
+                            val userId = auth.currentUser?.uid.toString()
                             App.user = user
-                            App.user!!.id = userId
-                            writeUser(App.user!!)
+                            App.user.id = userId
+                            writeUser(App.user)
                         })
 
                     } else {
@@ -219,6 +219,7 @@ class FirebaseConnection(var context: Context) {
     }
 
 
+    /*
     public fun readFood(id: Int): Food? {
 
         var food: Food = Food()
@@ -235,7 +236,7 @@ class FirebaseConnection(var context: Context) {
         })
         return food
     }
-
+*/
 
 }
 

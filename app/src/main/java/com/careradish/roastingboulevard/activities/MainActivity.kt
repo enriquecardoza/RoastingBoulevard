@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.MyPagerAdapter
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.DeveloperFreshData
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         App.tabLayout = tableLayout
 
         seeOrderLayoutButton.setOnClickListener {
+            DeveloperFreshData.UploadAllData()
         }
     }
 
@@ -60,6 +62,10 @@ class MainActivity : AppCompatActivity() {
 
             mPager.adapter = adapterViewPager
             adapterViewPager.notifyDataSetChanged()
+            mPager.currentItem = pos
+        }
+
+        fun changueSelectedTab(pos: Int){
             mPager.currentItem = pos
         }
     }

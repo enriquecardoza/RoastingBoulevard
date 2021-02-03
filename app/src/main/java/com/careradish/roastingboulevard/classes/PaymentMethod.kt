@@ -5,9 +5,9 @@ data class PaymentMethod(
     var accountNumber:Int,
     var creditCardNumber:Int,
 ) {
-    constructor():this(Method.None,-1,-1)
+    constructor():this(Method.Cash,-1,-1)
     enum class Method {
-        None,MasterCard, Visa,Paypal,Cash
+        MasterCard, Visa,Paypal,Cash
     }
 
 }

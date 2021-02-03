@@ -203,9 +203,9 @@ class DeveloperFreshData {
         }
 
         public fun  UploadAllData(){
-          // for (i in getCategories()){
-          //     FirebaseConnection.writeCategory(i)
-          // }
+          for (i in getCategories()){
+              FirebaseConnection.writeCategory(i)
+          }
             for (i in getSnacks()){
                 FirebaseConnection.writeFood(i)
             }

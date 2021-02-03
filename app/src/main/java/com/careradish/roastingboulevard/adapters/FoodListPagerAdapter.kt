@@ -33,8 +33,9 @@ class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAda
     }
 
     // Returns the page title for the top indicator
-    override fun getPageTitle(position: Int): CharSequence? {
-        return TranslationStrings.get( listaCategory.get(position).name)
+    override fun getPageTitle(position: Int): CharSequence {
+        val v=TranslationStrings.get(listaCategory[position].name)
+        return v //TranslationStrings.get(listaCategory[position].name)
     }
 
 }

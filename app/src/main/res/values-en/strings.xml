@@ -46,7 +46,6 @@
     <string name="No">No</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="croquetasJamon">Ham croquettes</string>
-    <string name="hi_user">Hi %1$s</string>
     <string name="descriptCroquetasJamon">Croquettes filled with bechamel sauce mixed with Iberian ham.</string>
     <string name="ingredientsCroquetasJamon">Bread crumbs, flour, milk, milk, salt, ham</string>
     <string name="bolasPollo">Chicken dumplings</string>
@@ -104,7 +103,8 @@
     <string name="descript_tartaQueso">Baked cheese, cream and egg mixture.</string>
     <string name="descript_tartaChocolate">Dark chocolate and cream mix ready to go.</string>
     <string name="ingredients_tartaChocolate">Butter, chocolate, cream, gelatin</string>
-    <string name="your_order">Yout order</string>
+    <string name="your_order">Your order</string>
     <string name="ingredients">Ingredients</string>
     <string name="allergens">Allergens</string>
+    <string name="select_address">Select your address</string>
 </resources>

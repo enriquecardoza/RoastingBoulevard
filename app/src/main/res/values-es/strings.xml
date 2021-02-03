@@ -47,7 +47,6 @@
     <string name="are_you_sure">¿Estas seguro?</string>
     <string name="bolasPollo">Bolitas de pollo</string>
     <string name="croquetasJamon">Croquetas de jamón</string>
-    <string name="hi_user">Hola %1$s</string>
     <string name="descriptCroquetasJamon">Croquetas rellenas de bechamel mezclada con jamón iberico</string>
     <string name="ingredientsCroquetasJamon">Pan rallado, harina, leche, sal, jamón</string>
     <string name="ingredients_bolasPollo">Huevo, ajo, pimienta, harina, pan rallado, pollo</string>
@@ -107,5 +106,6 @@
     <string name="your_order">Tu pedido</string>
     <string name="ingredients">Ingredientes</string>
     <string name="allergens">Alergenos</string>
+    <string name="select_address">Selecciona tu dirección</string>
 
 </resources>

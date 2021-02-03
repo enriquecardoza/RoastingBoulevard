@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/cream"
+    android:backgroundTint="@color/paleOrange"
+    android:outlineProvider="bounds"
+    android:outlineSpotShadowColor="@color/black"
     app:cardCornerRadius="6dp"
+    app:cardElevation="4dp"
     app:contentPadding="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,73 +18,53 @@
         android:paddingBottom="4dp">
 
         <TextView
-            android:id="@+id/textViewLabel"
+            android:id="@+id/textViewLabelSelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/textViewAddressWithNumber"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/textViewAddressWithNumberSelectAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewAddressWithNumber"
+            android:id="@+id/textViewAddressWithNumberSelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="17dp"
             android:text="Calle falsa Nº 123"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewLabelSelectAddress" />
 
         <TextView
-            android:id="@+id/textViewPostalCodeCity"
+            android:id="@+id/textViewPostalCodeCitySelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:gravity="center|clip_vertical|fill"
             android:text="58008 Springfield"
+            android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewAddressType"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumber" />
+            app:layout_constraintStart_toEndOf="@+id/textViewAddressTypeSelectAddress"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumberSelectAddress" />
 
         <TextView
-            android:id="@+id/textViewAddressType"
+            android:id="@+id/textViewAddressTypeSelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Portal"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumberSelectAddress" />
 
-        <ImageButton
-            android:id="@+id/buttonEraseAddress"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/paleOrange"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.571"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
-
-        <ImageButton
-            android:id="@+id/buttonGoEditAddress"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/paleOrange"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonEraseAddress"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.571"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

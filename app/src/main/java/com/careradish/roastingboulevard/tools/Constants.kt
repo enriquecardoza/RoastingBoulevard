@@ -11,5 +11,6 @@ class Constants {
         const val categoryTittle:String="Category"
         const val addressTittle:String="Address"
         const val addressToEdit:String="EditAddress"
+        const val selectedFood:String="SelectedFood"
     }
 }

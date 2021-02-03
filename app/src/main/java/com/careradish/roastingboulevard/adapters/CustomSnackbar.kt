@@ -1,5 +1,6 @@
 package com.careradish.roastingboulevard.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.activities.MainActivity
+import com.careradish.roastingboulevard.activities.SelectAddressActivity
 import com.careradish.roastingboulevard.classes.Allergens
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -149,7 +154,19 @@ class CustomSnackbar(
                 App.LockTabs()
                 val orderButton = getView().orderButtonSnack
                 orderButton.setOnClickListener {
-                    Toast.makeText(orderButton.context, "texto", Toast.LENGTH_LONG).show()
+
+                    if(App.user.id==""){
+                        MainActivity.changueSelectedTab(4)
+                        Toast.makeText(orderButton.context, "texto", Toast.LENGTH_LONG).show()
+                        App.hideFoodSnackbar()
+                    }else{
+                        App.hideFoodSnackbar()
+                        val goselectaddress=Intent(context,SelectAddressActivity::class.java)
+
+                        goselectaddress.putExtra(Constants.selectedFood,food)
+                        context.startActivity(goselectaddress)
+                    }
+
                 }
             }
             customSnackbar.food=food

@@ -68,8 +68,10 @@
                     android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="125dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="120dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginEnd="120dp"
                     app:srcCompat="@mipmap/paella" />
 
                 <TextView
@@ -196,11 +198,13 @@
 
             <Button
                 android:id="@+id/orderButtonSnack"
+                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/paleOrange"
                 android:gravity="center"
-                android:text="@string/order_now" />
+                android:text="@string/order_now"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

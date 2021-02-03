@@ -21,7 +21,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="346dp"
+        android:layout_width="360dp"
         android:layout_height="545dp"
         android:layout_marginTop="76dp"
         android:background="@color/white"

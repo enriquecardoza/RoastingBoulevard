@@ -46,7 +46,6 @@
     <string name="yes">Yes</string>
     <string name="No">No</string>
     <string name="are_you_sure">Are you sure?</string>
-    <string name="hi_user" formatted="false">Hi %1$s</string>
 
     <string name="croquetasJamon">Ham croquettes</string>
     <string name="descriptCroquetasJamon">Croquettes filled with bechamel sauce mixed with Iberian ham</string>
@@ -127,4 +126,5 @@
     <string name="ingredients">Ingredients</string>
     <string name="allergens">Allergens</string>
     <string name="temp" translatable="false">temp string</string>
+    <string name="select_address">Select your address</string>
 </resources>

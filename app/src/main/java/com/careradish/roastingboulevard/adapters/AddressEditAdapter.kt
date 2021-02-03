@@ -19,8 +19,8 @@ import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
 
-class AddressAdapter(var addresses: List<Address>) :
-    RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+class AddressEditAdapter(var addresses: List<Address>) :
+    RecyclerView.Adapter<AddressEditAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

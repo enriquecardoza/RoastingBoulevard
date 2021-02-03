@@ -49,11 +49,15 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonInitStartOrder"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:text="@string/start_order" />
+    <Button
+        android:id="@+id/buttonInitStartOrder"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:backgroundTint="@color/paleOrange"
+        android:text="@string/start_order"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewInit"

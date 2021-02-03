@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.adapters.AddressAdapter
+import com.careradish.roastingboulevard.adapters.AddressEditAdapter
 import com.careradish.roastingboulevard.classes.Address
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection.Companion.loadAddresses
@@ -33,7 +33,7 @@ class DirectionListActivity : AppCompatActivity() {
         }
 
         loadAddresses({
-            addressAdapter = AddressAdapter(App.user.addresses!!)
+            addressAdapter = AddressEditAdapter(App.user.addresses!!)
             recyclerView.adapter = addressAdapter
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.setHasFixedSize(true)
@@ -41,7 +41,7 @@ class DirectionListActivity : AppCompatActivity() {
     }
 
     companion object{
-        lateinit var addressAdapter:AddressAdapter
+        lateinit var addressAdapter:AddressEditAdapter
         fun dataCreated(address:Address){
             val pos=App.user.addresses!!.size - 1
             App.user.addresses!![pos] = address

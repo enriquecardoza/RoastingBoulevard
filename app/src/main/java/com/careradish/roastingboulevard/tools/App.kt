@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.View
 import androidx.annotation.StringRes
 import com.careradish.roastingboulevard.adapters.CustomSnackbar
+import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.User
 import com.google.android.material.tabs.TabLayout
 
@@ -18,6 +19,8 @@ class App : Application() {
         var foodSnackBar: CustomSnackbar?=null
         lateinit var tabLayout: TabLayout
         val logged:Boolean get()= user.id!=""
+        var actualDelivery: Delivery=Delivery()
+
 
         fun hideFoodSnackbar() {
             if(foodSnackBar!=null) {
