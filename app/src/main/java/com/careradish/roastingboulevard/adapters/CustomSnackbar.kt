@@ -10,11 +10,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.activities.SelectAddressActivity
-import com.careradish.roastingboulevard.classes.Allergens
+import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
@@ -70,32 +69,32 @@ class CustomSnackbar(
         val image4 = getView().icon4
         val image5 = getView().icon5
         val image6 = getView().icon6
-        if (allergens.contains(Allergens.Gluten)){
+        if (allergens.contains(Allergen.Gluten)){
             image1.visibility=View.VISIBLE
         }else {
             image1.visibility = View.GONE
         }
-        if (allergens.contains(Allergens.Huevos)){
+        if (allergens.contains(Allergen.Huevos)){
             image2.visibility=View.VISIBLE
         } else {
             image2.visibility = View.GONE
         }
-        if (allergens.contains(Allergens.Leche)){
+        if (allergens.contains(Allergen.Lacteos)){
             image3.visibility=View.VISIBLE
         } else {
             image3.visibility = View.GONE
         }
-        if (allergens.contains(Allergens.FrutosSecos)){
+        if (allergens.contains(Allergen.FrutosSecos)){
             image4.visibility=View.VISIBLE
         }else {
             image4.visibility = View.GONE
         }
-        if (allergens.contains(Allergens.Pescado)){
+        if (allergens.contains(Allergen.Pescado)){
             image5.visibility=View.VISIBLE
         }else {
             image5.visibility = View.GONE
         }
-        if (allergens.contains(Allergens.Marisco)){
+        if (allergens.contains(Allergen.Marisco)){
             image6.visibility=View.VISIBLE
         }else {
             image6.visibility = View.GONE
@@ -157,7 +156,7 @@ class CustomSnackbar(
 
                     if(App.user.id==""){
                         MainActivity.changueSelectedTab(4)
-                        Toast.makeText(orderButton.context, "texto", Toast.LENGTH_LONG).show()
+                        Toast.makeText(orderButton.context, TranslationStrings.get(R.string.please_login_register), Toast.LENGTH_LONG).show()
                         App.hideFoodSnackbar()
                     }else{
                         App.hideFoodSnackbar()

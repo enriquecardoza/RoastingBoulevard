@@ -1,16 +1,14 @@
 package com.careradish.roastingboulevard.activities
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.ViewGroup
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityOptionsCompat
-import androidx.transition.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.adapters.MyPagerAdapter
+import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.DeveloperFreshData
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
@@ -21,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var tableLayout: TabLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +32,12 @@ class MainActivity : AppCompatActivity() {
         tableLayout = tabsMain
         mPager = findViewById(R.id.pagerMain)
         mPager.setPageTransformer(true, ZoomOutPageTransformer())
-        adapterViewPager = MyPagerAdapter(supportFragmentManager)
+        adapterViewPager = MainPagerAdapter(supportFragmentManager)
         mPager.adapter = adapterViewPager
         tableLayout.setupWithViewPager(pagerMain)
         App.tabLayout = tableLayout
-
-        seeOrderLayoutButton.setOnClickListener {
+        orderLayoutButton=seeOrderLayoutButton
+        orderLayoutButton.setOnClickListener {
             DeveloperFreshData.UploadAllData()
         }
     }
@@ -51,9 +49,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private lateinit var adapterViewPager: MyPagerAdapter
+        private lateinit var adapterViewPager: MainPagerAdapter
         private lateinit var mPager: ViewPager
         lateinit var instance:MainActivity
+        private lateinit var orderLayoutButton: ConstraintLayout
+        private lateinit var tableLayout: TabLayout
         fun ForceUpdatePagerAdapter() {
             adapterViewPager.notifyDataSetChanged()
         }
@@ -63,10 +63,19 @@ class MainActivity : AppCompatActivity() {
             mPager.adapter = adapterViewPager
             adapterViewPager.notifyDataSetChanged()
             mPager.currentItem = pos
+            tableLayout.setScrollPosition(pos,0f,true)
         }
 
         fun changueSelectedTab(pos: Int){
             mPager.currentItem = pos
+            tableLayout.setScrollPosition(pos,0f,true)
+            adapterViewPager.notifyDataSetChanged()
+        }
+        fun setVisibleSeeOrderButton(){
+            orderLayoutButton.visibility=View.VISIBLE
+        }
+        fun setInvisibleSeeOrderButton(){
+            orderLayoutButton.visibility=View.GONE
         }
     }
 

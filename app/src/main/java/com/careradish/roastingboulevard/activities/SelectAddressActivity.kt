@@ -26,6 +26,7 @@ class SelectAddressActivity : AppCompatActivity() {
             val inte=Intent(this,FoodSelected::class.java)
             inte.putExtra(Constants.selectedFood,food)
             startActivity(inte)
+            MainActivity.setVisibleSeeOrderButton()
         }
 
     }

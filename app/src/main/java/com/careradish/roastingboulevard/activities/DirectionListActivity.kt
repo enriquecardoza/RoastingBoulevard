@@ -40,20 +40,32 @@ class DirectionListActivity : AppCompatActivity() {
         })
     }
 
-    companion object{
-        lateinit var addressAdapter:AddressEditAdapter
-        fun dataCreated(address:Address){
-            val pos=App.user.addresses!!.size - 1
+    override fun onResume() {
+        super.onResume()
+        loadAddresses({
+            addressAdapter = AddressEditAdapter(App.user.addresses!!)
+            recyclerView.adapter = addressAdapter
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.setHasFixedSize(true)
+        })
+    }
+
+    companion object {
+        lateinit var addressAdapter: AddressEditAdapter
+        fun dataCreated(address: Address) {
+            val pos = App.user.addresses!!.size
             App.user.addresses!![pos] = address
             addressAdapter.notifyItemInserted(pos)
         }
-        fun adapterUpdated(address:Address){
-            val pos=App.user.addresses!!.indexOf(address)
+
+        fun adapterUpdated(address: Address) {
+            val pos = App.user.addresses!!.indexOf(address)
             App.user.addresses!![pos] = address
             addressAdapter.notifyItemChanged(pos)
         }
-        fun adapterErased(address:Address){
-            val pos=App.user.addresses!!.indexOf(address)
+
+        fun adapterErased(address: Address) {
+            val pos = App.user.addresses!!.indexOf(address)
             App.user.addresses?.removeAt(pos)
             addressAdapter.notifyItemRemoved(pos)
         }

@@ -1,7 +1,7 @@
 package com.careradish.roastingboulevard.tools
 
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.classes.Allergens
+import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.classes.Food
 
@@ -16,7 +16,7 @@ class DeveloperFreshData {
                 Category(0,R.string.snack, arrayListOf(0,1,2,3,4,5)),
                 Category(1,R.string.portion, arrayListOf(6,7,8,9,10)),
                 Category(2,R.string.chicken, arrayListOf(11,12,13,14)),
-                Category(3,R.string.desserts, arrayListOf(15,16,17,18)),
+                Category(3,R.string.desserts, arrayListOf(15,16,17)),
             )
         }
 
@@ -27,7 +27,7 @@ class DeveloperFreshData {
                     R.string.croquetasJamon,
                     R.string.descript_croquetasPollo,
                     R.string.ingredientsCroquetasJamon,
-                    arrayListOf(Allergens.Leche.pos,Allergens.Leche.pos,Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Lacteos.pos,Allergen.Lacteos.pos,Allergen.Gluten.pos),
                     R.mipmap.croquetas_jamon,
                     3.0f
                 ),
@@ -36,7 +36,7 @@ class DeveloperFreshData {
                     R.string.bolasPollo,
                     R.string.descript_bolasPollo,
                     R.string.ingredients_bolasPollo,
-                    arrayListOf(Allergens.Leche.pos,Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Lacteos.pos,Allergen.Gluten.pos),
                     R.mipmap.bolitas_pollo,
                     3.0f
                 ),
@@ -45,7 +45,7 @@ class DeveloperFreshData {
                     R.string.nuggets,
                     R.string.descript_nuggets,
                     R.string.ingredients_nuggets,
-                    arrayListOf(Allergens.Leche.pos,Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Lacteos.pos,Allergen.Gluten.pos),
                     R.mipmap.nuggets_pollo,
                     3.0f
                 ),
@@ -54,7 +54,7 @@ class DeveloperFreshData {
                     R.string.croquetasPollo,
                     R.string.descript_croquetasPollo,
                     R.string.ingredients_croquetasPollo,
-                    arrayListOf(Allergens.Leche.pos,Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Lacteos.pos,Allergen.Gluten.pos),
                     R.mipmap.croquetas_pollo,
                     3.0f
                 ),
@@ -95,7 +95,7 @@ class DeveloperFreshData {
                     R.string.paella,
                     R.string.descript_paella,
                     R.string.ingredients_paella,
-                    arrayListOf(Allergens.Marisco.pos,Allergens.Pescado.pos),
+                    arrayListOf(Allergen.Marisco.pos,Allergen.Pescado.pos),
                     R.mipmap.paella,
                     3.0f
                 ),
@@ -104,7 +104,7 @@ class DeveloperFreshData {
                     R.string.cachopo,
                     R.string.descript_cachopo,
                     R.string.ingredients_cachopo,
-                    arrayListOf(Allergens.Leche.pos,Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Lacteos.pos,Allergen.Gluten.pos),
                     R.mipmap.cachopo,
                     4.0f
                 ),
@@ -113,7 +113,7 @@ class DeveloperFreshData {
                     R.string.bacalao,
                     R.string.descript_bacalao,
                     R.string.ingredients_bacalao,
-                    arrayListOf(Allergens.Pescado.pos),
+                    arrayListOf(Allergen.Pescado.pos),
                     R.mipmap.bacalao_pisto,
                     3.0f
                 ),
@@ -122,7 +122,7 @@ class DeveloperFreshData {
                     R.string.ensaladilla,
                     R.string.descript_ensaladilla,
                     R.string.ingredients_ensaladilla,
-                    arrayListOf(Allergens.Huevos.pos,Allergens.Leche.pos),
+                    arrayListOf(Allergen.Huevos.pos,Allergen.Lacteos.pos),
                     R.mipmap.ensaladilla,
                     3f
                 ),
@@ -145,7 +145,7 @@ class DeveloperFreshData {
                     R.string.filetePollo,
                     R.string.descript_filetePollo,
                     R.string.ingredients_filetePollo,
-                    arrayListOf(Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Gluten.pos),
                     R.mipmap.filete_pollo,
                     3.0f
                 ),
@@ -154,7 +154,7 @@ class DeveloperFreshData {
                     R.string.librito,
                     R.string.descript_librito,
                     R.string.ingredients_librito,
-                    arrayListOf(Allergens.Leche.pos,Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Lacteos.pos,Allergen.Gluten.pos),
                     R.mipmap.librito,
                     3.0f
                 ),
@@ -163,7 +163,7 @@ class DeveloperFreshData {
                     R.string.alitas,
                     R.string.descript_alitas,
                     R.string.ingredients_alitas,
-                    arrayListOf(Allergens.Gluten.pos),
+                    arrayListOf(Allergen.Gluten.pos),
                     R.mipmap.alitas_pollo,
                     3.0f
                 ),
@@ -186,7 +186,7 @@ class DeveloperFreshData {
                     R.string.tartaQueso,
                     R.string.descript_tartaQueso,
                     R.string.ingredients_tartaQueso,
-                    arrayListOf(Allergens.Leche.pos),
+                    arrayListOf(Allergen.Lacteos.pos),
                     R.mipmap.tarta_queso,
                     2.0f
                 ),
@@ -195,7 +195,7 @@ class DeveloperFreshData {
                     R.string.tartaChocolate,
                     R.string.descript_tartaChocolate,
                     R.string.ingredients_tartaChocolate,
-                    arrayListOf(Allergens.Leche.pos),
+                    arrayListOf(Allergen.Lacteos.pos),
                     R.mipmap.tarta_chocolate,
                     2.0f
                 )

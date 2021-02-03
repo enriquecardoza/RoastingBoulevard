@@ -107,5 +107,12 @@
     <string name="ingredients">Ingredientes</string>
     <string name="allergens">Alergenos</string>
     <string name="select_address">Selecciona tu dirección</string>
+    <string name="please_login_register">Por favor entra o crea una cuenta</string>
+    <string name="gluten">Gluten</string>
+    <string name="eggs">Huevos</string>
+    <string name="dairy">Lacteos</string>
+    <string name="nuts">Frutos secos</string>
+    <string name="fish">Pescado</string>
+    <string name="seafood">Marisco</string>
 
 </resources>

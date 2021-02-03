@@ -40,9 +40,11 @@ class CreateAddressActivity : AppCompatActivity() {
                 editTextPostalCode.text.toString().toInt(),
                 editTextCity.text.toString()
             )
-            DirectionListActivity.dataCreated(address)
-            FirebaseConnection.writeAddress(address)
-            finish()
+
+            FirebaseConnection.writeAddress(address,{
+                finish()
+                DirectionListActivity.dataCreated(address)})
+
         }
 
 

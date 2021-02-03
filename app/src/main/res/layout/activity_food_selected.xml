@@ -117,7 +117,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/orderSelectedFood"
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="0dp"
         android:layout_height="117dp"

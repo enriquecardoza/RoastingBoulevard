@@ -10,7 +10,7 @@ import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
 
-class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdapter(fragmentManager!!) {
+class MainPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdapter(fragmentManager!!) {
 
     // Returns total number of pages
     override fun getCount(): Int {
@@ -22,7 +22,7 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdap
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> InitFragment()
-            1 -> ProfileFragment()// CombosFragment()
+            1 -> CombosFragment()
             2 -> DishesFragment()
             3 -> InformationFragment()
             4 -> {
@@ -37,14 +37,12 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdap
 
     override fun getItemPosition(`object`: Any): Int {
 
-        if(`object` is LoginFragment&&App.logged){
-            return super.getItemPosition(ProfileFragment())
-        }else  if(`object` is ProfileFragment&&!App.logged)
-        {
-            return super.getItemPosition(LoginFragment())
+        return if(`object` is LoginFragment&&App.logged){
+            super.getItemPosition(ProfileFragment())
+        }else  if(`object` is ProfileFragment&&!App.logged) {
+            super.getItemPosition(LoginFragment())
         }else
-
-        return super.getItemPosition( `object`)
+            super.getItemPosition( `object`)
     }
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence? {
@@ -61,4 +59,5 @@ class MyPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAdap
     companion object {
         private const val NUM_ITEMS = 5
     }
+
 }

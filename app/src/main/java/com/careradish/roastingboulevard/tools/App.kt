@@ -19,7 +19,7 @@ class App : Application() {
         var foodSnackBar: CustomSnackbar?=null
         lateinit var tabLayout: TabLayout
         val logged:Boolean get()= user.id!=""
-        var actualDelivery: Delivery=Delivery()
+        var actualDelivery: Delivery?=null
 
 
         fun hideFoodSnackbar() {

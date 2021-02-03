@@ -127,4 +127,11 @@
     <string name="allergens">Allergens</string>
     <string name="temp" translatable="false">temp string</string>
     <string name="select_address">Select your address</string>
+    <string name="please_login_register">Please login or create a new account</string>
+    <string name="gluten">Gluten</string>
+    <string name="eggs">Eggs</string>
+    <string name="dairy">Dairy</string>
+    <string name="nuts">Nuts</string>
+    <string name="fish">Fish</string>
+    <string name="seafood">Seafood</string>
 </resources>

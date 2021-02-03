@@ -40,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         textInfo.text = ""
         buttonBack.setOnClickListener {
             finish()
-            MainActivity.ForceUpdatePagerAdapter(4)
+            MainActivity.changueSelectedTab(4)
         }
         buttonCreate.setOnClickListener {
 
