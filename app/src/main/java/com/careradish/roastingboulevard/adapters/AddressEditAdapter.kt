@@ -11,15 +11,15 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.activities.DirectionListActivity
+import com.careradish.roastingboulevard.activities.AddressListActivity
 import com.careradish.roastingboulevard.activities.EditAddressActivity
-import com.careradish.roastingboulevard.classes.Address
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
 
-class AddressEditAdapter(var addresses: List<Address>) :
+class AddressEditAdapter() :
     RecyclerView.Adapter<AddressEditAdapter.ViewHolder>() {
 
 
@@ -39,7 +39,7 @@ class AddressEditAdapter(var addresses: List<Address>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val address = addresses[position]
+        val address = App.user.addresses!![position]
 
         holder.label.text = address.label
         holder.addresWithNumber.text = address.address + " Nº" + address.number
@@ -62,7 +62,7 @@ class AddressEditAdapter(var addresses: List<Address>) :
                 R.string.yes
             ) { dialog, _ ->
                 FirebaseConnection.eraseAddress(address)
-                DirectionListActivity.adapterErased(address)
+                AddressListActivity.adapterErased(address)
                 dialog.dismiss()
             }
 
@@ -80,7 +80,7 @@ class AddressEditAdapter(var addresses: List<Address>) :
 
 
     override fun getItemCount(): Int {
-        return addresses.size
+        return App.user.addresses!!.size
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

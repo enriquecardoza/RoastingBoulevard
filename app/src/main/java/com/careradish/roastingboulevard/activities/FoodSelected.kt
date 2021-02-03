@@ -32,9 +32,11 @@ class FoodSelected : AppCompatActivity() {
 
         orderSelectedFood.setOnClickListener {
             App.actualDelivery!!.foods.add(food)
-            MainActivity.setVisibleSeeOrderButton()
-            val int=Intent(this,MainActivity::class.java)
+
+            val int= Intent(this,MainActivity::class.java)
+            int.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(int)
+            MainActivity.setVisibleSeeOrderButton()
         }
     }
 }

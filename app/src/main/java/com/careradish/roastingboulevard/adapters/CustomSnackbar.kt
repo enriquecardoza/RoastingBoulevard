@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.activities.AddressListActivity
 import com.careradish.roastingboulevard.activities.MainActivity
-import com.careradish.roastingboulevard.activities.SelectAddressActivity
 import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
@@ -154,14 +154,14 @@ class CustomSnackbar(
                 val orderButton = getView().orderButtonSnack
                 orderButton.setOnClickListener {
 
-                    if(App.user.id==""){
+                    if(!App.logged){
                         MainActivity.changueSelectedTab(4)
                         Toast.makeText(orderButton.context, TranslationStrings.get(R.string.please_login_register), Toast.LENGTH_LONG).show()
                         App.hideFoodSnackbar()
                     }else{
                         App.hideFoodSnackbar()
-                        val goselectaddress=Intent(context,SelectAddressActivity::class.java)
-
+                        val goselectaddress=Intent(context,AddressListActivity::class.java)
+                        goselectaddress.putExtra(Constants.addressListEdit,false)
                         goselectaddress.putExtra(Constants.selectedFood,food)
                         context.startActivity(goselectaddress)
                     }

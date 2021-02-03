@@ -10,7 +10,6 @@ import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.DeveloperFreshData
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,10 +37,8 @@ class MainActivity : AppCompatActivity() {
         App.tabLayout = tableLayout
         orderLayoutButton=seeOrderLayoutButton
         orderLayoutButton.setOnClickListener {
-            DeveloperFreshData.UploadAllData()
         }
     }
-
 
 
     fun showToast(text: String) {

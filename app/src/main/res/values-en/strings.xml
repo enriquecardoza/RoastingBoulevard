@@ -114,4 +114,5 @@
     <string name="nuts">Nuts</string>
     <string name="fish">Fish</string>
     <string name="seafood">Seafood</string>
+    <string name="create_edit_address">Create or edit an address</string>
 </resources>

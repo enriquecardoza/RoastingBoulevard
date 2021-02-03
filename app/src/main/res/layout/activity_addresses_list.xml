@@ -4,7 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DirectionListActivity">
+    tools:context=".activities.AddressListActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAddressList"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:background="@color/paleBrown"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerSelectAddres"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/abc_vector_test"
+        app:title="@string/select_address"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:titleTextColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAddressList"
@@ -14,7 +30,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonGoCreateAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAddressList">
 
     </androidx.recyclerview.widget.RecyclerView>
 

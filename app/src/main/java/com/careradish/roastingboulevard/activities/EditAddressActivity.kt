@@ -36,7 +36,7 @@ class EditAddressActivity : AppCompatActivity() {
                 editTextEditCity.text.toString(),
             )
 
-            DirectionListActivity.adapterUpdated(address)
+            AddressListActivity.adapterUpdated(address)
             FirebaseConnection.writeAddress(newaddress)
             finish()
         }

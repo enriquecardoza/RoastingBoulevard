@@ -14,7 +14,7 @@
         <activity android:name=".activities.EditAddressActivity" />
         <activity android:name=".activities.CreateAddressActivity" />
         <activity android:name=".activities.PaymentMethodListActivity" />
-        <activity android:name=".activities.DirectionListActivity" />
+        <activity android:name=".activities.AddressListActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity
             android:name=".activities.MainActivity"

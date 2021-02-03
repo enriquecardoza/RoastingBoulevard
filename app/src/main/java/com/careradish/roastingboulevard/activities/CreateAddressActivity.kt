@@ -1,12 +1,15 @@
 package com.careradish.roastingboulevard.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Address
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import kotlinx.android.synthetic.main.activity_create_address.*
+
 
 class CreateAddressActivity : AppCompatActivity() {
 
@@ -41,9 +44,13 @@ class CreateAddressActivity : AppCompatActivity() {
                 editTextCity.text.toString()
             )
 
-            FirebaseConnection.writeAddress(address,{
+            FirebaseConnection.writeAddress(address, {
+                App.user.addresses?.add(address)
+                val returnIntent = Intent(this,AddressListActivity::class.java)
+                setResult(RESULT_OK, returnIntent)
+                //AddressListActivity.dataCreated(address)
                 finish()
-                DirectionListActivity.dataCreated(address)})
+            })
 
         }
 

@@ -26,7 +26,7 @@ class AddressSelectAdapter() :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater: LayoutInflater? = LayoutInflater.from(parent.context)
-        val view: View? = inflater?.inflate(R.layout.item_address, parent, false)
+        val view: View? = inflater?.inflate(R.layout.item_address_select, parent, false)
         return ViewHolder(view!!)
     }
 
@@ -38,7 +38,6 @@ class AddressSelectAdapter() :
         holder.addresType.text = address.zoneType
 
         holder.itemView.setOnClickListener {
-
             selectedAddress=App.user.addresses!![position]
             onSelectedAddress?.invoke(selectedAddress)
         }

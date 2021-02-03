@@ -110,6 +110,20 @@
                     android:ems="10"
                     android:inputType="number|phone" />
 
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:paddingTop="10dp" />
+
+                <EditText
+                    android:id="@+id/editTextNewAddressType"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:ems="10"
+                    android:hint="@string/example_address_types"
+                    android:inputType="textPersonName" />
+
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
@@ -125,20 +139,6 @@
                     android:layout_height="45dp"
                     android:ems="10"
                     android:inputType="textPersonName|phone" />
-
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:paddingTop="10dp" />
-
-                <EditText
-                    android:id="@+id/editTextNewAddressType"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:ems="10"
-                    android:hint="@string/example_address_types"
-                    android:inputType="textPersonName" />
 
                 <TextView
                     android:id="@+id/textView5"
