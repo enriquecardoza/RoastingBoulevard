@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.adapters.FoodDeliveryAdapter
 import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
@@ -32,8 +33,7 @@ class FoodSelected : AppCompatActivity() {
 
         orderSelectedFood.setOnClickListener {
             App.actualDelivery!!.foods.add(food)
-
-            val int= Intent(this,MainActivity::class.java)
+            val int= Intent(this,DeliveryListActivity::class.java)
             int.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(int)
             MainActivity.setVisibleSeeOrderButton()

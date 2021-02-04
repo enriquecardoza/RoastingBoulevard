@@ -1,7 +1,9 @@
 package com.careradish.roastingboulevard.activities
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,7 +13,6 @@ import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,9 +28,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         App.Init(this)
+        actionBar?.hide()
         App.contentView = findViewById(android.R.id.content)
         instance=this
-        actionBar?.hide()
         tableLayout = tabsMain
         mPager = findViewById(R.id.pagerMain)
         mPager.setPageTransformer(true, ZoomOutPageTransformer())
@@ -38,11 +39,17 @@ class MainActivity : AppCompatActivity() {
         tableLayout.setupWithViewPager(pagerMain)
         App.tabLayout = tableLayout
         orderLayoutButton=seeOrderLayoutButton
+
         orderLayoutButton.setOnClickListener {
 
-            val inte=Intent(this,DeliveryListActivity::class.java)
+            val inte=Intent(this, DeliveryListActivity::class.java)
             startActivity(inte)
         }
+
+
+       // val sharedPref: SharedPreferences = this.getSharedPreferences(
+       //     getString(R.string.project_id), Context.MODE_PRIVATE
+       // )
     }
 
 
@@ -65,12 +72,12 @@ class MainActivity : AppCompatActivity() {
             mPager.adapter = adapterViewPager
             adapterViewPager.notifyDataSetChanged()
             mPager.currentItem = pos
-            tableLayout.setScrollPosition(pos,0f,true)
+            tableLayout.setScrollPosition(pos, 0f, true)
         }
 
         fun changueSelectedTab(pos: Int){
             mPager.currentItem = pos
-            tableLayout.setScrollPosition(pos,0f,true)
+            tableLayout.setScrollPosition(pos, 0f, true)
             adapterViewPager.notifyDataSetChanged()
         }
         fun setVisibleSeeOrderButton(){

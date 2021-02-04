@@ -44,8 +44,8 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
         val food = comidas[position]
         holder.name.text = TranslationStrings.get(food.name)
         Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
-        val delay=(position*Constants.DELAY_INCREMENT).toLong()
-        setFadeAnimation(holder.itemView, delay);
+        //val delay=(position*Constants.DELAY_INCREMENT).toLong()
+        //setFadeAnimation(holder.itemView, delay);
         holder.setClickListener(food)
         // Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
     }

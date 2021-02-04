@@ -19,7 +19,7 @@ import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_food_delivery.view.*
 
-class FoodDeliveryAdapter (var comidas: ArrayList<Food>) : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolder>() {
+class FoodDeliveryAdapter () : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolder>() {
     //  database.child("users").child(userId).setValue(user)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -40,7 +40,7 @@ class FoodDeliveryAdapter (var comidas: ArrayList<Food>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val food = comidas[position]
+        val food = App.actualDelivery!!.foods[position]
         holder.name.text = TranslationStrings.get(food.name)
         val price=food.price
         holder.price.text = TranslationStrings.get("$price €")
@@ -53,7 +53,7 @@ class FoodDeliveryAdapter (var comidas: ArrayList<Food>) : RecyclerView.Adapter<
             builder.setPositiveButton(
                 R.string.yes
             ) { dialog, _ ->
-                comidas.remove(food)
+                App.actualDelivery!!.foods.remove(food)
                 notifyItemRemoved(position)
                 dialog.dismiss()
             }
@@ -70,7 +70,7 @@ class FoodDeliveryAdapter (var comidas: ArrayList<Food>) : RecyclerView.Adapter<
     }
 
     override fun getItemCount(): Int {
-        return comidas.size
+        return App.actualDelivery!!.foods.size
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
