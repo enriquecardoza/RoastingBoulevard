@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/cream"
     app:cardCornerRadius="6dp"
+    app:cardUseCompatPadding="true"
     app:contentPadding="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

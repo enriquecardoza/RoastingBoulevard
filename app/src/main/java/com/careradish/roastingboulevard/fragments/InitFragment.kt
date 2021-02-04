@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.tools.DeveloperFreshData
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.fragment_init.view.*
 
 
@@ -37,7 +39,10 @@ class InitFragment : Fragment() {
         miRecycler=tempInflater.findViewById(R.id.recyclerViewInit)
         miRecycler.setHasFixedSize(true)
         tempInflater.buttonInitStartOrder.setOnClickListener {
-            DeveloperFreshData.UploadAllData()
+            //DeveloperFreshData.UploadAllData()
+            //val ss= TranslationStrings.getKey(R.string.descriptCroquetasJamon)
+            //val rr=TranslationStrings.get(ss)
+            //Toast.makeText(context,rr, Toast.LENGTH_LONG).show()
         }
 
         return tempInflater

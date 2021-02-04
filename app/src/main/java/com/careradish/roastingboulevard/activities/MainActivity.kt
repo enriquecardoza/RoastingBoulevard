@@ -1,6 +1,7 @@
 package com.careradish.roastingboulevard.activities
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,6 +11,7 @@ import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         App.tabLayout = tableLayout
         orderLayoutButton=seeOrderLayoutButton
         orderLayoutButton.setOnClickListener {
+
+            val inte=Intent(this,DeliveryListActivity::class.java)
+            startActivity(inte)
         }
     }
 

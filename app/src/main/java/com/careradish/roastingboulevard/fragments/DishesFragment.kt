@@ -49,15 +49,15 @@ class DishesFragment : Fragment() {
         pager=tempInflater.pagerFoods
         tabLayout.removeAllTabs()
 
-        CreateTabs()
 
+
+        CreateTabs()
         return tempInflater
     }
 
     private fun CreateTabs() {
         var referenceRoot = FirebaseConnection.referenceRoot.child(Constants.categoryTittle)
         referenceRoot.addValueEventListener(object : ValueEventListener {
-
             override fun onDataChange(snapshot: DataSnapshot) {
 
 

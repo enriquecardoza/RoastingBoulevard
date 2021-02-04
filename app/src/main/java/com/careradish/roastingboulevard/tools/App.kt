@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.view.View
 import androidx.annotation.StringRes
+import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.adapters.CustomSnackbar
 import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.User
@@ -65,4 +66,22 @@ object TranslationStrings {
     fun get(@StringRes stringRes: Int, vararg formatArgs: Any = emptyArray()): String {
         return App.context.getString(stringRes, *formatArgs)
     }
+
+    fun get(stringRes: String): String {
+
+        val text_id: Int = App.context.resources
+            .getIdentifier(stringRes, "string", App.context.packageName)
+        return App.context.getString(text_id)
+    }
+    fun getKey(stringRes: String):Int{
+
+        return App.context.resources
+            .getIdentifier(stringRes, "string",  App.context.packageName)
+    }
+    fun getKey(@StringRes stringRes: Int): String {
+
+        return App.context.resources.getResourceEntryName(stringRes)
+
+    }
+
 }
