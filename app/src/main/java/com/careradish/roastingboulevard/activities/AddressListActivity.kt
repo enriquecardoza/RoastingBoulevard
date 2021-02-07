@@ -1,5 +1,6 @@
 package com.careradish.roastingboulevard.activities
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,8 +11,6 @@ import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.adapters.AddressEditAdapter
 import com.careradish.roastingboulevard.adapters.AddressSelectAdapter
 import com.careradish.roastingboulevard.classes.Address
-import com.careradish.roastingboulevard.classes.Delivery
-import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.FirebaseConnection.Companion.loadAddresses
@@ -22,7 +21,6 @@ class AddressListActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var buttCreateAddress: Button
-    lateinit var food:Food
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +37,7 @@ class AddressListActivity : AppCompatActivity() {
 
         val bundle = intent.extras
         if (bundle != null) {
-            canEditAddress=bundle.getBoolean(Constants.addressListEdit, false)
+            canEditAddress =bundle.getBoolean(Constants.isAddressListEditOrSelect, false)
         }
         toolbarAddressList.setNavigationOnClickListener { finish() }
 
@@ -48,7 +46,6 @@ class AddressListActivity : AppCompatActivity() {
             toolbarAddressList.title=TranslationStrings.get(R.string.create_edit_address)
         else {
             toolbarAddressList.title = TranslationStrings.get(R.string.select_address)
-            food= bundle!!.getSerializable(Constants.selectedFood) as Food
         }
 
         loadAddresses({
@@ -59,11 +56,14 @@ class AddressListActivity : AppCompatActivity() {
                 addressSelectAdapter = AddressSelectAdapter()
                 recyclerView.adapter = addressSelectAdapter
                 addressSelectAdapter.onSelectedAddress = {
-                    App.actualDelivery = Delivery(it!!)
-                    val inte = Intent(this, FoodSelected::class.java)
-                    inte.putExtra(Constants.selectedFood, food)
+                    if (it != null) {
+                        App.actualDelivery?.address =it
+                        //Todo q coja el mas alto y lo guarde
+                    }
+                    val inte = Intent(this, MainActivity::class.java)
                     startActivity(inte)
-                    MainActivity.setVisibleSeeOrderButton()
+                    MainActivity.setInvisibleSeeOrderButton()
+                    App.actualDelivery=null
                 }
             }
 

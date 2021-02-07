@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.view.View
 import androidx.annotation.StringRes
-import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.adapters.CustomSnackbar
 import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.User
@@ -43,10 +42,10 @@ class App : Application() {
         }
     }
 
-    override fun onCreate() {
-        super.onCreate()
-        context = this
-    }
+   // override fun onCreate() {
+   //     super.onCreate()
+   //     context = this
+   // }
     val PREFS_NAME: String = "MyPrefsFile"
     var test = false
 

@@ -1,9 +1,7 @@
 package com.careradish.roastingboulevard.activities
 
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         orderLayoutButton.setOnClickListener {
 
-            val inte=Intent(this, DeliveryListActivity::class.java)
+            val inte=Intent(this, FoodDeliveryListActivity::class.java)
             startActivity(inte)
         }
 

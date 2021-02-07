@@ -49,12 +49,12 @@
 
         <TextView
             android:id="@+id/foodSelectedDescription"
-            android:layout_width="294dp"
-            android:layout_height="55dp"
+            android:layout_width="300dp"
+            android:layout_height="78dp"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="@string/descript_alitas"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"

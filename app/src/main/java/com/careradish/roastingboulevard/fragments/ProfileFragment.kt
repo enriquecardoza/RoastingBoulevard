@@ -36,7 +36,7 @@ lateinit var buttAddress:Button
         textWelcome.text=TranslationStrings.get(R.string.profile_welcome)+" "+App.user.name
         buttAddress.setOnClickListener {
             val intent=Intent(context,AddressListActivity::class.java)
-            intent.putExtra(Constants.addressListEdit,true)
+            intent.putExtra(Constants.isAddressListEditOrSelect,true)
             startActivity(intent)
         }
         return tempInflete

@@ -2,7 +2,6 @@ package com.careradish.roastingboulevard.classes
 
 import com.careradish.roastingboulevard.tools.App
 import java.util.*
-import kotlin.collections.ArrayList
 
 data class Delivery(
     var id: Int,
@@ -27,6 +26,14 @@ data class Delivery(
         arrayListOf(),
         App.user,
         address,
+        Calendar.getInstance().time,
+        PaymentMethod()
+    )
+    constructor() : this(
+        -1,
+        arrayListOf(),
+        App.user,
+        Address(),
         Calendar.getInstance().time,
         PaymentMethod()
     )

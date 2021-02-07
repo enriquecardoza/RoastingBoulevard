@@ -116,5 +116,6 @@
     <string name="seafood">Marisco</string>
     <string name="create_edit_address">crea o edita una dirección</string>
     <string name="process_order">Tramitar pedido</string>
+    <string name="add_more_food">Añadir mas comida</string>
 
 </resources>

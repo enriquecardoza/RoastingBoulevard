@@ -1,6 +1,5 @@
 package com.careradish.roastingboulevard.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,11 @@ import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.activities.AddressListActivity
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.classes.Allergen
+import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -30,7 +28,7 @@ class CustomSnackbar(
     contentViewCallback: com.google.android.material.snackbar.ContentViewCallback
 ) : BaseTransientBottomBar<CustomSnackbar>(parent, content, contentViewCallback) {
 
- lateinit var food:Food
+    lateinit var food: Food
 
     init {
         this.getView().setPadding(0, 0, 0, 0)
@@ -44,9 +42,10 @@ class CustomSnackbar(
         titleView.text = title
         return this
     }
+
     private fun setprice(price: Float): CustomSnackbar {
         val textView = getView().priceSnack
-        textView.text = price.toString()+"€"
+        textView.text = price.toString() + "€"
         return this
     }
 
@@ -56,11 +55,13 @@ class CustomSnackbar(
         titleView.text = description
         return this
     }
+
     private fun setImage(photo: Int): CustomSnackbar {
         val image = getView().findViewById<ImageView>(R.id.foodImageSnack)
         Picasso.get().load(photo).fit().centerCrop().into(image)
         return this
     }
+
     private fun setAllergens(allergens: ArrayList<Int>): CustomSnackbar {
 
         val image1 = getView().icon1
@@ -69,34 +70,34 @@ class CustomSnackbar(
         val image4 = getView().icon4
         val image5 = getView().icon5
         val image6 = getView().icon6
-        if (allergens.contains(Allergen.Gluten)){
-            image1.visibility=View.VISIBLE
-        }else {
+        if (allergens.contains(Allergen.Gluten)) {
+            image1.visibility = View.VISIBLE
+        } else {
             image1.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Huevos)){
-            image2.visibility=View.VISIBLE
+        if (allergens.contains(Allergen.Huevos)) {
+            image2.visibility = View.VISIBLE
         } else {
             image2.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Lacteos)){
-            image3.visibility=View.VISIBLE
+        if (allergens.contains(Allergen.Lacteos)) {
+            image3.visibility = View.VISIBLE
         } else {
             image3.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.FrutosSecos)){
-            image4.visibility=View.VISIBLE
-        }else {
+        if (allergens.contains(Allergen.FrutosSecos)) {
+            image4.visibility = View.VISIBLE
+        } else {
             image4.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Pescado)){
-            image5.visibility=View.VISIBLE
-        }else {
+        if (allergens.contains(Allergen.Pescado)) {
+            image5.visibility = View.VISIBLE
+        } else {
             image5.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Marisco)){
-            image6.visibility=View.VISIBLE
-        }else {
+        if (allergens.contains(Allergen.Marisco)) {
+            image6.visibility = View.VISIBLE
+        } else {
             image6.visibility = View.GONE
         }
         return this
@@ -104,43 +105,13 @@ class CustomSnackbar(
 
     companion object {
 
-        /*fun make(
-            view: View,
-            title: Int,
-            action: Int,
-            duration: Int
-        ): CustomSnackbar {
-            return make(
-                view,
-                view.context.getString(title),
-                view.context.getString(action)
-            )
-        }
-
-        fun make(
-            view: View,
-            title: String,
-            decription: String
-        ): CustomSnackbar {
-            val customSnackbar = createCustomSnackbar(view).apply {
-                setTitle(title)
-                setDescription(decription)
-                setDuration(Snackbar.LENGTH_INDEFINITE)
-                val orderButton = getView().orderButtonSnack
-                orderButton.setOnClickListener {
-                    Toast.makeText(orderButton.context, "texto", Toast.LENGTH_LONG).show()
-                }
-            }
-
-            return customSnackbar
-        }
-        */
         fun makeSnackbarFood(
-            view: View,food: Food): CustomSnackbar {
+            view: View, food: Food
+        ): CustomSnackbar {
             val customSnackbar = createCustomSnackbar(view).apply {
                 setDuration(Snackbar.LENGTH_INDEFINITE)
-                setTitle(TranslationStrings.get( food.name))
-                setDescription(TranslationStrings.get( food.decription))
+                setTitle(TranslationStrings.get(food.name))
+                setDescription(TranslationStrings.get(food.decription))
                 setImage(food.photo)
                 setAllergens(food.allergens)
                 setprice(food.price)
@@ -154,21 +125,27 @@ class CustomSnackbar(
                 val orderButton = getView().orderButtonSnack
                 orderButton.setOnClickListener {
 
-                    if(!App.logged){
+                    if (!App.logged) {
                         MainActivity.changueSelectedTab(4)
-                        Toast.makeText(orderButton.context, TranslationStrings.get(R.string.please_login_register), Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            orderButton.context,
+                            TranslationStrings.get(R.string.please_login_register),
+                            Toast.LENGTH_LONG
+                        ).show()
                         App.hideFoodSnackbar()
-                    }else{
+                    } else {
                         App.hideFoodSnackbar()
-                        val goselectaddress=Intent(context,AddressListActivity::class.java)
-                        goselectaddress.putExtra(Constants.addressListEdit,false)
-                        goselectaddress.putExtra(Constants.selectedFood,food)
-                        context.startActivity(goselectaddress)
+                        if (App.actualDelivery == null) {
+                            App.actualDelivery = Delivery()
+                            MainActivity.setVisibleSeeOrderButton()
+                        }
+
+                        App.actualDelivery!!.foods.add(food)
                     }
 
                 }
             }
-            customSnackbar.food=food
+            customSnackbar.food = food
             return customSnackbar
         }
 
@@ -195,9 +172,9 @@ class CustomSnackbar(
                     }
 
                     override fun animateContentOut(delay: Int, duration: Int) {
-                       /* content.alpha = 1f
-                        content.animate().alpha(0f).setDuration(duration.toLong())
-                            .setStartDelay(delay.toLong()).start()*/
+                        /* content.alpha = 1f
+                         content.animate().alpha(0f).setDuration(duration.toLong())
+                             .setStartDelay(delay.toLong()).start()*/
                     }
                 }
             return CustomSnackbar(parent, content, contentViewCallback)

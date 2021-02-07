@@ -116,4 +116,5 @@
     <string name="seafood">Seafood</string>
     <string name="create_edit_address">Create or edit an address</string>
     <string name="process_order">Process order</string>
+    <string name="add_more_food">Add more food</string>
 </resources>

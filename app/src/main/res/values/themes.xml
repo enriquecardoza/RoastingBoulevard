@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" >
     <!-- Base application theme. -->
     <style name="Theme.RoastingBoulevard" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -15,5 +15,37 @@
     </style>
     <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">8sp</item>
+    </style>
+    <style name="CustomButtonFullSize" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minHeight">@dimen/mtrl_extended_fab_min_height</item>
+        <item name="android:minWidth">@dimen/mtrl_extended_fab_min_width</item>
+        <item name="android:paddingTop">@dimen/mtrl_extended_fab_top_padding</item>
+        <item name="android:paddingBottom">@dimen/mtrl_extended_fab_bottom_padding</item>
+        <item name="android:paddingStart" tools:ignore="NewApi">
+            @dimen/mtrl_extended_fab_start_padding
+        </item>
+        <item name="android:paddingEnd" tools:ignore="NewApi">
+            @dimen/mtrl_extended_fab_end_padding
+        </item>
+        <item name="android:paddingLeft">@dimen/mtrl_extended_fab_start_padding</item>
+        <item name="android:paddingRight">@dimen/mtrl_extended_fab_end_padding</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">
+            @animator/mtrl_extended_fab_state_list_animator
+        </item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="backgroundTint">@color/paleOrange</item>
+        <item name="elevation">@dimen/mtrl_extended_fab_elevation</item>
+        <item name="iconPadding">@dimen/mtrl_extended_fab_icon_text_spacing</item>
+        <item name="iconSize">@dimen/mtrl_extended_fab_icon_size</item>
+        <item name="iconTint">@color/mtrl_fab_icon_text_color_selector</item>
+        <item name="rippleColor">@color/mtrl_fab_ripple_color</item>
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.MaterialComponents.ExtendedFloatingActionButton
+        </item>
     </style>
 </resources>
