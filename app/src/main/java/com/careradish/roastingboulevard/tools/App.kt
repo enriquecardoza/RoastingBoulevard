@@ -13,39 +13,40 @@ import com.google.android.material.tabs.TabLayout
 class App : Application() {
     companion object {
 
-        var user:User?=null
+        var user: User? = null
         lateinit var context: Context
         lateinit var contentView: View
-        var foodSnackBar: CustomSnackbar?=null
+        var foodSnackBar: CustomSnackbar? = null
         lateinit var tabLayout: TabLayout
-        val logged:Boolean get()= user!=null
-        var actualDelivery: Delivery?=null
+        val logged: Boolean get() = user != null
+        var actualDelivery: Delivery? = null
 
 
         fun hideFoodSnackbar() {
-            if(foodSnackBar!=null) {
+            if (foodSnackBar != null) {
                 foodSnackBar!!.dismiss()
-                foodSnackBar=null
+                foodSnackBar = null
             }
             UnlockTabs()
         }
 
-        fun LockTabs(){
-            tabLayout.visibility=View.GONE
-        }
-        fun UnlockTabs(){
-            tabLayout.visibility=View.VISIBLE
+        fun LockTabs() {
+            tabLayout.visibility = View.GONE
         }
 
-        fun  Init(contexto: Context){
-            context=contexto
+        fun UnlockTabs() {
+            tabLayout.visibility = View.VISIBLE
+        }
+
+        fun Init(contexto: Context) {
+            context = contexto
         }
     }
 
-   // override fun onCreate() {
-   //     super.onCreate()
-   //     context = this
-   // }
+    // override fun onCreate() {
+    //     super.onCreate()
+    //     context = this
+    // }
     val PREFS_NAME: String = "MyPrefsFile"
     var test = false
 
@@ -68,17 +69,21 @@ object TranslationStrings {
 
     fun get(stringRes: String): String {
 
+
         val text_id: Int = App.context.resources
             .getIdentifier(stringRes, "string", App.context.packageName)
-        return App.context.getString(text_id)
+        if (text_id == 0)
+            return stringRes
+        else
+            return App.context.getString(text_id)
     }
-    fun getKey(stringRes: String):Int{
 
+    fun getKey(stringRes: String): Int {
         return App.context.resources
-            .getIdentifier(stringRes, "string",  App.context.packageName)
+            .getIdentifier(stringRes, "string", App.context.packageName)
     }
-    fun getKey(@StringRes stringRes: Int): String {
 
+    fun getKey(@StringRes stringRes: Int): String {
         return App.context.resources.getResourceEntryName(stringRes)
 
     }

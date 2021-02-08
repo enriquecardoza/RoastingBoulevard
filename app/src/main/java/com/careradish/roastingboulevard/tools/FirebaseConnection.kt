@@ -218,7 +218,7 @@ class FirebaseConnection(var context: Context) {
         //region Delivery
         fun writeDelivery(delivery: Delivery) {
 
-            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveries).child(delivery.id).setValue(delivery)
+            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(delivery.id).setValue(delivery)
 
         }
 
@@ -228,7 +228,7 @@ class FirebaseConnection(var context: Context) {
         ) {
             var arr = mutableListOf<Delivery>()
             val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id)
-                .child(Constants.deliveries)
+                .child(Constants.deliveryTittle)
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     referenceRoot.removeEventListener(this)
