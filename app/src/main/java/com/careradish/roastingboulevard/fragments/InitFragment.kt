@@ -13,10 +13,13 @@ import com.careradish.roastingboulevard.tools.DeveloperFreshData
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesUtil
-import com.google.android.gms.maps.*
-import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.fragment_information.view.*
-import kotlinx.android.synthetic.main.fragment_init.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.MapsInitializer
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_init.view.*
 
 
@@ -44,6 +47,7 @@ class InitFragment : Fragment() {
         tempInflater.buttonInitStartOrder.setOnClickListener {
 
             MainActivity.changueSelectedTab(1)
+
         }
         image =tempInflater.findViewById(R.id.imageViewInitUser)
         mapFragment = tempInflater.mapViewInit

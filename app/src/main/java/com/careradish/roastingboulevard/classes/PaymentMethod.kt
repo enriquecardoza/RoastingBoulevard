@@ -2,15 +2,19 @@ package com.careradish.roastingboulevard.classes
 
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.tools.TranslationStrings
+import java.util.*
+import kotlin.collections.ArrayList
 
 data class PaymentMethod(
-    var method: Method,
-    var accountNumber:Int,
-    var creditCardNumber:Int,
+    var method: Method
 ) {
-    constructor():this(Method.Cash,-1,-1)
+    var creditCardNumber: Int? =null
+    var expirationDate: Date? =null
+    var cvv:Int?=null
+
+    constructor():this(Method.Cash)
     enum class Method(name:String) {
-        MasterCard("MasterCard"), Visa("VISA"),Cash(TranslationStrings.get(R.string.cash))
+        MasterCard("MasterCard"), Visa("VISA"),Cash("TranslationStrings.get(R.string.cash");
     }
 
     companion object {

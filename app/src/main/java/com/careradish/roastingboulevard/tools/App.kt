@@ -13,12 +13,12 @@ import com.google.android.material.tabs.TabLayout
 class App : Application() {
     companion object {
 
-        var user:User=User()
+        var user:User?=null
         lateinit var context: Context
         lateinit var contentView: View
         var foodSnackBar: CustomSnackbar?=null
         lateinit var tabLayout: TabLayout
-        val logged:Boolean get()= user.id!=""
+        val logged:Boolean get()= user!=null
         var actualDelivery: Delivery?=null
 
 

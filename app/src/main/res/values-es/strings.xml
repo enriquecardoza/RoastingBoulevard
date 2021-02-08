@@ -119,5 +119,7 @@
     <string name="add_more_food">Añadir mas comida</string>
     <string name="what_waiting_for">¿A que esperas para registrarte?</string>
     <string name="cash">En efectivo</string>
+    <string name="card_number">Numero de tarjeta</string>
+    <string name="expiration_date">Fecha de caducidad</string>
 
 </resources>

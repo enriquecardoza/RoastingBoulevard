@@ -119,4 +119,6 @@
     <string name="add_more_food">Add more food</string>
     <string name="what_waiting_for">What are you waiting for to register?</string>
     <string name="cash">Cash</string>
+    <string name="card_number">Card number</string>
+    <string name="expiration_date">Expiration date</string>
 </resources>
