@@ -201,7 +201,37 @@ class DeveloperFreshData {
                 )
             )
         }
-
+        fun getCombos():ArrayList<Food> {
+            return arrayListOf(
+                Food(
+                    18,
+                    TranslationStrings.getKey(R.string.macedonia),
+                    TranslationStrings.getKey(R.string.descript_macedonia),
+                    TranslationStrings.getKey(R.string.ingredients_macedonia),
+                    arrayListOf(),
+                    R.mipmap.macedonia,
+                    9.0f
+                ),
+                Food(
+                    19,
+                    TranslationStrings.getKey(R.string.tartaQueso),
+                    TranslationStrings.getKey(R.string.descript_tartaQueso),
+                    TranslationStrings.getKey(R.string.ingredients_tartaQueso),
+                    arrayListOf(Allergen.Lacteos.pos),
+                    R.mipmap.tarta_queso,
+                    7f
+                ),
+                Food(
+                    20,
+                    TranslationStrings.getKey(R.string.tartaChocolate),
+                    TranslationStrings.getKey(R.string.descript_tartaChocolate),
+                    TranslationStrings.getKey(R.string.ingredients_tartaChocolate),
+                    arrayListOf(Allergen.Lacteos.pos),
+                    R.mipmap.tarta_chocolate,
+                    2.0f
+                )
+            )
+        }
         public fun  UploadAllData(){
           for (i in getCategories()){
               FirebaseConnection.writeCategory(i)

@@ -60,10 +60,8 @@ class AddressListActivity : AppCompatActivity() {
                         App.actualDelivery?.address =it
                         //Todo q coja el mas alto y lo guarde
                     }
-                    val inte = Intent(this, MainActivity::class.java)
+                    val inte = Intent(this, SelectPaymentMethodActivity::class.java)
                     startActivity(inte)
-                    MainActivity.setInvisibleSeeOrderButton()
-                    App.actualDelivery=null
                 }
             }
 

@@ -40,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         textInfo.text = ""
         buttonBack.setOnClickListener {
             finish()
-            MainActivity.changueSelectedTab(4)
+            MainActivity.changueSelectedTab(2)
         }
         buttonCreate.setOnClickListener {
 
@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 FirebaseConnection.createUser(user, textPassword.text.toString(),this, {
 
-                    MainActivity.ForceUpdatePagerAdapter(4)
+                    MainActivity.ForceUpdatePagerAdapter(2)
                     finish()
                 })
 

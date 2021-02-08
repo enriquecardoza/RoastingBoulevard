@@ -2,6 +2,7 @@ package com.careradish.roastingboulevard.activities
 
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -25,10 +26,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
         App.Init(this)
         actionBar?.hide()
         App.contentView = findViewById(android.R.id.content)
         instance=this
+
+        PreparePager()
+
+        orderLayoutButton=seeOrderLayoutButton
+        orderLayoutButton.setOnClickListener {
+
+            val inte=Intent(this, FoodDeliveryListActivity::class.java)
+            startActivity(inte)
+        }
+
+        seeOrderLayoutButton.visibility=View.GONE
+
+    }
+
+    private fun PreparePager() {
         tableLayout = tabsMain
         mPager = findViewById(R.id.pagerMain)
         mPager.setPageTransformer(true, ZoomOutPageTransformer())
@@ -36,18 +53,6 @@ class MainActivity : AppCompatActivity() {
         mPager.adapter = adapterViewPager
         tableLayout.setupWithViewPager(pagerMain)
         App.tabLayout = tableLayout
-        orderLayoutButton=seeOrderLayoutButton
-
-        orderLayoutButton.setOnClickListener {
-
-            val inte=Intent(this, FoodDeliveryListActivity::class.java)
-            startActivity(inte)
-        }
-
-
-       // val sharedPref: SharedPreferences = this.getSharedPreferences(
-       //     getString(R.string.project_id), Context.MODE_PRIVATE
-       // )
     }
 
 

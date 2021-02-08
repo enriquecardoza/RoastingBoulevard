@@ -17,15 +17,11 @@ class MainPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAd
         return NUM_ITEMS
     }
 
-
-    // Returns the fragment to display for that page
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> InitFragment()
-            1 -> CombosFragment()
-            2 -> DishesFragment()
-            3 -> InformationFragment()
-            4 -> {
+            1 -> DishesFragment()
+            2 -> {
                 if (!App.logged)
                     LoginFragment()
                 else
@@ -34,7 +30,6 @@ class MainPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAd
             else -> InitFragment()
         }
     }
-
     override fun getItemPosition(`object`: Any): Int {
 
         return if(`object` is LoginFragment&&App.logged){
@@ -48,16 +43,14 @@ class MainPagerAdapter(fragmentManager: FragmentManager?) : FragmentStatePagerAd
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> TranslationStrings.get(R.string.init)
-            1 -> TranslationStrings.get(R.string.combos)
-            2 -> TranslationStrings.get(R.string.dishes)
-            3 -> TranslationStrings.get(R.string.information)
-            4 -> TranslationStrings.get(R.string.profile)
+            1 -> TranslationStrings.get(R.string.dishes)
+            2 -> TranslationStrings.get(R.string.profile)
             else -> TranslationStrings.get(R.string.init)
         }
     }
 
     companion object {
-        private const val NUM_ITEMS = 5
+        private const val NUM_ITEMS = 3
     }
 
 }

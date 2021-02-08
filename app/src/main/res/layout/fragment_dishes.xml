@@ -18,7 +18,7 @@
         android:outlineProvider="none"
         app:tabBackground="@color/paleBrown"
         app:tabGravity="center"
-        app:tabIndicatorColor="@color/paleRed"
+        app:tabIndicatorColor="@color/darkBrown"
         app:tabIndicatorGravity="bottom"
         app:tabMaxWidth="0dp"
         app:tabMode="scrollable"

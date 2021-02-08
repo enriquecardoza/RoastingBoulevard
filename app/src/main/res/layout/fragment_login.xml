@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/cream"
         android:orientation="vertical">
 
         <LinearLayout
@@ -17,7 +18,6 @@
             android:layout_height="117dp"
             android:background="@color/paleBrown"
             android:orientation="horizontal">
-
 
 
             <LinearLayout
@@ -34,6 +34,7 @@
                     android:gravity="fill|fill_horizontal"
                     android:paddingStart="20dp"
                     android:text="@string/access_profile"
+                    android:textColor="@color/white"
                     android:textSize="24sp" />
 
             </LinearLayout>
@@ -43,73 +44,108 @@
                 android:layout_width="118dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@android:mipmap/sym_def_app_icon"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView2"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/please_introduce" />
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <EditText
-                android:id="@+id/editTextEmailLogin"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/please_introduce"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextEmailLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/email"
+                    android:inputType="textPersonName"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/editTextPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/password"
+                    android:inputType="textPersonName|textPassword"
+                    android:password="true"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/fogotPasswordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@color/transparent"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="0dp"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/black"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/logOnButton"
+                    style="@style/CustomButtonFullSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_on" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent"
+                android:background="@color/paleBrown"
+                android:orientation="vertical"
+                android:paddingTop="90dp">
 
-            <EditText
-                android:id="@+id/editTextPasswordLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPersonName|textPassword"
-                android:password="true" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:src="@mipmap/ic_launcher_round" />
 
-            <Button
-                android:id="@+id/fogotPasswordButton"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@color/transparent"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="0dp"
-                android:text="@string/forgot_password"
-                android:textColor="@color/black"
-                android:textSize="8sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_horizontal"
+                    android:padding="10dp"
+                    android:text="@string/what_waiting_for"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
 
-            <Button
-                android:id="@+id/logOnButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/log_on" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                    <Button
+                        android:id="@+id/registerLoginButton"
+                        style="@style/CustomButtonFullSize"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/darkBrown"
+                        android:text="@string/register" />
+                </LinearLayout>
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="276dp"
-                tools:src="@tools:sample/backgrounds/scenic" />
-
-            <Button
-                android:id="@+id/registerLoginButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/register" />
         </LinearLayout>
     </LinearLayout>
 

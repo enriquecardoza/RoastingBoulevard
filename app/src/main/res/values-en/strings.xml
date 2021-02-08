@@ -117,4 +117,6 @@
     <string name="create_edit_address">Create or edit an address</string>
     <string name="process_order">Process order</string>
     <string name="add_more_food">Add more food</string>
+    <string name="what_waiting_for">What are you waiting for to register?</string>
+    <string name="cash">Cash</string>
 </resources>
