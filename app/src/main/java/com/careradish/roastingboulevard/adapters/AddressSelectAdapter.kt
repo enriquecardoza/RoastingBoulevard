@@ -31,20 +31,20 @@ class AddressSelectAdapter() :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val address = App.user.addresses!![position]
+        val address = App.user?.addresses!![position]
         holder.label.text = address.label
         holder.addresWithNumber.text = address.address + " Nº" + address.number
         holder.postalCodeCity.text = address.postalCode.toString() + " " + address.city
         holder.addresType.text = address.zoneType
 
         holder.itemView.setOnClickListener {
-            selectedAddress=App.user.addresses!![position]
+            selectedAddress=App.user!!.addresses!![position]
             onSelectedAddress?.invoke(selectedAddress)
         }
     }
 
     override fun getItemCount(): Int {
-        return App.user.addresses!!.size
+        return App.user?.addresses!!.size
     }
 
 

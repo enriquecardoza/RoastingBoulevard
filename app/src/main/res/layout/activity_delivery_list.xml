@@ -71,7 +71,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/buttonAddMoreFood"
                 style="@style/CustomButtonFullSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -31,5 +31,11 @@ class FoodDeliveryListActivity : AppCompatActivity() {
             intent.putExtra(Constants.isAddressListEditOrSelect,false)
             startActivity(intent)
         }
+        buttonAddMoreFood.setOnClickListener {
+            val inte=Intent(this, MainActivity::class.java)
+            inte.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(inte)
+            MainActivity.changueSelectedTab(1)
+        }
     }
 }

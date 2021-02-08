@@ -2,9 +2,10 @@ package com.careradish.roastingboulevard.activities
 
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -85,6 +86,17 @@ class MainActivity : AppCompatActivity() {
         }
         fun setVisibleSeeOrderButton(){
             orderLayoutButton.visibility=View.VISIBLE
+            val anim: Animation = ScaleAnimation(
+                1f, 1f,  // Start and end values for the X axis scaling
+                0f, 1f,  // Start and end values for the Y axis scaling
+                Animation.RELATIVE_TO_SELF, 0f,  // Pivot point of X scaling
+                Animation.RELATIVE_TO_SELF, 1f
+            )
+
+            anim.fillAfter = true // Needed to keep the result of the animation
+
+            anim.duration = 200
+            orderLayoutButton.startAnimation(anim)
         }
         fun setInvisibleSeeOrderButton(){
             orderLayoutButton.visibility=View.GONE

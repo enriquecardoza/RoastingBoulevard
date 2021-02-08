@@ -45,7 +45,7 @@ class CreateAddressActivity : AppCompatActivity() {
             )
 
             FirebaseConnection.writeAddress(address, {
-                App.user.addresses?.add(address)
+                App.user?.addresses?.add(address)
                 val returnIntent = Intent(this,AddressListActivity::class.java)
                 setResult(RESULT_OK, returnIntent)
                 //AddressListActivity.dataCreated(address)

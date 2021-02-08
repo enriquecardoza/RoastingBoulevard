@@ -39,7 +39,7 @@ class AddressEditAdapter() :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val address = App.user.addresses!![position]
+        val address = App.user?.addresses!![position]
 
         holder.label.text = address.label
         holder.addresWithNumber.text = address.address + " Nº" + address.number
@@ -80,7 +80,7 @@ class AddressEditAdapter() :
 
 
     override fun getItemCount(): Int {
-        return App.user.addresses!!.size
+        return App.user?.addresses!!.size
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

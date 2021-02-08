@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@color/cream"
-        android:outlineProvider="none"
         app:tabBackground="@color/paleBrown"
         app:tabGravity="center"
         app:tabIndicatorColor="@color/darkBrown"

@@ -11,6 +11,7 @@ import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.PaymentMethod
 import com.careradish.roastingboulevard.fragments.DatePickerFragment
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import kotlinx.android.synthetic.main.activity_select_payment_method.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -52,9 +53,10 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
         }
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+
+        FirebaseConnection.writeDelivery(App.actualDelivery!!)
         App.actualDelivery = null
         MainActivity.setInvisibleSeeOrderButton()
-        //todo enviar datos
     }
 
     private fun PrepareSpinnerSelectType(arrayAdapter: ArrayAdapter<PaymentMethod.Method>) {

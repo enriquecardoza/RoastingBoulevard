@@ -4,7 +4,7 @@ import com.careradish.roastingboulevard.tools.App
 import java.util.*
 
 data class Delivery(
-    var id: Int,
+    var id: String,
     var foods: ArrayList<Food>,
     var user: User,
     var address: Address,
@@ -22,17 +22,17 @@ data class Delivery(
     var createdDate: Date = Calendar.getInstance().time
 
     constructor(address: Address) : this(
-        -1,
+        Calendar.getInstance().time.toString(),
         arrayListOf(),
-        App.user,
+        App.user!!,
         address,
         Calendar.getInstance().time,
         PaymentMethod()
     )
     constructor() : this(
-        -1,
+        Calendar.getInstance().time.toString(),
         arrayListOf(),
-        App.user,
+        App.user!!,
         Address(),
         Calendar.getInstance().time,
         PaymentMethod()

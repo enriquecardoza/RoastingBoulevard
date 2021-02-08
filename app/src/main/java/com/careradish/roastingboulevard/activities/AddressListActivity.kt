@@ -77,9 +77,9 @@ class AddressListActivity : AppCompatActivity() {
         if (requestCode==Constants.codeRequestCreateAddres) {
 
             if (canEditAddress) {
-                addressEditAdapter.notifyItemInserted(App.user.addresses!!.count() - 1)
+                addressEditAdapter.notifyItemInserted(App.user?.addresses!!.count() - 1)
             } else {
-                addressSelectAdapter.notifyItemInserted(App.user.addresses!!.count() - 1)
+                addressSelectAdapter.notifyItemInserted(App.user?.addresses!!.count() - 1)
             }
         }
     }
@@ -95,14 +95,14 @@ class AddressListActivity : AppCompatActivity() {
         }*/
 
         fun adapterUpdated(address: Address) {
-            val pos = App.user.addresses!!.indexOf(address)
-            App.user.addresses!![pos] = address
+            val pos = App.user?.addresses!!.indexOf(address)
+            App.user!!.addresses!![pos] = address
             addressEditAdapter.notifyItemChanged(pos)
         }
 
         fun adapterErased(address: Address) {
-            val pos = App.user.addresses!!.indexOf(address)
-            App.user.addresses?.removeAt(pos)
+            val pos = App.user?.addresses!!.indexOf(address)
+            App.user!!.addresses?.removeAt(pos)
             addressEditAdapter.notifyItemRemoved(pos)
         }
     }

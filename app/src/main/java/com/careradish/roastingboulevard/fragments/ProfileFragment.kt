@@ -33,7 +33,7 @@ lateinit var buttAddress:Button
         var tempInflete = inflater.inflate(R.layout.fragment_profile, container, false)
         textWelcome = tempInflete.textViewProfileWelcome
         buttAddress=tempInflete.buttonAddresses
-        textWelcome.text=TranslationStrings.get(R.string.profile_welcome)+" "+App.user.name
+        textWelcome.text=TranslationStrings.get(R.string.profile_welcome)+" "+App.user?.name
         buttAddress.setOnClickListener {
             val intent=Intent(context,AddressListActivity::class.java)
             intent.putExtra(Constants.isAddressListEditOrSelect,true)

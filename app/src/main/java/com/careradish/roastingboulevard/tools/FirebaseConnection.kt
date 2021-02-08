@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.widget.Toast
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.classes.Address
-import com.careradish.roastingboulevard.classes.Category
-import com.careradish.roastingboulevard.classes.Food
-import com.careradish.roastingboulevard.classes.User
+import com.careradish.roastingboulevard.classes.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -42,6 +39,7 @@ class FirebaseConnection(var context: Context) {
                     if (task.isSuccessful) {
                         if (loginSuccess != null) {
                             val userId = auth!!.currentUser?.uid.toString()
+                            App.user= User()
                             App.user!!.id = userId
                             loginSuccess()
                         }
@@ -79,8 +77,8 @@ class FirebaseConnection(var context: Context) {
                             createSuccess()
                             val userId = auth.currentUser?.uid.toString()
                             App.user = user
-                            App.user.id = userId
-                            writeUser(App.user)
+                            App.user!!.id = userId
+                            writeUser(App.user!!)
                         })
 
                     } else {
@@ -130,10 +128,12 @@ class FirebaseConnection(var context: Context) {
             success: (() -> Unit)? = null,
             fail: (() -> Unit)? = null
         ) {
-            val task = referenceRoot.child(Constants.usersTittle).child(App.user.id)
-                .child(Constants.addressTittle).child(address.label).removeValue()
-            task.addOnCompleteListener {
-                if (task.isSuccessful) {
+            val task = App.user?.let {
+                referenceRoot.child(Constants.usersTittle).child(it.id)
+                    .child(Constants.addressTittle).child(address.label).removeValue()
+            }
+            task!!.addOnCompleteListener {
+                if (task!!.isSuccessful) {
                     if (success != null) {
                         success()
                     }
@@ -152,7 +152,7 @@ class FirebaseConnection(var context: Context) {
             fail: (() -> Unit)? = null
         ) {
 
-            val task = referenceRoot.child(Constants.usersTittle).child(App.user.id)
+            val task = referenceRoot.child(Constants.usersTittle).child(App.user!!.id)
                 .child(Constants.addressTittle).child(address.label).setValue(address)
             task.addOnCompleteListener {
                 if (task.isSuccessful) {
@@ -171,16 +171,16 @@ class FirebaseConnection(var context: Context) {
 
         fun loadAddresses(readSucces: (() -> Unit)? = null, readFail: (() -> Unit)? = null) {
 
-            val ref = referenceRoot.child(Constants.usersTittle).child(App.user.id)
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id)
                 .child(Constants.addressTittle)
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    App.user.addresses?.clear()
+                    App.user?.addresses?.clear()
                     if (readSucces != null) {
                         for (i in snapshot.children) {
                             var address: Address = i.getValue(Address::class.java)!!
-                            App.user.addresses?.add(address)
+                            App.user?.addresses?.add(address)
                         }
                         readSucces()
                     }
@@ -206,7 +206,7 @@ class FirebaseConnection(var context: Context) {
         }
 //endregion
 
-        //region Food
+        //region Category
         fun writeCategory(category: Category) {
 
             referenceRoot.child(Constants.categoryTittle).child(category.id.toString())
@@ -215,6 +215,41 @@ class FirebaseConnection(var context: Context) {
         }
 //endregion
 
+        //region Delivery
+        fun writeDelivery(delivery: Delivery) {
+
+            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveries).child(delivery.id).setValue(delivery)
+
+        }
+
+        fun readDeliveries(
+            readSucces: ((MutableList<Delivery>) -> Unit)? = null,
+            readFail: ((MutableList<Delivery>) -> Unit)? = null
+        ) {
+            var arr = mutableListOf<Delivery>()
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id)
+                .child(Constants.deliveries)
+            ref.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    referenceRoot.removeEventListener(this)
+                    if (readSucces != null) {
+                        for (i in snapshot.children) {
+                            var delivey: Delivery = i.getValue(Delivery::class.java)!!
+                            arr.add(delivey)
+                        }
+                        readSucces(arr)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    if (readFail != null) {
+                        readFail(arr)
+                    }
+                }
+            })
+        }
+
+//endregion
     }
 
 
