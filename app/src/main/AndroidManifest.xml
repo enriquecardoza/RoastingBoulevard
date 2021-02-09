@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoastingBoulevard">
-        <activity android:name=".activities.SelectPaymentMethodActivity"></activity>
+        <activity android:name=".activities.EditDataActivity"/>
+        <activity android:name=".activities.SelectPaymentMethodActivity" />
         <activity android:name=".activities.FoodDeliveryListActivity" />
         <activity android:name=".activities.FoodSelected" />
         <activity android:name=".activities.EditAddressActivity" />
         <activity android:name=".activities.CreateAddressActivity" />
-        <activity android:name=".activities.PaymentMethodListActivity" />
         <activity android:name=".activities.AddressListActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity

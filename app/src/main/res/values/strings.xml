@@ -149,4 +149,7 @@
     <string name="city_postalcode" translatable="false">Springfield 24530</string>
     <string name="send_recover_email">Send password recovery email?</string>
     <string name="recovery_email_sended">Recovery email sended</string>
+    <string name="create">Create</string>
+    <string name="edit">Edit</string>
+    <string name="edit_data">Edit your data</string>
 </resources>

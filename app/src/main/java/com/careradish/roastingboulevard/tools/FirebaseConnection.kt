@@ -25,7 +25,6 @@ class FirebaseConnection(var context: Context) {
         fun writeUser(user: User) {
 
             referenceRoot.child(Constants.usersTittle).child(user.id.toString()).setValue(user)
-
         }
 
         fun LoginUser(
@@ -126,6 +125,24 @@ class FirebaseConnection(var context: Context) {
         }
         fun sendRecoverEmail(email:String){
             auth.sendPasswordResetEmail(email)
+        }
+        fun updateEmailUser(newEmail:String,
+                            success: (() -> Unit)? = null,
+                            fail: (() -> Unit)? = null){
+            val user = auth.currentUser
+
+            user!!.updateEmail(newEmail)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        if (success != null) {
+                            success()
+                        }
+                    }else{
+                        if (fail != null) {
+                            fail()
+                        }
+                    }
+                }
         }
 //endregion
 

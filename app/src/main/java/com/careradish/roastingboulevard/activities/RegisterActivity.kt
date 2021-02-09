@@ -2,8 +2,6 @@ package com.careradish.roastingboulevard.activities
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
@@ -18,27 +16,16 @@ import java.util.regex.Pattern
 class RegisterActivity : AppCompatActivity() {
 
 
-    private lateinit var textName: EditText
-    private lateinit var textSurname: EditText
-    private lateinit var textAddress: EditText
-    private lateinit var textCity: EditText
-    private lateinit var textPostalCode: EditText
-    private lateinit var textEmail: EditText
-    private lateinit var textPassword: EditText
-    private lateinit var textConfirmPassword: EditText
-    private lateinit var textPhone: EditText
 
     private lateinit var buttonCreate: Button
-    private lateinit var buttonBack: ImageButton
 
     private lateinit var textInfo: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        AsingVariables()
         textInfo.text = ""
-        buttonBack.setOnClickListener {
+        toolbarRegister.setNavigationOnClickListener {
             finish()
             MainActivity.changueSelectedTab(2)
         }
@@ -47,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
             if (!allFieldFilled()) {
                 textInfo.text = TranslationStrings.get(R.string.errorFieldsFilled)
 
-            } else if (!isEmailValid(textEmail.text.toString())) {
+            } else if (!isEmailValid(createUser.text.toString())) {
 
                 textInfo.text = TranslationStrings.get(R.string.errorEmail)
             } else if (!passwordSizeCorrect()) {
@@ -56,57 +43,49 @@ class RegisterActivity : AppCompatActivity() {
 
                 textInfo.text = TranslationStrings.get(R.string.errorPasswordNotMatch)
             } else {
-                val user = User(
-                    "0",
-                    textName.text.toString(),
-                    textSurname.text.toString(),
-                    textEmail.text.toString(),
-                    textPhone.text.toString().toInt(),
-                )
-                textInfo.text = ""
 
-
-                FirebaseConnection.createUser(user, textPassword.text.toString(),this, {
-
-                    MainActivity.ForceUpdatePagerAdapter(2)
-                    finish()
-                })
+                createUser()
 
             }
         }
+
     }
 
-    private fun AsingVariables() {
-        textName = editTextName
-        textSurname = editTextSurname
-        textEmail = editTextEmail
-        textPassword = editTextPassword
-        textConfirmPassword = editTextPasswordRepeat
-        textPhone = editTextPhone
-        buttonCreate = buttonRegister
-        buttonBack = closeRegister
-        textInfo = info_register
+    private fun createUser() {
+        val user = User(
+            "0",
+            editTextName.text.toString(),
+            editTextSurname.text.toString(),
+            createUser.text.toString(),
+            editTextPhone.text.toString().toInt(),
+        )
+        textInfo.text = ""
+
+
+        FirebaseConnection.createUser(user, editTextPassword.text.toString(), this, {
+
+            MainActivity.ForceUpdatePagerAdapter(2)
+            finish()
+        })
     }
+
 
     fun allFieldFilled(): Boolean {
         var comp = true
 
         when {
-            textName.text.isNullOrEmpty() -> comp = false
-            textSurname.text.isNullOrEmpty() -> comp = false
-            textAddress.text.isNullOrEmpty() -> comp = false
-            textCity.text.isNullOrEmpty() -> comp = false
-            textPostalCode.text.isNullOrEmpty() -> comp = false
-            textEmail.text.isNullOrEmpty() -> comp = false
-            textPassword.text.isNullOrEmpty() -> comp = false
-            textConfirmPassword.text.isNullOrEmpty() -> comp = false
-            textPhone.text.isNullOrEmpty() -> comp = false
+            editTextName.text.isNullOrEmpty() -> comp = false
+            editTextSurname.text.isNullOrEmpty() -> comp = false
+            createUser.text.isNullOrEmpty() -> comp = false
+            editTextPassword.text.isNullOrEmpty() -> comp = false
+            editTextPasswordRepeat.text.isNullOrEmpty() -> comp = false
+            editTextPhone.text.isNullOrEmpty() -> comp = false
         }
         return comp
     }
 
     fun passwordConfirmed(): Boolean {
-        val comp = textPassword.text.toString().equals(textConfirmPassword.text.toString())
+        val comp = editTextPassword.text.toString().equals(editTextPasswordRepeat.text.toString())
         return comp
     }
 
@@ -117,7 +96,7 @@ class RegisterActivity : AppCompatActivity() {
         return matcher.matches()
     }
     fun passwordSizeCorrect(): Boolean {
-        val comp = textPassword.text.toString().length>=6
+        val comp = editTextPassword.text.toString().length>=6
         return comp
     }
 }
