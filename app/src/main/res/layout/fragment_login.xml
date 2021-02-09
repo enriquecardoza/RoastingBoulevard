@@ -112,7 +112,7 @@
                 android:layout_margin="15dp"
                 android:background="@color/cream"
                 android:orientation="vertical"
-                android:paddingTop="60dp">
+                android:paddingTop="50dp">
 
                 <ImageView
                     android:id="@+id/imageView"

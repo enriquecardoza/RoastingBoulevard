@@ -9,7 +9,7 @@ data class PaymentMethod(
     var method: Method
 ) {
     var creditCardNumber: Int? =null
-    var expirationDate: Date? =null
+    var expirationDate: String? =null
     var cvv:Int?=null
 
     constructor():this(Method.Cash)
@@ -20,6 +20,9 @@ data class PaymentMethod(
     companion object {
         fun getArrMethods():ArrayList<Method>{
             return  arrayListOf(Method.Cash,Method.MasterCard,Method.Visa)
+        }
+        fun getArrMethodsString():ArrayList<String>{
+            return  arrayListOf(TranslationStrings.get(R.string.cash),Method.MasterCard.name,Method.Visa.name)
         }
     }
 }

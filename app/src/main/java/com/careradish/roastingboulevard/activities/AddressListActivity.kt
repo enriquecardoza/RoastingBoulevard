@@ -32,20 +32,20 @@ class AddressListActivity : AppCompatActivity() {
 
         buttCreateAddress.setOnClickListener {
            val intent = Intent(this, CreateAddressActivity::class.java)
-           startActivityForResult(intent, Constants.codeRequestCreateAddres)
+           startActivityForResult(intent, Constants.codeRequestCreateAddress)
         }
 
         val bundle = intent.extras
         if (bundle != null) {
             canEditAddress =bundle.getBoolean(Constants.isAddressListEditOrSelect, false)
         }
+
         toolbarAddressList.setNavigationOnClickListener { finish() }
 
-
         if (canEditAddress)
-            toolbarAddressList.title=TranslationStrings.get(R.string.create_edit_address)
+            toolbarAddressList?.title=TranslationStrings.get(R.string.create_edit_address)
         else {
-            toolbarAddressList.title = TranslationStrings.get(R.string.select_address)
+            toolbarAddressList?.title = TranslationStrings.get(R.string.select_address)
         }
 
         loadAddresses({
@@ -74,7 +74,7 @@ class AddressListActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode==Constants.codeRequestCreateAddres) {
+        if (requestCode==Constants.codeRequestCreateAddress) {
 
             if (canEditAddress) {
                 addressEditAdapter.notifyItemInserted(App.user?.addresses!!.count() - 1)

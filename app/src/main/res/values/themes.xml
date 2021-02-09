@@ -48,4 +48,5 @@
             @style/ShapeAppearanceOverlay.MaterialComponents.ExtendedFloatingActionButton
         </item>
     </style>
+
 </resources>

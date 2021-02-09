@@ -5,15 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream"
+    android:pointerIcon="arrow"
     tools:context=".activities.SelectPaymentMethodActivity">
 
     <Spinner
         android:id="@+id/spinnerPaymentMethod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:accessibilityPaneTitle="ddd"
-        android:foreground="@color/paleOrange"
+        android:layout_margin="15dp"
+        android:background="@color/paleOrange"
+        android:entries="@android:array/organizationTypes"
+        android:padding="5dp"
+        android:popupBackground="@color/paleOrange"
+        android:popupTheme="@style/CustomButtonFullSize"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -30,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/abc_vector_test"
-        app:title="@string/edit_address"
+        app:title="@string/payment_method"
         app:titleTextColor="@color/white" />
 
     <Button
@@ -38,7 +43,7 @@
         style="@style/CustomButtonFullSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -77,7 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:maxLength="16" />
 
         <TextView
             android:id="@+id/textView16"
@@ -90,7 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
+            android:enabled="false"
+            android:inputType="date" />
 
         <TextView
             android:id="@+id/textView17"
@@ -103,7 +110,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:maxLength="3" />
 
     </LinearLayout>
 

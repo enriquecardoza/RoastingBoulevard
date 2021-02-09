@@ -42,6 +42,7 @@ class FirebaseConnection(var context: Context) {
                             App.user= User()
                             App.user!!.id = userId
                             loginSuccess()
+                            App.storePrefUser(email,password)
                         }
 
                     } else {
@@ -97,7 +98,7 @@ class FirebaseConnection(var context: Context) {
 
         fun readUser(
             userId: String,
-            readSucces: (() -> Unit)? = null,
+            readSucces: ((user:User) -> Unit)? = null,
             readFail: (() -> Unit)? = null
         ) {
 
@@ -105,10 +106,11 @@ class FirebaseConnection(var context: Context) {
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    val user=snapshot.getValue(User::class.java)!!
                     if (readSucces != null) {
-                        readSucces()
+                        readSucces(user)
                     }
-                    App.user = snapshot.getValue(User::class.java)!!
+                    App.user = user
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -119,6 +121,12 @@ class FirebaseConnection(var context: Context) {
             })
         }
 
+        fun logoutUser(){
+            auth?.signOut()
+        }
+        fun sendRecoverEmail(email:String){
+            auth.sendPasswordResetEmail(email)
+        }
 //endregion
 
 //region address
@@ -218,7 +226,7 @@ class FirebaseConnection(var context: Context) {
         //region Delivery
         fun writeDelivery(delivery: Delivery) {
 
-            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(delivery.id).setValue(delivery)
+            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(delivery.id!!).setValue(delivery)
 
         }
 

@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.DeveloperFreshData
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesUtil
@@ -53,6 +55,8 @@ class InitFragment : Fragment() {
         mapFragment = tempInflater.mapViewInit
         SetDebugUpload()
         SetMap(savedInstanceState, container, tempInflater)
+        //if (App.logged)//no carga tan rapido
+        //    tempInflater.textViewInitWelcome.text=TranslationStrings.get(R.string.init_welcome)+" ${App.user?.name}"
         return tempInflater
     }
 
@@ -92,7 +96,7 @@ class InitFragment : Fragment() {
             mapFragment.getMapAsync(OnMapReadyCallback {
 
                 val latLng = LatLng(40.294237, -3.746450)
-                val cameraPosition = CameraPosition.Builder().target(latLng).zoom(20.0f).build()
+                val cameraPosition = CameraPosition.Builder().target(latLng).zoom(15.0f).build()
                 val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
                 it.moveCamera(cameraUpdate)
                 it.addMarker( MarkerOptions()

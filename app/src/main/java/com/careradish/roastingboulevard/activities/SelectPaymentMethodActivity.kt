@@ -20,22 +20,21 @@ import java.util.*
 class SelectPaymentMethodActivity : AppCompatActivity() {
 
 
-    var method=PaymentMethod.Method.Cash
+    var method = PaymentMethod.Method.Cash
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_payment_method)
-        val arrayAdapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_dropdown_item,
-            PaymentMethod.getArrMethods()
-        )
-        PrepareSpinnerSelectType(arrayAdapter)
 
-        editTextExpirationDate.setOnClickListener {
-            showDatePickerDialog()
+        PrepareSpinnerSelectType()
+
+        editTextExpirationDate.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus)
+                showDatePickerDialog()
         }
-
-        textViewAmountPayment.text=App.actualDelivery?.amount.toString()
+        editTextExpirationDate.setOnClickListener {
+                showDatePickerDialog()
+        }
+        textViewAmountPayment.text = App.actualDelivery?.amount.toString()+" €"
 
         buttonFinishPayment.setOnClickListener {
             FinishPayment()
@@ -46,22 +45,26 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
         var payment = PaymentMethod()
         if (method != PaymentMethod.Method.Cash) {
             payment.creditCardNumber = editTextCardNumber.text.toString().toInt()
-            val date: Date =
-                SimpleDateFormat("MM/yyyy").parse(editTextExpirationDate.text.toString())
-            payment.expirationDate = date
+            payment.expirationDate = editTextExpirationDate.text.toString()
             payment.cvv = editTextCVV.text.toString().toInt()
         }
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-
         FirebaseConnection.writeDelivery(App.actualDelivery!!)
         App.actualDelivery = null
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
         MainActivity.setInvisibleSeeOrderButton()
     }
 
-    private fun PrepareSpinnerSelectType(arrayAdapter: ArrayAdapter<PaymentMethod.Method>) {
+    private fun PrepareSpinnerSelectType() {
+
+        val arrayAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            PaymentMethod.getArrMethodsString()
+        )
         spinnerPaymentMethod.adapter = arrayAdapter
-        spinnerPaymentMethod.setOnItemSelectedListener(object : OnItemSelectedListener {
+        spinnerPaymentMethod.setSelection(0)
+        spinnerPaymentMethod.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
                 selectedItemView: View?,
@@ -73,19 +76,20 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
                 } else {
                     layoutCreditCardData.visibility = View.VISIBLE
                 }
-                method == PaymentMethod.getArrMethods().get(position)
+                spinnerPaymentMethod.setSelection(position)
+                method = PaymentMethod.getArrMethods()[position]
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
                 // your code here
             }
-        })
+        }
     }
 
     private fun showDatePickerDialog() {
         val newFragment = DatePickerFragment()
         newFragment.show(supportFragmentManager, "datePicker")
-        newFragment.dateSet={ dateResult->
+        newFragment.dateSet = { dateResult ->
             editTextExpirationDate.setText(dateResult)
         }
     }

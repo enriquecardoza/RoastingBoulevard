@@ -10,15 +10,17 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.AddressListActivity
+import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment() {
 
     lateinit var textWelcome: TextView
-lateinit var buttAddress:Button
+    lateinit var buttAddress: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +34,18 @@ lateinit var buttAddress:Button
 
         var tempInflete = inflater.inflate(R.layout.fragment_profile, container, false)
         textWelcome = tempInflete.textViewProfileWelcome
-        buttAddress=tempInflete.buttonAddresses
-        textWelcome.text=TranslationStrings.get(R.string.profile_welcome)+" "+App.user?.name
+        buttAddress = tempInflete.buttonAddresses
+        textWelcome.text = TranslationStrings.get(R.string.profile_welcome) + " " + App.user?.name
         buttAddress.setOnClickListener {
-            val intent=Intent(context,AddressListActivity::class.java)
-            intent.putExtra(Constants.isAddressListEditOrSelect,true)
+            val intent = Intent(context, AddressListActivity::class.java)
+            intent.putExtra(Constants.isAddressListEditOrSelect, true)
             startActivity(intent)
+        }
+        tempInflete.buttonCloseSession.setOnClickListener {
+            FirebaseConnection.logoutUser()
+            App.user = null
+            App.erasePrefUser()
+            MainActivity.ForceUpdatePagerAdapter(2)
         }
         return tempInflete
     }

@@ -20,10 +20,10 @@
 
         <ImageView
             android:id="@+id/foodItemImage"
-            android:layout_width="140dp"
+            android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_gravity="center"
-            app:srcCompat="@mipmap/alitas_pollo" />
+            app:srcCompat="@mipmap/croquetas_jamon" />
 
         <TextView
             android:id="@+id/foodItemName"

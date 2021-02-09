@@ -57,9 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun showToast(text: String) {
-        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
-    }
+
 
     companion object {
         private lateinit var adapterViewPager: MainPagerAdapter
@@ -100,6 +98,20 @@ class MainActivity : AppCompatActivity() {
         }
         fun setInvisibleSeeOrderButton(){
             orderLayoutButton.visibility=View.GONE
+
+        }
+        fun showToast(text: String) {
+            Toast.makeText(App.context, text, Toast.LENGTH_SHORT).show()
+        }
+        fun LockTabs() {
+            tableLayout.visibility = View.GONE
+            orderLayoutButton.visibility=View.GONE
+        }
+
+        fun UnlockTabs() {
+            tableLayout.visibility = View.VISIBLE
+            if (App.actualDelivery!=null)
+                orderLayoutButton.visibility=View.VISIBLE
         }
     }
 

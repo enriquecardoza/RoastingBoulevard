@@ -35,7 +35,7 @@ class FoodDeliveryAdapter () : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHold
         holder.buttErase.setOnClickListener {
             val builder = AlertDialog.Builder(it.context)
 
-            builder.setTitle("Confirm")
+            builder.setTitle(TranslationStrings.get(R.string.confirmation))
             builder.setMessage(TranslationStrings.get(R.string.are_you_sure))
 
             builder.setPositiveButton(

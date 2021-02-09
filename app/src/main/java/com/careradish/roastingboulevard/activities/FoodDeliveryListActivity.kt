@@ -24,7 +24,7 @@ class FoodDeliveryListActivity : AppCompatActivity() {
         for (i in App.actualDelivery!!.foods){
             totalAccount+=i.price
         }
-        textViewFullPrice.text=totalAccount.toString()
+        textViewFullPrice.text=totalAccount.toString()+" €"
 
         buttonProcessOrder.setOnClickListener {
             val intent=Intent(this,AddressListActivity::class.java)
@@ -32,9 +32,7 @@ class FoodDeliveryListActivity : AppCompatActivity() {
             startActivity(intent)
         }
         buttonAddMoreFood.setOnClickListener {
-            val inte=Intent(this, MainActivity::class.java)
-            inte.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(inte)
+            finish()
             MainActivity.changueSelectedTab(1)
         }
     }

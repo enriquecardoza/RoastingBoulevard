@@ -121,7 +121,7 @@ class CustomSnackbar(
                     App.hideFoodSnackbar()
                 }
 
-                App.LockTabs()
+                MainActivity.LockTabs()
                 val orderButton = getView().orderButtonSnack
                 orderButton.setOnClickListener {
 
@@ -141,6 +141,7 @@ class CustomSnackbar(
                         }
 
                         App.actualDelivery!!.foods.add(food)
+                        MainActivity.showToast(TranslationStrings.get(R.string.added_cart,TranslationStrings.get(food.name)))
                     }
 
                 }

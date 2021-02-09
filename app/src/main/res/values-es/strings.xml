@@ -121,5 +121,12 @@
     <string name="cash">En efectivo</string>
     <string name="card_number">Numero de tarjeta</string>
     <string name="expiration_date">Fecha de caducidad</string>
+    <string name="finish">Finalizar</string>
+    <string name="added_cart">Añadido %1$s al carro</string>
+    <string name="confirmation">Confirmación</string>
+    <string name="where_we_are">¿Dónde estamos?</string>
+    <string name="address_number">Calle falsa Nº123</string>
+    <string name="send_recover_email">¿Enviar email de recuperacion de contraseña?</string>
+    <string name="recovery_email_sended">Email de recuperacion de contraseña enviado</string>
 
 </resources>

@@ -10,12 +10,11 @@
     <androidx.constraintlayout.widget.Group
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="button,button4,button3,button6,button5,buttonAddresses" />
+        app:constraint_referenced_ids="button,button4,button3,buttonCloseSession,button5,buttonAddresses" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cream"
         android:orientation="vertical">
 
         <LinearLayout
@@ -48,9 +47,10 @@
                 android:id="@+id/imageViewProfileUser"
                 android:layout_width="118dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:mipmap/sym_def_app_icon"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@mipmap/icon_user"
+                app:tint="@color/white" />
 
         </LinearLayout>
 
@@ -84,7 +84,7 @@
             style="@style/CustomButtonFullSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/changue_delivery"
             android:textAlignment="textStart"
             android:textColor="@color/darkGrey" />
@@ -99,7 +99,7 @@
             style="@style/CustomButtonFullSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/personal_data"
             android:textAlignment="textStart"
             android:textColor="@color/darkGrey" />
@@ -123,7 +123,7 @@
             style="@style/CustomButtonFullSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/my_orders"
             android:textAlignment="textStart"
             android:textColor="@color/darkGrey" />
@@ -149,11 +149,11 @@
             android:background="@android:color/darker_gray" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/buttonCloseSession"
             style="@style/CustomButtonFullSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
+            android:backgroundTint="@color/white"
             android:text="@string/close_session"
             android:textAlignment="textStart"
             android:textColor="@color/darkGrey" />

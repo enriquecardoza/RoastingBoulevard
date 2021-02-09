@@ -4,12 +4,12 @@ import com.careradish.roastingboulevard.tools.App
 import java.util.*
 
 data class Delivery(
-    var id: String,
+    var id: String?,
     var foods: ArrayList<Food>,
-    var user: User,
     var address: Address,
-    var deliveredDate: Date,
+    var deliveredDate: String?,
     var paymentMethod: PaymentMethod,
+    var deliveryState :DeliveryState,
 ) {
     var amount: Float = 0.0f
         get() {
@@ -19,22 +19,24 @@ data class Delivery(
             }
             return count
         }
-    var createdDate: Date = Calendar.getInstance().time
 
     constructor(address: Address) : this(
-        Calendar.getInstance().time.toString(),
+        App.getToday(),
         arrayListOf(),
-        App.user!!,
         address,
-        Calendar.getInstance().time,
-        PaymentMethod()
+        App.getToday(),
+        PaymentMethod(),
+        DeliveryState.Delivered,
     )
     constructor() : this(
-        Calendar.getInstance().time.toString(),
+        App.getToday(),
         arrayListOf(),
-        App.user!!,
         Address(),
-        Calendar.getInstance().time,
-        PaymentMethod()
+        App.getToday(),
+        PaymentMethod(),
+        DeliveryState.Delivered,
     )
+    enum class DeliveryState(state:Int) {
+        Receveided(0), Cooking(1),Distribution(2),Delivered(3);
+    }
 }

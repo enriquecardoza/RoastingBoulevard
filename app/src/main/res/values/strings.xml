@@ -141,4 +141,12 @@
     <string name="cash">Cash</string>
     <string name="card_number">Card number</string>
     <string name="expiration_date">Expiration date</string>
+    <string name="finish">Finish</string>
+    <string name="added_cart">Added %1$s to the cart</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="where_we_are">Where are we?</string>
+    <string name="address_number">Falsa St Nº123</string>
+    <string name="city_postalcode" translatable="false">Springfield 24530</string>
+    <string name="send_recover_email">Send password recovery email?</string>
+    <string name="recovery_email_sended">Recovery email sended</string>
 </resources>
