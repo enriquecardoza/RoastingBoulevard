@@ -37,17 +37,17 @@ class FirebaseConnection(var context: Context) {
                 .addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         if (loginSuccess != null) {
-                            val userId = auth!!.currentUser?.uid.toString()
-                            App.user= User()
-                            App.user!!.id = userId
                             loginSuccess()
-                            App.storePrefUser(email,password)
                         }
-
+                        val userId = auth!!.currentUser?.uid.toString()
+                        readUser(userId,{
+                            App.user=it
+                            App.storePrefUser(email,password)
+                        })
                     } else {
                         Toast.makeText(
                             activity.applicationContext,
-                            TranslationStrings.get(R.string.errorLogin),
+                            TranslationStrings.get(R.string.error_Login),
                             Toast.LENGTH_SHORT
                         ).show()
                         if (loginFail != null) {

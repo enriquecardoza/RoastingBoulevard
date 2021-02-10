@@ -13,8 +13,6 @@ import com.careradish.roastingboulevard.fragments.DatePickerFragment
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import kotlinx.android.synthetic.main.activity_select_payment_method.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class SelectPaymentMethodActivity : AppCompatActivity() {
@@ -48,20 +46,22 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
             payment.expirationDate = editTextExpirationDate.text.toString()
             payment.cvv = editTextCVV.text.toString().toInt()
         }
+        App.user?.deliveries?.add(App.actualDelivery!!)
         FirebaseConnection.writeDelivery(App.actualDelivery!!)
         App.actualDelivery = null
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        MainActivity.setInvisibleSeeOrderButton()
+        MainActivity.hideOrderButton()
     }
 
     private fun PrepareSpinnerSelectType() {
 
         val arrayAdapter = ArrayAdapter(
             this,
-            android.R.layout.simple_spinner_dropdown_item,
+            R.layout.spinner_item,
             PaymentMethod.getArrMethodsString()
         )
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinnerPaymentMethod.adapter = arrayAdapter
         spinnerPaymentMethod.setSelection(0)
         spinnerPaymentMethod.onItemSelectedListener = object : OnItemSelectedListener {

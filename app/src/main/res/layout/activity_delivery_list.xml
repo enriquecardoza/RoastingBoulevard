@@ -36,7 +36,7 @@
         android:id="@+id/textViewFullPrice"
         android:layout_width="100dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         android:elevation="10dp"
         android:gravity="center|fill_horizontal"
         android:paddingEnd="10dp"

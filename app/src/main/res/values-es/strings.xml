@@ -30,12 +30,12 @@
     <string name="access_profile">Accede a tu perfil</string>
     <string name="log_on">Acceder</string>
     <string name="register">Registrarse</string>
-    <string name="errorFieldsFilled">Error: Todos los campos tienen que estar llenos</string>
-    <string name="errorPasswordNotMatch">Error: Las contraseñas deben coincidir</string>
-    <string name="errorEmail">Error: el formato de email no es correcto</string>
+    <string name="error_Fields_Filled">Error: Todos los campos tienen que estar llenos</string>
+    <string name="error_Password_Not_Match">Error: Las contraseñas deben coincidir</string>
+    <string name="error_Email">Error: el formato de email no es correcto</string>
     <string name="registered">Registrado correctamente</string>
-    <string name="errorLogin">Autentificación fallida</string>
-    <string name="errorLenghtPassword">Error: La contraseña debe tener 6 digitos o más</string>
+    <string name="error_Login">Autentificación fallida</string>
+    <string name="error_Lenght_Password">Error: La contraseña debe tener 6 digitos o más</string>
     <string name="label">Etiqueta</string>
     <string name="street_name">Nombre de la calle</string>
     <string name="street_number">Numero de la calle</string>
@@ -131,5 +131,7 @@
     <string name="create">Crear</string>
     <string name="edit">Editar</string>
     <string name="edit_data">Edita tus datos</string>
+    <string name="session_closed">Sesión cerrada</string>
+    <string name="error_have_food">Error: debe tener comida en su carro</string>
 
 </resources>

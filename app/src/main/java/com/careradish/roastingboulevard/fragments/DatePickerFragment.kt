@@ -41,7 +41,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-            dateSet?.invoke("$month.$year")
+            dateSet?.invoke("$month-$year")
     }
 
     var dateSet: ((dateResult:String) -> Unit)? = null

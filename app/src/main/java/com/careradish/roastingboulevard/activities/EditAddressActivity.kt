@@ -40,7 +40,7 @@ class EditAddressActivity : AppCompatActivity() {
             FirebaseConnection.writeAddress(newaddress)
             finish()
         }
-        //toolbarEditAddress.setOnClickListener { finish() }
+        toolbarEditAddress.setNavigationOnClickListener { finish() }
 
     }
 }

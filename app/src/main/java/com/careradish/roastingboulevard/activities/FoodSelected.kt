@@ -35,7 +35,7 @@ class FoodSelected : AppCompatActivity() {
             val int= Intent(this,FoodDeliveryListActivity::class.java)
             int.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(int)
-            MainActivity.setVisibleSeeOrderButton()
+            MainActivity.showOrderButton()
         }
     }
 }

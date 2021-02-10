@@ -137,7 +137,7 @@ class CustomSnackbar(
                         App.hideFoodSnackbar()
                         if (App.actualDelivery == null) {
                             App.actualDelivery = Delivery()
-                            MainActivity.setVisibleSeeOrderButton()
+                            MainActivity.showOrderButton()
                         }
 
                         App.actualDelivery!!.foods.add(food)

@@ -33,8 +33,12 @@
                 android:id="@+id/closeSnack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
                 android:background="@color/transparent"
-                android:tint="@color/purple_700"
+                android:tint="@color/darkBrown"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
         </RelativeLayout>
 
@@ -81,7 +85,7 @@
                     android:layout_below="@+id/foodImageSnack"
                     android:layout_alignParentBottom="false"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="0dp"
                     android:gravity="center"
                     android:singleLine="true"
@@ -114,7 +118,8 @@
                     android:layout_marginEnd="0dp"
                     android:gravity="center"
                     android:paddingRight="0dp"
-                    android:text="10,50€" />
+                    android:text="10,50€"
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:id="@+id/layoutImages"

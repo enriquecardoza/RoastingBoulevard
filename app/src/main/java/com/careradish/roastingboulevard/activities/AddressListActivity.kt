@@ -13,7 +13,6 @@ import com.careradish.roastingboulevard.adapters.AddressSelectAdapter
 import com.careradish.roastingboulevard.classes.Address
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
-import com.careradish.roastingboulevard.tools.FirebaseConnection.Companion.loadAddresses
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.activity_addresses_list.*
 
@@ -31,50 +30,46 @@ class AddressListActivity : AppCompatActivity() {
         buttCreateAddress = buttonGoCreateAddress
 
         buttCreateAddress.setOnClickListener {
-           val intent = Intent(this, CreateAddressActivity::class.java)
-           startActivityForResult(intent, Constants.codeRequestCreateAddress)
+            val intent = Intent(this, CreateAddressActivity::class.java)
+            startActivityForResult(intent, Constants.codeRequestCreateAddress)
         }
 
         val bundle = intent.extras
         if (bundle != null) {
-            canEditAddress =bundle.getBoolean(Constants.isAddressListEditOrSelect, false)
+            canEditAddress = bundle.getBoolean(Constants.isAddressListEditOrSelect, false)
         }
 
         toolbarAddressList.setNavigationOnClickListener { finish() }
 
         if (canEditAddress)
-            toolbarAddressList?.title=TranslationStrings.get(R.string.create_edit_address)
+            toolbarAddressList?.title = TranslationStrings.get(R.string.create_edit_address)
         else {
             toolbarAddressList?.title = TranslationStrings.get(R.string.select_address)
         }
 
-        loadAddresses({
-            if (canEditAddress) {
-                addressEditAdapter = AddressEditAdapter()
-                recyclerView.adapter = addressEditAdapter
-            } else {
-                addressSelectAdapter = AddressSelectAdapter()
-                recyclerView.adapter = addressSelectAdapter
-                addressSelectAdapter.onSelectedAddress = {
-                    if (it != null) {
-                        App.actualDelivery?.address =it
-                        //Todo q coja el mas alto y lo guarde
-                    }
-                    val inte = Intent(this, SelectPaymentMethodActivity::class.java)
-                    startActivity(inte)
+        if (canEditAddress) {
+            addressEditAdapter = AddressEditAdapter()
+            recyclerView.adapter = addressEditAdapter
+        } else {
+            addressSelectAdapter = AddressSelectAdapter()
+            recyclerView.adapter = addressSelectAdapter
+            addressSelectAdapter.onSelectedAddress = {
+                if (it != null) {
+                    App.actualDelivery?.address = it
                 }
+                val inte = Intent(this, SelectPaymentMethodActivity::class.java)
+                startActivity(inte)
             }
+        }
 
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.setHasFixedSize(true)
-        })
-
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
 
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode==Constants.codeRequestCreateAddress) {
+        if (requestCode == Constants.codeRequestCreateAddress) {
 
             if (canEditAddress) {
                 addressEditAdapter.notifyItemInserted(App.user?.addresses!!.count() - 1)
@@ -85,7 +80,7 @@ class AddressListActivity : AppCompatActivity() {
     }
 
     companion object {
-        var canEditAddress:Boolean = false
+        var canEditAddress: Boolean = false
         lateinit var addressEditAdapter: AddressEditAdapter
         lateinit var addressSelectAdapter: AddressSelectAdapter
 /*        fun dataCreated(address: Address) {

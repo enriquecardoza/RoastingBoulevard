@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.activities.AddressListActivity
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.activities.RegisterActivity
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
+import com.careradish.roastingboulevard.tools.Tools
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
@@ -50,32 +51,41 @@ class LoginFragment : Fragment() {
            })
 
         }
-        fogotPasswordButton.setOnClickListener {
+        tempInflater.fogotPasswordButton.setOnClickListener {
 
-
-            val builder = AlertDialog.Builder(context)
-
-            builder.setMessage(TranslationStrings.get(R.string.send_recover_email))
-
-            builder.setPositiveButton(
-                R.string.yes
-            ) { dialog, _ ->
-                FirebaseConnection.sendRecoverEmail(editTextEmailLogin.text.toString())
-                MainActivity.showToast(TranslationStrings.get(R.string.recovery_email_sended))
-                dialog.dismiss()
+            if (Tools.isEmailValid(editTextEmailLogin.text.toString())){
+                ShowAletDialog()
+            }else{
+                Toast.makeText(context,TranslationStrings.get(R.string.error_Email),Toast.LENGTH_LONG).show()
             }
 
-            builder.setNegativeButton(
-                R.string.No
-            ) { dialog, _ ->
-                dialog.dismiss()
-            }
 
-            val alert: AlertDialog? = builder.create()
-            alert!!.show()
 
         }
         return tempInflater
+    }
+
+    private fun ShowAletDialog() {
+        val builder = AlertDialog.Builder(context)
+
+        builder.setMessage(TranslationStrings.get(R.string.send_recover_email))
+
+        builder.setPositiveButton(
+            R.string.yes
+        ) { dialog, _ ->
+            FirebaseConnection.sendRecoverEmail(editTextEmailLogin.text.toString())
+            MainActivity.showToast(TranslationStrings.get(R.string.recovery_email_sended))
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton(
+            R.string.No
+        ) { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val alert: AlertDialog? = builder.create()
+        alert!!.show()
     }
 
     companion object {

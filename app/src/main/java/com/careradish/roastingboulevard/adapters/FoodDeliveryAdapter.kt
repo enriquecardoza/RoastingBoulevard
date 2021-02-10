@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
@@ -44,6 +45,9 @@ class FoodDeliveryAdapter () : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHold
                 App.actualDelivery!!.foods.remove(food)
                 notifyItemRemoved(position)
                 dialog.dismiss()
+                if ( App.actualDelivery!!.foods.size<=0){
+                    MainActivity.hideOrderButton()
+                }
             }
 
             builder.setNegativeButton(

@@ -30,12 +30,12 @@
     <string name="access_profile">Access to your profile</string>
     <string name="log_on">Log on</string>
     <string name="register">Register</string>
-    <string name="errorFieldsFilled">Error: All fields must be filled</string>
-    <string name="errorPasswordNotMatch">Error: Passwords must match</string>
-    <string name="errorEmail">"Error: the email format is not correct "</string>
+    <string name="error_Fields_Filled">Error: All fields must be filled</string>
+    <string name="error_Password_Not_Match">Error: Passwords must match</string>
+    <string name="error_Email">"Error: the email format is not correct "</string>
     <string name="registered">Registered correctly</string>
-    <string name="errorLogin">Authentication failed</string>
-    <string name="errorLenghtPassword">Error: Passwords must be 6 or higher</string>
+    <string name="error_Login">Authentication failed</string>
+    <string name="error_Lenght_Password">Error: Passwords must be 6 or higher</string>
     <string name="label">Label</string>
     <string name="street_name">Street name</string>
     <string name="street_number">Street number</string>
@@ -131,4 +131,6 @@
     <string name="create">Create</string>
     <string name="edit">Edit</string>
     <string name="edit_data">Edit your data</string>
+    <string name="session_closed">Session closed</string>
+    <string name="error_have_food">Error: must have food in your cart</string>
 </resources>

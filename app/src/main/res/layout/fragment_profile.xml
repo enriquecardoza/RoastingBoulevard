@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.Group
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="button,button4,button3,buttonCloseSession,button5,buttonAddresses" />
+        app:constraint_referenced_ids="button,button4,buttonPersonalData,buttonCloseSession,button5,buttonAddresses" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,7 +95,7 @@
             android:background="@android:color/darker_gray" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonPersonalData"
             style="@style/CustomButtonFullSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,6 +1,7 @@
 package com.careradish.roastingboulevard.classes
 
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.Tools
 import java.util.*
 
 data class Delivery(
@@ -21,18 +22,18 @@ data class Delivery(
         }
 
     constructor(address: Address) : this(
-        App.getToday(),
+        Tools.getToday(),
         arrayListOf(),
         address,
-        App.getToday(),
+        Tools.getToday(),
         PaymentMethod(),
         DeliveryState.Delivered,
     )
     constructor() : this(
-        App.getToday(),
+        Tools.getToday(),
         arrayListOf(),
         Address(),
-        App.getToday(),
+        Tools.getToday(),
         PaymentMethod(),
         DeliveryState.Delivered,
     )

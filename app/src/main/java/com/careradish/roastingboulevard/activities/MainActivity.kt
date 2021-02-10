@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         actionBar?.hide()
         App.contentView = findViewById(android.R.id.content)
         instance=this
+        App.recoverPrefUser(this)
 
         PreparePager()
 
@@ -56,7 +57,11 @@ class MainActivity : AppCompatActivity() {
         App.tabLayout = tableLayout
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        if (App.actualDelivery!=null&&App.actualDelivery?.foods?.size!! <=0)
+            hideOrderButton()
+    }
 
 
     companion object {
@@ -82,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             tableLayout.setScrollPosition(pos, 0f, true)
             adapterViewPager.notifyDataSetChanged()
         }
-        fun setVisibleSeeOrderButton(){
+        fun showOrderButton(){
             orderLayoutButton.visibility=View.VISIBLE
             val anim: Animation = ScaleAnimation(
                 1f, 1f,  // Start and end values for the X axis scaling
@@ -96,9 +101,8 @@ class MainActivity : AppCompatActivity() {
             anim.duration = 200
             orderLayoutButton.startAnimation(anim)
         }
-        fun setInvisibleSeeOrderButton(){
+        fun hideOrderButton(){
             orderLayoutButton.visibility=View.GONE
-
         }
         fun showToast(text: String) {
             Toast.makeText(App.context, text, Toast.LENGTH_SHORT).show()
@@ -113,6 +117,8 @@ class MainActivity : AppCompatActivity() {
             if (App.actualDelivery!=null)
                 orderLayoutButton.visibility=View.VISIBLE
         }
+
+
     }
 
 

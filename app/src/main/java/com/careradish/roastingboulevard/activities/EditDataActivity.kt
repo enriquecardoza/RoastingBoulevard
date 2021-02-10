@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
+import com.careradish.roastingboulevard.tools.Tools
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.activity_edit_data.*
-import kotlinx.android.synthetic.main.activity_register.*
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 
 class EditDataActivity : AppCompatActivity() {
@@ -18,6 +16,11 @@ class EditDataActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_data)
 
         info_editUser.text = ""
+            editTextName_editUser.setText(App.user!!.name)
+            editTextSurname_editUser.setText(App.user!!.surname)
+            editTextEmail_editUser.setText(App.user!!.email)
+            editTextPhone_editUser.setText(App.user!!.phone.toString())
+
         toolbarRegisterEditUser.setNavigationOnClickListener {
             finish()
             MainActivity.changueSelectedTab(2)
@@ -25,13 +28,11 @@ class EditDataActivity : AppCompatActivity() {
         buttonEdituser.setOnClickListener {
 
             if (!allFieldFilled()) {
-                info_editUser.text = TranslationStrings.get(R.string.errorFieldsFilled)
+                info_editUser.text = TranslationStrings.get(R.string.error_Fields_Filled)
 
-            } else if (!isEmailValid(editTextEmail_editUser.text.toString())) {
+            } else if (!Tools.isEmailValid(editTextEmail_editUser.text.toString())) {
 
-                info_editUser.text = TranslationStrings.get(R.string.errorEmail)
-            } else if (!passwordSizeCorrect()) {
-                info_editUser.text = TranslationStrings.get(R.string.errorLenghtPassword)
+                info_editUser.text = TranslationStrings.get(R.string.error_Email)
             } else {
 
                 editUser()
@@ -69,15 +70,4 @@ class EditDataActivity : AppCompatActivity() {
         return comp
     }
 
-    fun isEmailValid(email: String?): Boolean {
-        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
-        val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
-        val matcher: Matcher = pattern.matcher(email)
-        return matcher.matches()
-    }
-
-    fun passwordSizeCorrect(): Boolean {
-        val comp = editTextPassword.text.toString().length >= 6
-        return comp
-    }
 }
