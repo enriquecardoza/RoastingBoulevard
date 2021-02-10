@@ -133,5 +133,6 @@
     <string name="edit_data">Edita tus datos</string>
     <string name="session_closed">Sesión cerrada</string>
     <string name="error_have_food">Error: debe tener comida en su carro</string>
+    <string name="your_deliveries">Tu pedidos</string>
 
 </resources>

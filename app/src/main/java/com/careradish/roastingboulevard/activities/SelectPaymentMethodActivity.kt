@@ -46,7 +46,7 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
             payment.expirationDate = editTextExpirationDate.text.toString()
             payment.cvv = editTextCVV.text.toString().toInt()
         }
-        App.user?.deliveries?.add(App.actualDelivery!!)
+        App.user?.deliveries?.put(App.actualDelivery!!.id!!,App.actualDelivery!!)
         FirebaseConnection.writeDelivery(App.actualDelivery!!)
         App.actualDelivery = null
         val intent = Intent(this, MainActivity::class.java)

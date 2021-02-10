@@ -40,7 +40,7 @@ class App : Application() {
         }
 
         fun recoverPrefUser(activity: Activity) {
-            val sharedPref = context?.getSharedPreferences(
+            val sharedPref = context.getSharedPreferences(
                 Constants.prefUser, MODE_PRIVATE
             )
             val email = sharedPref.getString(Constants.prefUserLoggedEmail, "")
@@ -51,7 +51,7 @@ class App : Application() {
         }
 
         public fun storePrefUser(email:String,password:String,) {
-            val sharedPref = context?.getSharedPreferences(
+            val sharedPref = context.getSharedPreferences(
                 Constants.prefUser, MODE_PRIVATE
             )
             val editor = sharedPref.edit()
@@ -61,7 +61,7 @@ class App : Application() {
         }
 
         public fun erasePrefUser(){
-            val sharedPref = context?.getSharedPreferences(
+            val sharedPref = context.getSharedPreferences(
                 Constants.prefUser, MODE_PRIVATE
             )
             sharedPref.edit(commit = true) {

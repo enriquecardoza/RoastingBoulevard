@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.AddressListActivity
+import com.careradish.roastingboulevard.activities.DeliveriesList
 import com.careradish.roastingboulevard.activities.EditDataActivity
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.tools.App
@@ -52,6 +53,10 @@ class ProfileFragment : Fragment() {
         }
         tempInflete.buttonPersonalData.setOnClickListener {
             val intent=Intent(context,EditDataActivity::class.java)
+            startActivity(intent)
+        }
+        tempInflete.buttonMyOrders.setOnClickListener {
+            val intent=Intent(context,DeliveriesList::class.java)
             startActivity(intent)
         }
         return tempInflete

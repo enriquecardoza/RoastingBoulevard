@@ -7,7 +7,7 @@ data class User(
     var email: String,
     var phone: Int?) {
 
-    var deliveries:MutableList<Delivery>?= mutableListOf()
+    var deliveries:HashMap<String,Delivery>?= hashMapOf()
     var addresses:MutableList<Address>?= mutableListOf()
 
 

@@ -97,7 +97,6 @@ class MainActivity : AppCompatActivity() {
             )
 
             anim.fillAfter = true // Needed to keep the result of the animation
-
             anim.duration = 200
             orderLayoutButton.startAnimation(anim)
         }

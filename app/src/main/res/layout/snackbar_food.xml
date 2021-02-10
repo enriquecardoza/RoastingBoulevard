@@ -110,8 +110,8 @@
 
                 <TextView
                     android:id="@+id/priceSnack"
-                    android:layout_width="80dp"
-                    android:layout_height="39dp"
+                    android:layout_width="88dp"
+                    android:layout_height="49dp"
                     android:layout_alignTop="@+id/background"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="0dp"
@@ -133,67 +133,62 @@
                     android:visibility="visible">
 
                     <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp" />
 
                     <ImageView
                         android:id="@+id/icon1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@mipmap/allergen_wheat_icon" />
 
                     <ImageView
                         android:id="@+id/icon2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
-                        app:srcCompat="@android:drawable/btn_star_big_on"
-                        app:tint="@color/purple_200" />
+                        app:srcCompat="@mipmap/allergen_food_egg_icon" />
 
                     <ImageView
                         android:id="@+id/icon3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
-                        app:srcCompat="@android:drawable/btn_star_big_on"
-                        app:tint="@color/purple_700" />
+                        app:srcCompat="@mipmap/allergen_food_milk_icon" />
 
                     <ImageView
                         android:id="@+id/icon4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
-                        app:srcCompat="@android:drawable/btn_star_big_on"
-                        app:tint="@color/teal_700" />
+                        app:srcCompat="@mipmap/allergen_food_peanuts_icon" />
 
                     <ImageView
                         android:id="@+id/icon5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
-                        app:srcCompat="@android:drawable/btn_star_big_on"
-                        app:tint="@color/teal_700" />
+                        app:srcCompat="@mipmap/allergen_food_fish_icon" />
 
                     <ImageView
                         android:id="@+id/icon6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
-                        app:srcCompat="@android:drawable/btn_star_big_on"
-                        app:tint="@color/teal_700" />
+                        app:srcCompat="@mipmap/allergen_crustacean_shellfish_icon" />
 
                     <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp" />
 
