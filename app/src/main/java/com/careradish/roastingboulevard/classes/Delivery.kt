@@ -12,7 +12,7 @@ data class Delivery(
     var paymentMethod: PaymentMethod,
     var deliveryState: DeliveryState,
 ) {
-    var totalPrice: Float = 0.0f
+    val totalPrice: Float
         get() {
             var count: Float = 0f
             for (i in foods) {
@@ -22,13 +22,13 @@ data class Delivery(
         }
 
     constructor(address: Address) : this(
-        Tools.getToday(),
-        arrayListOf(),
-        arrayListOf(),
-        address,
-        Tools.getToday(),
-        PaymentMethod(),
-        DeliveryState.Received,
+        id = Tools.getToday(),
+        foods = arrayListOf(),
+        amountsOfFoods = arrayListOf(),
+        address = address,
+        deliveredDate = Tools.getToday(),
+        paymentMethod = PaymentMethod(),
+        deliveryState = DeliveryState.Received,
     )
 
     constructor() : this(
@@ -41,7 +41,7 @@ data class Delivery(
         DeliveryState.Received,
     )
 
-    public enum class DeliveryState(val state: Int) {
+    enum class DeliveryState(val state: Int) {
         Received(0), Cooking(1), Distribution(2), Delivered(3);
 
     }

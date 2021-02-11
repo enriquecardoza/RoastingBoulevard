@@ -16,13 +16,16 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/ActionButtonDelivering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:clickable="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:backgroundTint="@color/paleOrange"
+        app:layout_constraintBottom_toBottomOf="@+id/pagerMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/delivery_icon" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pagerMain"

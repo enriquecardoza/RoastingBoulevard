@@ -4,26 +4,23 @@ package com.careradish.roastingboulevard.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.ScaleAnimation
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
-import com.careradish.roastingboulevard.adapters.CustomSnackbar
 import com.careradish.roastingboulevard.adapters.DeliveringSnackBar
 import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,25 +30,38 @@ class MainActivity : AppCompatActivity() {
         App.Init(this)
         actionBar?.hide()
         App.contentView = findViewById(android.R.id.content)
-        instance=this
+        instance = this
         App.recoverPrefUser(this)
 
         PreparePager()
 
-        orderLayoutButton=seeOrderLayoutButton
+        orderLayoutButton = seeOrderLayoutButton
         orderLayoutButton.setOnClickListener {
 
-            val inte=Intent(this, FoodDeliveryListActivity::class.java)
+            val inte = Intent(this, FoodDeliveryListActivity::class.java)
             startActivity(inte)
         }
 
-        seeOrderLayoutButton.visibility=View.GONE
+        seeOrderLayoutButton.visibility = View.GONE
 
-        floatingActionButton.setOnClickListener {
-            val snackbar= DeliveringSnackBar.makeSnackbarDeliveing(App.contentView)
+        ActionButtonDelivering.setOnClickListener {
+            val snackbar = DeliveringSnackBar.makeSnackbarDeliveing(App.contentView)
             snackbar.show()
         }
+        checkFloatingDeliveringButtonVisibility()
 
+    }
+
+    private fun checkFloatingDeliveringButtonVisibility() {
+        if (!App.delivering)
+            ActionButtonDelivering.visibility = View.GONE
+        else {
+            ActionButtonDelivering.visibility = View.VISIBLE
+            TransitionManager.beginDelayedTransition(
+                scene_root as ViewGroup,
+                AutoTransition()
+            )
+        }
     }
 
     private fun PreparePager() {
@@ -66,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (App.actualDelivery!=null&&App.actualDelivery?.foods?.size!! <=0)
+        if (App.actualDelivery != null && App.actualDelivery?.foods?.size!! <= 0)
             hideOrderButton()
     }
 
@@ -74,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private lateinit var adapterViewPager: MainPagerAdapter
         private lateinit var mPager: ViewPager
-        lateinit var instance:MainActivity
+        lateinit var instance: MainActivity
         private lateinit var orderLayoutButton: ConstraintLayout
         private lateinit var tableLayout: TabLayout
         fun ForceUpdatePagerAdapter() {
@@ -89,13 +99,14 @@ class MainActivity : AppCompatActivity() {
             tableLayout.setScrollPosition(pos, 0f, true)
         }
 
-        fun changueSelectedTab(pos: Int){
+        fun changueSelectedTab(pos: Int) {
             mPager.currentItem = pos
             tableLayout.setScrollPosition(pos, 0f, true)
             adapterViewPager.notifyDataSetChanged()
         }
-        fun showOrderButton(){
-            orderLayoutButton.visibility=View.VISIBLE
+
+        fun showOrderButton() {
+            orderLayoutButton.visibility = View.VISIBLE
             //val anim: Animation = ScaleAnimation(
             //    1f, 1f,  // Start and end values for the X axis scaling
             //    0f, 1f,  // Start and end values for the Y axis scaling
@@ -107,21 +118,24 @@ class MainActivity : AppCompatActivity() {
             //anim.duration = 200
             //orderLayoutButton.startAnimation(anim)
         }
-        fun hideOrderButton(){
-            orderLayoutButton.visibility=View.GONE
+
+        fun hideOrderButton() {
+            orderLayoutButton.visibility = View.GONE
         }
+
         fun showToast(text: String) {
             Toast.makeText(App.context, text, Toast.LENGTH_SHORT).show()
         }
+
         fun LockTabs() {
             tableLayout.visibility = View.GONE
-            orderLayoutButton.visibility=View.GONE
+            orderLayoutButton.visibility = View.GONE
         }
 
         fun UnlockTabs() {
             tableLayout.visibility = View.VISIBLE
-            if (App.actualDelivery!=null)
-                orderLayoutButton.visibility=View.VISIBLE
+            if (App.actualDelivery != null)
+                orderLayoutButton.visibility = View.VISIBLE
         }
 
 

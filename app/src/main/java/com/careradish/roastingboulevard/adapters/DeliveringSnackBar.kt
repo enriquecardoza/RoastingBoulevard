@@ -9,11 +9,11 @@ import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.classes.Delivery
-import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.Tools
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.snackbar_delivering.view.*
 
 class DeliveringSnackBar(
     parent: ViewGroup,
@@ -21,36 +21,39 @@ class DeliveringSnackBar(
     contentViewCallback: com.google.android.material.snackbar.ContentViewCallback
 ) : BaseTransientBottomBar<DeliveringSnackBar>(parent, content, contentViewCallback) {
 
-    lateinit var state:TextView
-    lateinit var proressBar:ProgressBar
+    lateinit var state: TextView
+    lateinit var proressBar: ProgressBar
+
     init {
         this.getView().setPadding(0, 0, 0, 0)
-        this.getView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT
+        this.getView().layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
         this.getView()
             .setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
         state = getView().findViewById(R.id.textViewDeliveringState)
+        proressBar = getView().findViewById(R.id.progressBar)
     }
 
-    fun setState(newState:Delivery.DeliveryState){
-        state.text=newState.toString()
+    fun setState(newState: Delivery.DeliveryState) {
+        state.text = newState.toString()
     }
-    fun setProgress(newState:Delivery.DeliveryState){
-        proressBar.progress=newState.state
+
+    fun setProgress(newState: Delivery.DeliveryState) {
+        proressBar.progress = newState.state
     }
+
     companion object {
 
         fun makeSnackbarDeliveing(
             view: View
         ): DeliveringSnackBar {
             val customSnackbar = createDeliveringSnackbar(view).apply {
-                setDuration(Snackbar.LENGTH_INDEFINITE)
+                duration = Snackbar.LENGTH_INDEFINITE
                 MainActivity.LockTabs()
                 FirebaseConnection.attachToDeliveryState() {
                     setState(it)
                     setProgress(it)
                 }
             }
-
 
             return customSnackbar
         }
@@ -68,6 +71,7 @@ class DeliveringSnackBar(
                 false
             )
 
+
             val contentViewCallback =
                 object : com.google.android.material.snackbar.ContentViewCallback {
 
@@ -77,9 +81,19 @@ class DeliveringSnackBar(
                     override fun animateContentOut(delay: Int, duration: Int) {
                     }
                 }
-            return DeliveringSnackBar(parent, content, contentViewCallback)
-        }
+            val snackbar = DeliveringSnackBar(parent, content, contentViewCallback)
+            content.imageButtonCloseDelivering.setOnClickListener {
+                snackbar.dismiss()
+                MainActivity.UnlockTabs()}
+            content.parentDelivering.setOnFocusChangeListener { v, hasFocus ->
 
+                if (!hasFocus) {
+                    snackbar.dismiss()
+                    MainActivity.UnlockTabs()
+                }
+            }
+            return snackbar
+        }
 
 
     }
