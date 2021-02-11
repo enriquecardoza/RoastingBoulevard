@@ -2,6 +2,7 @@ package com.careradish.roastingboulevard.activities
 
 import  android.content.Intent
 import android.os.Bundle
+import android.support.v4.media.MediaBrowserCompat
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -32,7 +33,7 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
         editTextExpirationDate.setOnClickListener {
                 showDatePickerDialog()
         }
-        textViewAmountPayment.text = App.actualDelivery?.amount.toString()+" €"
+        textViewAmountPayment.text = App.actualDelivery?.totalPrice.toString()+" €"
 
         buttonFinishPayment.setOnClickListener {
             FinishPayment()
@@ -48,8 +49,11 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
         }
         App.user?.deliveries?.put(App.actualDelivery!!.id!!,App.actualDelivery!!)
         FirebaseConnection.writeDelivery(App.actualDelivery!!)
+        App.delivering=true
+        App.deliveringDelivery=App.actualDelivery
         App.actualDelivery = null
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         MainActivity.hideOrderButton()
     }

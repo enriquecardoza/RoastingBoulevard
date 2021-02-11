@@ -55,7 +55,7 @@ class AddressEditAdapter() :
         holder.eraseButton.setOnClickListener {
             val builder = Builder( context)
 
-            builder.setTitle("Confirm")
+            builder.setTitle(TranslationStrings.get(R.string.confirmation))
             builder.setMessage(TranslationStrings.get(R.string.are_you_sure))
 
             builder.setPositiveButton(

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.squareup.picasso.Picasso
 
@@ -25,7 +24,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
         public  fun setClickListener(food: Food){
             itemView.setOnClickListener {
                 val snackbar= CustomSnackbar.makeSnackbarFood(App.contentView, food)
-                App.foodSnackBar=snackbar
+                App.actualSnackBar=snackbar
                 snackbar.show()
             }
         }

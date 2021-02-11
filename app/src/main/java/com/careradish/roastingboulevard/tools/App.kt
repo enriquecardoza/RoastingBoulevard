@@ -9,25 +9,27 @@ import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.adapters.CustomSnackbar
 import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.User
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 
 class App : Application() {
     companion object {
 
+        var initiated=false;
         var user: User? = null
         lateinit var context: Context
         lateinit var contentView: View
-        var foodSnackBar: CustomSnackbar? = null
+        var actualSnackBar: CustomSnackbar? = null
         lateinit var tabLayout: TabLayout
         val logged: Boolean get() = user != null
         var actualDelivery: Delivery? = null
-
-
+        var delivering=false
+        var deliveringDelivery: Delivery? = null
         fun hideFoodSnackbar() {
-            if (foodSnackBar != null) {
-                foodSnackBar!!.dismiss()
-                foodSnackBar = null
+            if (actualSnackBar != null) {
+                actualSnackBar!!.dismiss()
+                actualSnackBar = null
             }
             MainActivity.UnlockTabs()
         }
@@ -35,7 +37,10 @@ class App : Application() {
 
 
         fun Init(activity: Activity) {
+            if (initiated)
+                return
             context = activity.applicationContext
+            initiated=true
 
         }
 

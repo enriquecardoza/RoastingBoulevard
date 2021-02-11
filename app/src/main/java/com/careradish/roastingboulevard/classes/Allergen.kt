@@ -6,9 +6,6 @@ import com.careradish.roastingboulevard.tools.TranslationStrings
 enum class Allergen(val pos: Int) {
     Gluten(0), Huevos(1), Lacteos(2), FrutosSecos(3), Pescado(4), Marisco(5);
 
-
-
-
     companion object{
         fun getAllergenString(pos:Int):String{
             return when(pos){

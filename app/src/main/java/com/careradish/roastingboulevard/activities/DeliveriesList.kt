@@ -17,5 +17,6 @@ class DeliveriesList : AppCompatActivity() {
         recyclerViewDeliveriesList.adapter = adapter
         recyclerViewDeliveriesList.layoutManager = LinearLayoutManager(this)
         recyclerViewDeliveriesList.setHasFixedSize(true)
+        toolbarDeliveries.setNavigationOnClickListener { finish() }
     }
 }

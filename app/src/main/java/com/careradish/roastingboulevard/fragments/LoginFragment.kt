@@ -44,10 +44,10 @@ class LoginFragment : Fragment() {
             val password=editTextPasswordLogin.text.toString()
 
            FirebaseConnection.LoginUser(email, password, this.activity!!, {
-               FirebaseConnection.readUser(App.user!!.id, {
+               FirebaseConnection.onReadedUser = {
                    MainActivity.ForceUpdatePagerAdapter(4)
-               } )
-
+                   FirebaseConnection.onReadedUser = {  }
+               }
            })
 
         }

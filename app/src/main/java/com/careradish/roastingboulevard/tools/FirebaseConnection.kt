@@ -95,6 +95,7 @@ class FirebaseConnection(var context: Context) {
                 }
         }
 
+        var onReadedUser : (() -> Unit)? =null
         fun readUser(
             userId: String,
             readSucces: ((user:User) -> Unit)? = null,
@@ -107,7 +108,8 @@ class FirebaseConnection(var context: Context) {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val user=snapshot.getValue(User::class.java)!!
                     if (readSucces != null) {
-                        readSucces(user)
+                        readSucces.invoke(user)
+                        onReadedUser?.invoke()
                     }
                     App.user = user
                 }
@@ -274,6 +276,31 @@ class FirebaseConnection(var context: Context) {
             })
         }
 
+        private val listenerDeliveryStateChange =object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val state=snapshot.getValue(Delivery.DeliveryState::class.java)!!
+
+                dataChange?.invoke(state)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        }
+        private var dataChange: ((Delivery.DeliveryState) -> Unit)? = null
+        fun attachToDeliveryState(dataChangued: ((Delivery.DeliveryState) -> Unit)? = null){
+            dataChange=dataChangued
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+                App.deliveringDelivery!!.id!!
+            ).child("deliveryState")
+            ref.addValueEventListener(listenerDeliveryStateChange)
+        }
+
+        fun removeToDeliveryState(delivery: Delivery){
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+                delivery.id!!
+            ).child("deliveryState")
+            ref.removeEventListener(listenerDeliveryStateChange)
+        }
 //endregion
     }
 

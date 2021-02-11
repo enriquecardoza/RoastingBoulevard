@@ -11,9 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.ViewPager
 import com.careradish.roastingboulevard.R
+import com.careradish.roastingboulevard.adapters.CustomSnackbar
+import com.careradish.roastingboulevard.adapters.DeliveringSnackBar
 import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-
         App.Init(this)
         actionBar?.hide()
         App.contentView = findViewById(android.R.id.content)
@@ -44,6 +46,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         seeOrderLayoutButton.visibility=View.GONE
+
+        floatingActionButton.setOnClickListener {
+            val snackbar= DeliveringSnackBar.makeSnackbarDeliveing(App.contentView)
+            snackbar.show()
+        }
 
     }
 
@@ -89,16 +96,16 @@ class MainActivity : AppCompatActivity() {
         }
         fun showOrderButton(){
             orderLayoutButton.visibility=View.VISIBLE
-            val anim: Animation = ScaleAnimation(
-                1f, 1f,  // Start and end values for the X axis scaling
-                0f, 1f,  // Start and end values for the Y axis scaling
-                Animation.RELATIVE_TO_SELF, 0f,  // Pivot point of X scaling
-                Animation.RELATIVE_TO_SELF, 1f
-            )
-
-            anim.fillAfter = true // Needed to keep the result of the animation
-            anim.duration = 200
-            orderLayoutButton.startAnimation(anim)
+            //val anim: Animation = ScaleAnimation(
+            //    1f, 1f,  // Start and end values for the X axis scaling
+            //    0f, 1f,  // Start and end values for the Y axis scaling
+            //    Animation.RELATIVE_TO_SELF, 0f,  // Pivot point of X scaling
+            //    Animation.RELATIVE_TO_SELF, 1f
+            //)
+//
+            //anim.fillAfter = true // Needed to keep the result of the animation
+            //anim.duration = 200
+            //orderLayoutButton.startAnimation(anim)
         }
         fun hideOrderButton(){
             orderLayoutButton.visibility=View.GONE

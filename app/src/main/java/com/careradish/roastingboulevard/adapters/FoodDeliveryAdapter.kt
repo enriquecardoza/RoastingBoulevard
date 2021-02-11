@@ -12,13 +12,14 @@ import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
-class FoodDeliveryAdapter () : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolder>() {
+class FoodDeliveryAdapter() : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolder>() {
     //  database.child("users").child(userId).setValue(user)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.textViewFoodDeliveryName)
         var price: TextView = itemView.findViewById(R.id.textViewFoodDeliveryPrice)
         var buttErase: ImageButton = itemView.findViewById(R.id.buttonEraseFoodDelivery)
+        var amount: TextView = itemView.findViewById(R.id.textViewFoodDeliveryAmount)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,8 +32,10 @@ class FoodDeliveryAdapter () : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHold
 
         val food = App.actualDelivery!!.foods[position]
         holder.name.text = TranslationStrings.get(food.name)
-        val price=food.price
+        val price = food.price
         holder.price.text = "$price €"
+        val amount = App.actualDelivery!!.amountsOfFoods[position]
+        holder.amount.text = "X$amount"
         holder.buttErase.setOnClickListener {
             val builder = AlertDialog.Builder(it.context)
 
@@ -42,10 +45,12 @@ class FoodDeliveryAdapter () : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHold
             builder.setPositiveButton(
                 R.string.yes
             ) { dialog, _ ->
+                val pos = App.actualDelivery!!.foods.indexOf(food)
+                App.actualDelivery!!.amountsOfFoods.removeAt(pos)
                 App.actualDelivery!!.foods.remove(food)
                 notifyItemRemoved(position)
                 dialog.dismiss()
-                if ( App.actualDelivery!!.foods.size<=0){
+                if (App.actualDelivery!!.foods.size <= 0) {
                     MainActivity.hideOrderButton()
                 }
             }

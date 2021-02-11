@@ -15,6 +15,7 @@ import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.Tools
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -140,7 +141,14 @@ class CustomSnackbar(
                             MainActivity.showOrderButton()
                         }
 
-                        App.actualDelivery!!.foods.add(food)
+                        if ( App.actualDelivery!!.foods.contains(food)) {
+                            val pos=  App.actualDelivery!!.foods.indexOf(food)
+                            App.actualDelivery!!.amountsOfFoods[pos]+=1
+                        }
+                            else {
+                            App.actualDelivery!!.foods.add(food)
+                            App.actualDelivery!!.amountsOfFoods.add(1)
+                        }
                         MainActivity.showToast(TranslationStrings.get(R.string.added_cart,TranslationStrings.get(food.name)))
                     }
 
@@ -152,7 +160,7 @@ class CustomSnackbar(
 
 
         private fun createCustomSnackbar(view: View): CustomSnackbar {
-            val parent = findSuitableParent(view) ?: throw IllegalArgumentException(
+            val parent = Tools.findSuitableParent(view) ?: throw IllegalArgumentException(
                 "No suitable parent found from the given view. Please provide a valid view."
             )
 
@@ -182,34 +190,6 @@ class CustomSnackbar(
         }
 
 
-        private fun findSuitableParent(view: View?): ViewGroup? {
-            var mView = view
-            var fallback: ViewGroup? = null
-            do {
-                if (mView is CoordinatorLayout) {
-                    // We've found a CoordinatorLayout, use it
-                    return mView
-                } else if (mView is FrameLayout) {
-                    if (mView.id == android.R.id.content) {
-                        // If we've hit the decor content view, then we didn't find a CoL in the
-                        // hierarchy, so use it.
-                        return mView
-                    } else {
-                        // It's not the content view but we'll use it as our fallback
-                        fallback = mView
-                    }
-                }
-
-                if (mView != null) {
-                    // Else, we will loop and crawl up the view hierarchy and try to find a parent
-                    val parent = mView.parent
-                    mView = if (parent is View) parent else null
-                }
-            } while (mView != null)
-
-            // If we reach here then we didn't find a CoL or a suitable content view so we'll fallback
-            return fallback
-        }
     }
 
 }
