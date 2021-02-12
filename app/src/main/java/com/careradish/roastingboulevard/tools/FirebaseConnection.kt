@@ -291,15 +291,23 @@ class FirebaseConnection(var context: Context) {
             dataChange=dataChangued
             val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
                 App.deliveringDelivery!!.id!!
-            ).child("deliveryState")
+            ).child(Constants.deliveryState)
             ref.addValueEventListener(listenerDeliveryStateChange)
         }
 
-        fun removeToDeliveryState(delivery: Delivery){
+        fun unAttachToDeliveryState(){
             val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
-                delivery.id!!
-            ).child("deliveryState")
+                App.deliveringDelivery!!.id!!
+            ).child(Constants.deliveryState)
             ref.removeEventListener(listenerDeliveryStateChange)
+            App.delivering=false
+            App.deliveringDelivery=null
+        }
+
+        fun updateDeliveryState(newState:Delivery.DeliveryState){
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+                App.deliveringDelivery!!.id!!
+            ).child(Constants.deliveryState).setValue(newState)
         }
 //endregion
     }

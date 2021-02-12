@@ -69,7 +69,7 @@ class AddressListActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Constants.codeRequestCreateAddress) {
+        if (resultCode == RESULT_OK) {
 
             if (canEditAddress) {
                 addressEditAdapter.notifyItemInserted(App.user?.addresses!!.count() - 1)

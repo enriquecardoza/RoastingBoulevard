@@ -39,7 +39,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/transparent"
                 android:tint="@color/darkBrown"
-                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                app:srcCompat="@android:drawable/ic_delete" />
         </RelativeLayout>
 
         <LinearLayout
@@ -128,9 +128,15 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="3dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:visibility="visible">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="0dp" />
 
                     <Space
                         android:layout_width="match_parent"
@@ -152,6 +158,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
+                        android:visibility="gone"
                         app:srcCompat="@mipmap/allergen_food_egg_icon" />
 
                     <ImageView
@@ -168,6 +175,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
+                        android:visibility="gone"
                         app:srcCompat="@mipmap/allergen_food_peanuts_icon" />
 
                     <ImageView
@@ -176,6 +184,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:padding="0dp"
+                        android:visibility="gone"
                         app:srcCompat="@mipmap/allergen_food_fish_icon" />
 
                     <ImageView
@@ -185,6 +194,12 @@
                         android:layout_weight="1"
                         android:padding="0dp"
                         app:srcCompat="@mipmap/allergen_crustacean_shellfish_icon" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="0dp" />
 
                     <Space
                         android:layout_width="match_parent"

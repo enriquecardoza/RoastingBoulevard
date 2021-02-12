@@ -1,6 +1,7 @@
 package com.careradish.roastingboulevard.fragments
 
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -85,6 +86,12 @@ class LoginFragment : Fragment() {
         }
 
         val alert: AlertDialog? = builder.create()
+        alert?.setOnShowListener(DialogInterface.OnShowListener {
+            alert.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(Tools.getColor(R.color.paleRed))
+            alert.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(Tools.getColor(R.color.paleOrange))
+        })
         alert!!.show()
     }
 

@@ -10,13 +10,13 @@ import com.careradish.roastingboulevard.adapters.FoodDeliveryAdapter
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.TranslationStrings
-import kotlinx.android.synthetic.main.activity_delivery_list.*
+import kotlinx.android.synthetic.main.activity_foodlist_delivery_list.*
 
 
-class FoodDeliveryListActivity : AppCompatActivity() {
+class FoodListDeliveryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_delivery_list)
+        setContentView(R.layout.activity_foodlist_delivery_list)
         val adapter = FoodDeliveryAdapter()
         recyclerViewDeliveryList.adapter = adapter
         recyclerViewDeliveryList.layoutManager = LinearLayoutManager(this)

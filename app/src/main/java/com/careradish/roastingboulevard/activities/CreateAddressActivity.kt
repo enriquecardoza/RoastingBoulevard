@@ -54,6 +54,5 @@ class CreateAddressActivity : AppCompatActivity() {
 
         }
         toolbarCreateAddress.setNavigationOnClickListener { finish() }
-
     }
 }

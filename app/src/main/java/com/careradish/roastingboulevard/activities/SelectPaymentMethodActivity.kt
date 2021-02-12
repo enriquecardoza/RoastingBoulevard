@@ -12,6 +12,7 @@ import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.PaymentMethod
 import com.careradish.roastingboulevard.fragments.DatePickerFragment
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.DebufAsynDelivering
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import kotlinx.android.synthetic.main.activity_select_payment_method.*
 
@@ -56,6 +57,8 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         MainActivity.hideOrderButton()
+        val mitarea = DebufAsynDelivering()
+        mitarea.execute()
     }
 
     private fun PrepareSpinnerSelectType() {

@@ -71,32 +71,33 @@ class CustomSnackbar(
         val image4 = getView().icon4
         val image5 = getView().icon5
         val image6 = getView().icon6
-        if (allergens.contains(Allergen.Gluten)) {
+
+        if (allergens.contains(Allergen.Gluten.pos)) {
             image1.visibility = View.VISIBLE
         } else {
             image1.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Huevos)) {
+        if (allergens.contains(Allergen.Huevos.pos)) {
             image2.visibility = View.VISIBLE
         } else {
             image2.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Lacteos)) {
+        if (allergens.contains(Allergen.Lacteos.pos)) {
             image3.visibility = View.VISIBLE
         } else {
             image3.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.FrutosSecos)) {
+        if (allergens.contains(Allergen.FrutosSecos.pos)) {
             image4.visibility = View.VISIBLE
         } else {
             image4.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Pescado)) {
+        if (allergens.contains(Allergen.Pescado.pos)) {
             image5.visibility = View.VISIBLE
         } else {
             image5.visibility = View.GONE
         }
-        if (allergens.contains(Allergen.Marisco)) {
+        if (allergens.contains(Allergen.Marisco.pos)) {
             image6.visibility = View.VISIBLE
         } else {
             image6.visibility = View.GONE
@@ -127,7 +128,7 @@ class CustomSnackbar(
                 orderButton.setOnClickListener {
 
                     if (!App.logged) {
-                        MainActivity.changueSelectedTab(4)
+                        MainActivity.changueSelectedTab(2)
                         Toast.makeText(
                             orderButton.context,
                             TranslationStrings.get(R.string.please_login_register),

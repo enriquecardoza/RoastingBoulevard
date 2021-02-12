@@ -14,6 +14,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/abc_vector_test"
         app:title="@string/create_address"
         app:titleTextColor="@color/white" />
@@ -149,7 +150,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:inputType="number"
                 android:text="@string/create_address"

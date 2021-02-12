@@ -3,7 +3,9 @@ package com.careradish.roastingboulevard.adapters
 
 import android.app.AlertDialog
 import android.app.AlertDialog.Builder
+import android.content.DialogInterface.OnShowListener
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.AddressListActivity
 import com.careradish.roastingboulevard.activities.EditAddressActivity
-import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.Constants
-import com.careradish.roastingboulevard.tools.FirebaseConnection
-import com.careradish.roastingboulevard.tools.TranslationStrings
+import com.careradish.roastingboulevard.tools.*
 
 
 class AddressEditAdapter() :
@@ -53,7 +52,7 @@ class AddressEditAdapter() :
         }
 
         holder.eraseButton.setOnClickListener {
-            val builder = Builder( context)
+            val builder = Builder(context)
 
             builder.setTitle(TranslationStrings.get(R.string.confirmation))
             builder.setMessage(TranslationStrings.get(R.string.are_you_sure))
@@ -73,6 +72,10 @@ class AddressEditAdapter() :
             }
 
             val alert: AlertDialog? = builder.create()
+            alert?.setOnShowListener(OnShowListener {
+                alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Tools.getColor(R.color.paleRed))
+               alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Tools.getColor(R.color.paleOrange))
+            })
             alert!!.show()
         }
 

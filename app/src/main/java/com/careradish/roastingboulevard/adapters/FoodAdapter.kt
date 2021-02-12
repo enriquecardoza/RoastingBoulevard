@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso
 
 
 class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
-    //  database.child("users").child(userId).setValue(user)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.foodItemName)
@@ -55,22 +54,5 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView!!)
-    }
-    private fun setFadeAnimation(view: View, delay: Long) {
-
-       /* val scaleAnim = ScaleAnimation(
-            0f,
-            1f,
-            0f,
-            1f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f,
-            Animation.RELATIVE_TO_SELF,
-            0.5f
-        )
-        scaleAnim.startOffset=delay
-        scaleAnim.duration = Constants.ANIM_DURATION
-        view.startAnimation(scaleAnim)*/
-
     }
 }

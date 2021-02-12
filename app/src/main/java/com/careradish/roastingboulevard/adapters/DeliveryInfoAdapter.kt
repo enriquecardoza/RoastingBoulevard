@@ -13,7 +13,6 @@ import androidx.transition.TransitionManager
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.tools.App
-import kotlinx.android.synthetic.main.activity_delivery_list.*
 
 
 class DeliveryInfoAdapter() : RecyclerView.Adapter<DeliveryInfoAdapter.ViewHolder>() {
@@ -61,7 +60,7 @@ class DeliveryInfoAdapter() : RecyclerView.Adapter<DeliveryInfoAdapter.ViewHolde
 
         val delivery = App.user?.deliveries?.get(indexes[position]) as Delivery
         holder.name.text = delivery.id
-        holder.amount.text = delivery.totalPrice.toString()
+        holder.amount.text = delivery.totalPrice.toString()+"€"
 
 
         val arr = arrayListOf<String>()

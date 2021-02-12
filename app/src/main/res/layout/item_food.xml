@@ -12,7 +12,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:background="@color/cream"
@@ -23,6 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/dishes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/croquetas_jamon" />
 
         <TextView
@@ -30,10 +33,13 @@
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:background="@color/paleOrange"
-            android:gravity="center|center_vertical"
-            android:text="TextView"
+            android:gravity="center|center_horizontal"
+            android:text="@string/alitas"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="16dp" />
-    </LinearLayout>
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodItemImage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

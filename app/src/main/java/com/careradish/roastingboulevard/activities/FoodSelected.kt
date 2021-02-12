@@ -32,7 +32,7 @@ class FoodSelected : AppCompatActivity() {
 
         orderSelectedFood.setOnClickListener {
             App.actualDelivery!!.foods.add(food)
-            val int= Intent(this,FoodDeliveryListActivity::class.java)
+            val int= Intent(this,FoodListDeliveryActivity::class.java)
             int.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(int)
             MainActivity.showOrderButton()

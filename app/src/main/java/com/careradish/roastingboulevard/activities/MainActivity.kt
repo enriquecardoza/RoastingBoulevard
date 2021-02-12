@@ -1,13 +1,19 @@
 package com.careradish.roastingboulevard.activities
 
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.NotificationCompat
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import androidx.viewpager.widget.ViewPager
@@ -16,6 +22,7 @@ import com.careradish.roastingboulevard.adapters.DeliveringSnackBar
 import com.careradish.roastingboulevard.adapters.MainPagerAdapter
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.ZoomOutPageTransformer
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,21 +31,24 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
+        setTheme(R.style.Theme_RoastingBoulevard)
         setContentView(R.layout.activity_main)
         App.Init(this)
         actionBar?.hide()
+        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         App.contentView = findViewById(android.R.id.content)
         instance = this
         App.recoverPrefUser(this)
 
         PreparePager()
-
+        floatingButton=ActionButtonDelivering
         orderLayoutButton = seeOrderLayoutButton
         orderLayoutButton.setOnClickListener {
 
-            val inte = Intent(this, FoodDeliveryListActivity::class.java)
+            val inte = Intent(this, FoodListDeliveryActivity::class.java)
             startActivity(inte)
         }
 
@@ -47,10 +57,13 @@ class MainActivity : AppCompatActivity() {
         ActionButtonDelivering.setOnClickListener {
             val snackbar = DeliveringSnackBar.makeSnackbarDeliveing(App.contentView)
             snackbar.show()
+            ActionButtonDelivering.visibility=View.GONE
         }
         checkFloatingDeliveringButtonVisibility()
 
+
     }
+
 
     private fun checkFloatingDeliveringButtonVisibility() {
         if (!App.delivering)
@@ -87,6 +100,9 @@ class MainActivity : AppCompatActivity() {
         lateinit var instance: MainActivity
         private lateinit var orderLayoutButton: ConstraintLayout
         private lateinit var tableLayout: TabLayout
+        private lateinit var floatingButton:FloatingActionButton
+
+
         fun ForceUpdatePagerAdapter() {
             adapterViewPager.notifyDataSetChanged()
         }
@@ -136,6 +152,8 @@ class MainActivity : AppCompatActivity() {
             tableLayout.visibility = View.VISIBLE
             if (App.actualDelivery != null)
                 orderLayoutButton.visibility = View.VISIBLE
+            if (App.delivering)
+                floatingButton.visibility=View.VISIBLE
         }
 
 

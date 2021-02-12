@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    android:background="@drawable/spinner_bg">
+    android:background="@drawable/background_snackbar">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
@@ -33,7 +33,7 @@
         android:id="@+id/textViewDeliveringState"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="160dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -57,17 +57,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/gifImageView"
         app:layout_constraintTop_toTopOf="@+id/gifImageView" />
-
-    <TextView
-        android:id="@+id/textViewInfoDelivering"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gifImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

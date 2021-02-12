@@ -10,6 +10,7 @@
     <item name="android:calendarViewShown">false</item>
     <item name="android:datePickerMode">spinner</item>
     </style>
-
-
+    <style name="SplashTheme" parent="@style/Theme.RoastingBoulevard">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 </resources>

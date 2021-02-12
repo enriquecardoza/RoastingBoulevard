@@ -6,10 +6,10 @@
     <item>
         <inset android:insetLeft="-1dp" android:insetRight="-1dp">
             <shape android:shape="rectangle">
-                <stroke android:width="4dp"
-                    android:color="@color/paleOrange" >
+                <stroke android:width="6dp"
+                    android:color="@color/darkBrown" >
                 </stroke>
-                <solid android:color="@color/cream" />
+                <solid android:color="@color/white" />
             </shape>
         </inset>
     </item>

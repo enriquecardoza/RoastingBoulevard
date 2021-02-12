@@ -19,5 +19,6 @@ class Constants {
         const val isAddressListEditOrSelect:String="SelectedFood"
         const val codeRequestCreateAddress=1875
         const val createdAddress:String="CreatedAddress"
+        const val deliveryState="deliveryState"
     }
 }

@@ -28,7 +28,7 @@ data class Delivery(
         address = address,
         deliveredDate = Tools.getToday(),
         paymentMethod = PaymentMethod(),
-        deliveryState = DeliveryState.Received,
+        deliveryState = DeliveryState.received,
     )
 
     constructor() : this(
@@ -38,11 +38,10 @@ data class Delivery(
         Address(),
         Tools.getToday(),
         PaymentMethod(),
-        DeliveryState.Received,
+        DeliveryState.received,
     )
 
     enum class DeliveryState(val state: Int) {
-        Received(0), Cooking(1), Distribution(2), Delivered(3);
-
+        received(0), cooking(1), distribution(2), delivered(3);
     }
 }

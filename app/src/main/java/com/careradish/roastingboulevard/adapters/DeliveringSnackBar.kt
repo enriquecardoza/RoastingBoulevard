@@ -5,12 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.classes.Delivery
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.Tools
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.snackbar_delivering.view.*
@@ -34,7 +37,7 @@ class DeliveringSnackBar(
     }
 
     fun setState(newState: Delivery.DeliveryState) {
-        state.text = newState.toString()
+        state.text = TranslationStrings.get(newState.toString())
     }
 
     fun setProgress(newState: Delivery.DeliveryState) {
@@ -52,6 +55,10 @@ class DeliveringSnackBar(
                 FirebaseConnection.attachToDeliveryState() {
                     setState(it)
                     setProgress(it)
+                    if (it==Delivery.DeliveryState.delivered){
+                        App.sendNotification()
+
+                    }
                 }
             }
 
@@ -83,13 +90,14 @@ class DeliveringSnackBar(
                 }
             val snackbar = DeliveringSnackBar(parent, content, contentViewCallback)
             content.imageButtonCloseDelivering.setOnClickListener {
+                MainActivity.UnlockTabs()
                 snackbar.dismiss()
-                MainActivity.UnlockTabs()}
+            }
             content.parentDelivering.setOnFocusChangeListener { v, hasFocus ->
 
                 if (!hasFocus) {
-                    snackbar.dismiss()
                     MainActivity.UnlockTabs()
+                    snackbar.dismiss()
                 }
             }
             return snackbar

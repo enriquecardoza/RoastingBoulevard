@@ -1,10 +1,13 @@
 package com.careradish.roastingboulevard.tools
 
+import android.app.Notification
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.careradish.roastingboulevard.R
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Matcher
@@ -54,7 +57,15 @@ class Tools {
             // If we reach here then we didn't find a CoL or a suitable content view so we'll fallback
             return fallback
         }
+
+        fun getColor(@ColorRes stringRes: Int):Int{
+            return App.context!!.resources.getColor( stringRes)
+        }
+
+
+
     }
+
 
 }
 object TranslationStrings {

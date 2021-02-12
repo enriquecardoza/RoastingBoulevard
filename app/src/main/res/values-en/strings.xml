@@ -134,4 +134,9 @@
     <string name="session_closed">Session closed</string>
     <string name="error_have_food">Error: must have food in your cart</string>
     <string name="your_deliveries">Your deliveries</string>
+    <string name="received">Received</string>
+    <string name="cooking">Cooking</string>
+    <string name="distribution">Distribution</string>
+    <string name="delivered">Delivered</string>
+    <string name="notification_tittle">Your order it\'s here</string>
 </resources>

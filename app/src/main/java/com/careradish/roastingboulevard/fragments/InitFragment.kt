@@ -1,17 +1,24 @@
 package com.careradish.roastingboulevard.fragments
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.DeveloperFreshData
-import com.careradish.roastingboulevard.tools.TranslationStrings
+import com.careradish.roastingboulevard.tools.Tools
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesUtil
@@ -59,9 +66,12 @@ class InitFragment : Fragment() {
         //    tempInflater.textViewInitWelcome.text=TranslationStrings.get(R.string.init_welcome)+" ${App.user?.name}"
         return tempInflater
     }
+    private var notificationManager: NotificationManager? = null
 
     private fun SetDebugUpload() {
         image.setOnClickListener {
+
+
             DeveloperFreshData.UploadAllData()
             Toast.makeText(context, "Created", Toast.LENGTH_LONG).show()
         }
@@ -99,12 +109,14 @@ class InitFragment : Fragment() {
                 val cameraPosition = CameraPosition.Builder().target(latLng).zoom(15.0f).build()
                 val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
                 it.moveCamera(cameraUpdate)
-                it.addMarker( MarkerOptions()
-                    .position(latLng)
-                    .title(""))
-                it.uiSettings.isMyLocationButtonEnabled=true
-                it.uiSettings.isZoomControlsEnabled=true
-                it.setOnMyLocationButtonClickListener { false}
+                it.addMarker(
+                    MarkerOptions()
+                        .position(latLng)
+                        .title("")
+                )
+                it.uiSettings.isMyLocationButtonEnabled = true
+                it.uiSettings.isZoomControlsEnabled = true
+                it.setOnMyLocationButtonClickListener { false }
             })
         }
     }

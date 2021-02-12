@@ -1,6 +1,7 @@
 package com.careradish.roastingboulevard.adapters
 
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.Tools
 import com.careradish.roastingboulevard.tools.TranslationStrings
 
 class FoodDeliveryAdapter() : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolder>() {
@@ -62,6 +64,12 @@ class FoodDeliveryAdapter() : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolde
             }
 
             val alert: AlertDialog? = builder.create()
+            alert?.setOnShowListener(DialogInterface.OnShowListener {
+                alert.getButton(AlertDialog.BUTTON_NEGATIVE)
+                    .setTextColor(Tools.getColor(R.color.paleRed))
+                alert.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setTextColor(Tools.getColor(R.color.paleOrange))
+            })
             alert!!.show()
         }
     }

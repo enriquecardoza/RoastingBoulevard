@@ -134,5 +134,10 @@
     <string name="session_closed">Sesión cerrada</string>
     <string name="error_have_food">Error: debe tener comida en su carro</string>
     <string name="your_deliveries">Tu pedidos</string>
+    <string name="received">Recivido</string>
+    <string name="cooking">Cocinando</string>
+    <string name="distribution">En reparto</string>
+    <string name="delivered">Entregado</string>
+    <string name="notification_tittle">Tu pedido ya esta aqui</string>
 
 </resources>
