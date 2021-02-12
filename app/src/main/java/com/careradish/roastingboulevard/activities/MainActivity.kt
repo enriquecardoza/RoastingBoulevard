@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         App.Init(this)
         actionBar?.hide()
 
-       // DeveloperFreshData.UploadAllData()
+       //DeveloperFreshData.UploadAllData()
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         App.contentView = findViewById(android.R.id.content)
         instance = this
