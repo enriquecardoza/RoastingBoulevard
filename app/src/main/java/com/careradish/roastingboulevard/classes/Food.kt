@@ -1,13 +1,23 @@
 package com.careradish.roastingboulevard.classes
+import com.careradish.roastingboulevard.tools.App
 import java.io.Serializable
 
-data class Food(var id:Int, var name:String, var decription:String, var ingredients:String, var allergens:ArrayList<Int>, var photo:Int, var price:Float):Serializable
+data class Food(var id:Int, var name:ArrayList<String>, var description:ArrayList<String>, var ingredients:ArrayList<String>, var allergens:ArrayList<Int>, var photo:String, var price:Float):Serializable
 {
 
     override fun toString(): String {
-        return "Food(id=$id, name='$name', decription='$decription', ingredients=$ingredients, allergens=$allergens, photo=$photo, price=$price)"
+        return "Food(id=$id, name='$name', decription='$description', ingredients=$ingredients, allergens=$allergens, photo=$photo, price=$price)"
     }
-    constructor(food: Food):this(food.id,food.name,food.decription,food.ingredients,food.allergens,food.photo,food.price){}
-    constructor():this(-1,"","","", arrayListOf(),0,0f){}
+    constructor(food: Food):this(food.id,food.name,food.description,food.ingredients,food.allergens,food.photo,food.price){}
+    constructor():this(-1,arrayListOf(),arrayListOf(),arrayListOf(), arrayListOf(),"",0f){}
 
+    fun getTranslatedName():String{
+        return  name[App.getFoodLanguagePos(this)]
+    }
+    fun getTranslatedDescription():String{
+        return  description[App.getFoodLanguagePos(this)]
+    }
+    fun getTranslatedIngredients():String{
+        return  ingredients[App.getFoodLanguagePos(this)]
+    }
 }

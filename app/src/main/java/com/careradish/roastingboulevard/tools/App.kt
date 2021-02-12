@@ -8,13 +8,19 @@ import androidx.core.content.edit
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.adapters.CustomSnackbar
+import com.careradish.roastingboulevard.classes.Category
 import com.careradish.roastingboulevard.classes.Delivery
+import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.classes.User
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
+import java.util.*
 
 
 class App : Application() {
+    public enum class Languages(val state: Locale?) {
+        default(null),english(Locale.ENGLISH), español(Locale.forLanguageTag("es"))
+    }
+
     companion object {
 
         var initiated = false;
@@ -27,14 +33,6 @@ class App : Application() {
         var actualDelivery: Delivery? = null
         var delivering = false
         var deliveringDelivery: Delivery? = null
-        fun hideFoodSnackbar() {
-            if (actualSnackBar != null) {
-                actualSnackBar!!.dismiss()
-                actualSnackBar = null
-            }
-            MainActivity.UnlockTabs()
-        }
-
 
         fun Init(activity: Activity) {
             if (initiated)
@@ -48,9 +46,51 @@ class App : Application() {
             createNotificationChannel(
                 "com.ebookfrenzy.notifydemo.news",
                 "NotifyDemo News",
-                "Example News Channel")
+                "Example News Channel"
+            )
+        }
+        fun hideFoodSnackbar() {
+            if (actualSnackBar != null) {
+                actualSnackBar!!.dismiss()
+                actualSnackBar = null
+            }
+            MainActivity.UnlockTabs()
         }
 
+        fun getLanguagePos():Int{
+            for (c in 0..Languages.values().size) {
+                val name=Languages.values()[c].state
+                val lang=Tools.getDisplayLanguage().language
+                if (name.toString()== lang) {
+                    return c
+                }
+            }
+            return 0
+        }
+
+        fun getFoodLanguagePos(food: Food):Int{
+            val arr= arrayListOf<Int>(food.name.size,food.description.size,food.ingredients.size)
+            val lowestCount=arr[arr.indexOf(Collections.min(arr))]
+            for (c in 0..lowestCount) {
+                val name=Languages.values()[c].state
+                val lang=Tools.getDisplayLanguage().language
+                if (name.toString()== lang) {
+                    return c
+                }
+            }
+            return 0
+        }
+        fun getCategoryLanguagePos(category: Category):Int{
+            for (c in 0..category.name.size) {
+                val name=Languages.values()[c].state
+                val lang=Tools.getDisplayLanguage().language
+                if (name.toString()== lang) {
+                    return c
+                }
+            }
+            return 0
+        }
+        //region prefUser
         fun recoverPrefUser(activity: Activity) {
             val sharedPref = context.getSharedPreferences(
                 Constants.prefUser, MODE_PRIVATE
@@ -62,7 +102,7 @@ class App : Application() {
             }
         }
 
-        public fun storePrefUser(email: String, password: String, ) {
+        public fun storePrefUser(email: String, password: String) {
             val sharedPref = context.getSharedPreferences(
                 Constants.prefUser, MODE_PRIVATE
             )
@@ -80,7 +120,7 @@ class App : Application() {
                 clear()
             }
         }
-
+//endregion
 
         private var notificationManager: NotificationManager? = null
 

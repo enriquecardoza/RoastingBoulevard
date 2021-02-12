@@ -3,15 +3,10 @@ package com.careradish.roastingboulevard.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Delivery
-import com.careradish.roastingboulevard.classes.Food
-import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.TranslationStrings
-import com.squareup.picasso.Picasso
 
 class DeliverySubInfoListAdapter(val delivery:Delivery) : RecyclerView.Adapter<DeliverySubInfoListAdapter.ViewHolder>() {
     //  database.child("users").child(userId).setValue(user)
@@ -33,7 +28,7 @@ class DeliverySubInfoListAdapter(val delivery:Delivery) : RecyclerView.Adapter<D
 
         val food= delivery.foods[position]
         val amount=delivery.amountsOfFoods[position]
-        holder.name.text=TranslationStrings.get(food.name)
+        holder.name.text=food.getTranslatedName()
         holder.amount.text="X$amount"
         val price=food.price
         holder.price.text="$price€"

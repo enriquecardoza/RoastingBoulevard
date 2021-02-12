@@ -4,8 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.careradish.roastingboulevard.classes.Category
-import com.careradish.roastingboulevard.fragments.*
-import com.careradish.roastingboulevard.tools.TranslationStrings
+import com.careradish.roastingboulevard.fragments.FoodListFragment
+import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.Tools
 
 class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager!!)  {
 
@@ -34,7 +35,9 @@ class FoodListPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAda
 
     // Returns the page title for the top indicator
     override fun getPageTitle(position: Int): CharSequence {
-        val v=TranslationStrings.get(listaCategory[position].name)
+        val l=Tools.getDisplayLanguage()
+        val v=listaCategory[position].name[App.getCategoryLanguagePos(listaCategory[position])]
+        "TranslationStrings.get(listaCategory[position].name)"
         return v //TranslationStrings.get(listaCategory[position].name)
     }
 

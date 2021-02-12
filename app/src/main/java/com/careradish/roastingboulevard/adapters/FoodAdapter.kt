@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
-import com.careradish.roastingboulevard.tools.TranslationStrings
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.squareup.picasso.Picasso
 
 
@@ -40,8 +40,11 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val food = comidas[position]
-        holder.name.text = TranslationStrings.get(food.name)
-        Picasso.get().load(food.photo).fit().centerCrop().into(holder.image)
+        holder.name.text = food.getTranslatedName()
+        FirebaseConnection.getImageUri(food.photo, {
+            Picasso.get().load(it).fit().centerCrop().into(holder.image)
+        })
+
         //val delay=(position*Constants.DELAY_INCREMENT).toLong()
         //setFadeAnimation(holder.itemView, delay);
         holder.setClickListener(food)

@@ -8,7 +8,6 @@ import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
-import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.activity_food_selected.*
 
 class FoodSelected : AppCompatActivity() {
@@ -19,9 +18,9 @@ class FoodSelected : AppCompatActivity() {
         setContentView(R.layout.activity_food_selected)
 
         val food=intent.getSerializableExtra(Constants.selectedFood) as Food
-        foodSelectedTittle.text=TranslationStrings.get(food.name)
-        foodSelectedDescription.text=TranslationStrings.get(food.decription)
-        foodSelectedIngredients.text=TranslationStrings.get(food.ingredients)
+        foodSelectedTittle.text=food.getTranslatedName()
+        foodSelectedDescription.text=food.getTranslatedDescription()
+        foodSelectedIngredients.text=food.getTranslatedIngredients()
 
         var allergens:String=""
 

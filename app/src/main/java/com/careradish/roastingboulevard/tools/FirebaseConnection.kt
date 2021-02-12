@@ -5,21 +5,28 @@ import android.content.Context
 import android.widget.Toast
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.*
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+
 
 class FirebaseConnection(var context: Context) {
 
-    init {
-        referenceRoot = database.getReference("")
-    }
+  // init {
+  //     referenceRoot = database.getReference("")
+  //     storegeReferenceRoot= storage.getReference("")
+  // }
 
     companion object {
         var auth = FirebaseAuth.getInstance()
         var database: FirebaseDatabase = FirebaseDatabase.getInstance()
         var referenceRoot: DatabaseReference = database.getReference("")
-
-
+        var storage = Firebase.storage
+        var storegeFoodReferenceRoot: StorageReference = storage.getReference(Constants.foodsTittle)
 //region user
 
         fun writeUser(user: User) {
@@ -40,9 +47,9 @@ class FirebaseConnection(var context: Context) {
                             loginSuccess()
                         }
                         val userId = auth!!.currentUser?.uid.toString()
-                        readUser(userId,{
-                            App.user=it
-                            App.storePrefUser(email,password)
+                        readUser(userId, {
+                            App.user = it
+                            App.storePrefUser(email, password)
                         })
                     } else {
                         Toast.makeText(
@@ -98,7 +105,7 @@ class FirebaseConnection(var context: Context) {
         var onReadedUser : (() -> Unit)? =null
         fun readUser(
             userId: String,
-            readSucces: ((user:User) -> Unit)? = null,
+            readSucces: ((user: User) -> Unit)? = null,
             readFail: (() -> Unit)? = null
         ) {
 
@@ -106,7 +113,7 @@ class FirebaseConnection(var context: Context) {
             ref.addListenerForSingleValueEvent(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val user=snapshot.getValue(User::class.java)!!
+                    val user = snapshot.getValue(User::class.java)!!
                     if (readSucces != null) {
                         readSucces.invoke(user)
                         onReadedUser?.invoke()
@@ -125,12 +132,14 @@ class FirebaseConnection(var context: Context) {
         fun logoutUser(){
             auth?.signOut()
         }
-        fun sendRecoverEmail(email:String){
+        fun sendRecoverEmail(email: String){
             auth.sendPasswordResetEmail(email)
         }
-        fun updateEmailUser(newEmail:String,
-                            success: (() -> Unit)? = null,
-                            fail: (() -> Unit)? = null){
+        fun updateEmailUser(
+            newEmail: String,
+            success: (() -> Unit)? = null,
+            fail: (() -> Unit)? = null
+        ){
             val user = auth.currentUser
 
             user!!.updateEmail(newEmail)
@@ -245,7 +254,9 @@ class FirebaseConnection(var context: Context) {
         //region Delivery
         fun writeDelivery(delivery: Delivery) {
 
-            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(delivery.id!!).setValue(delivery)
+            referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+                delivery.id!!
+            ).setValue(delivery)
 
         }
 
@@ -289,14 +300,18 @@ class FirebaseConnection(var context: Context) {
         private var dataChange: ((Delivery.DeliveryState) -> Unit)? = null
         fun attachToDeliveryState(dataChangued: ((Delivery.DeliveryState) -> Unit)? = null){
             dataChange=dataChangued
-            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(
+                Constants.deliveryTittle
+            ).child(
                 App.deliveringDelivery!!.id!!
             ).child(Constants.deliveryState)
             ref.addValueEventListener(listenerDeliveryStateChange)
         }
 
         fun unAttachToDeliveryState(){
-            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(
+                Constants.deliveryTittle
+            ).child(
                 App.deliveringDelivery!!.id!!
             ).child(Constants.deliveryState)
             ref.removeEventListener(listenerDeliveryStateChange)
@@ -304,12 +319,27 @@ class FirebaseConnection(var context: Context) {
             App.deliveringDelivery=null
         }
 
-        fun updateDeliveryState(newState:Delivery.DeliveryState){
-            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(Constants.deliveryTittle).child(
+        fun updateDeliveryState(newState: Delivery.DeliveryState){
+            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(
+                Constants.deliveryTittle
+            ).child(
                 App.deliveringDelivery!!.id!!
             ).child(Constants.deliveryState).setValue(newState)
         }
 //endregion
+
+
+        //region images
+        fun getImageUri(imageName: String, readSucces: ((String) -> Unit)? = null, readFail: (() -> Unit)? = null){
+            val ref=storegeFoodReferenceRoot.child(imageName)
+            ref.downloadUrl
+                .addOnSuccessListener(OnSuccessListener<Any> { uri ->
+                    readSucces?.invoke(uri.toString())
+                }).addOnFailureListener(OnFailureListener {
+                    readFail?.invoke()
+                })
+        }
+        //
     }
 
 

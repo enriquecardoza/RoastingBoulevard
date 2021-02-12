@@ -1,19 +1,13 @@
 package com.careradish.roastingboulevard.activities
 
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.NotificationCompat
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import androidx.viewpager.widget.ViewPager
@@ -38,11 +32,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         App.Init(this)
         actionBar?.hide()
+
+       // DeveloperFreshData.UploadAllData()
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         App.contentView = findViewById(android.R.id.content)
         instance = this
         App.recoverPrefUser(this)
-
         PreparePager()
         floatingButton=ActionButtonDelivering
         orderLayoutButton = seeOrderLayoutButton

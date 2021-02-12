@@ -3,11 +3,9 @@ package com.careradish.roastingboulevard.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
@@ -15,6 +13,7 @@ import com.careradish.roastingboulevard.classes.Allergen
 import com.careradish.roastingboulevard.classes.Delivery
 import com.careradish.roastingboulevard.classes.Food
 import com.careradish.roastingboulevard.tools.App
+import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.Tools
 import com.careradish.roastingboulevard.tools.TranslationStrings
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -57,9 +56,14 @@ class CustomSnackbar(
         return this
     }
 
-    private fun setImage(photo: Int): CustomSnackbar {
+    private fun setImage(photo: String): CustomSnackbar {
         val image = getView().findViewById<ImageView>(R.id.foodImageSnack)
-        Picasso.get().load(photo).fit().centerCrop().into(image)
+        //Picasso.get().load(photo).fit().centerCrop().into(image)
+
+        FirebaseConnection.getImageUri(photo, {
+            Picasso.get().load(it).fit().centerCrop().into(image)
+        }
+        )
         return this
     }
 
@@ -112,8 +116,8 @@ class CustomSnackbar(
         ): CustomSnackbar {
             val customSnackbar = createCustomSnackbar(view).apply {
                 setDuration(Snackbar.LENGTH_INDEFINITE)
-                setTitle(TranslationStrings.get(food.name))
-                setDescription(TranslationStrings.get(food.decription))
+                setTitle(food.getTranslatedName())
+                setDescription(food.getTranslatedDescription())
                 setImage(food.photo)
                 setAllergens(food.allergens)
                 setprice(food.price)
@@ -150,7 +154,7 @@ class CustomSnackbar(
                             App.actualDelivery!!.foods.add(food)
                             App.actualDelivery!!.amountsOfFoods.add(1)
                         }
-                        MainActivity.showToast(TranslationStrings.get(R.string.added_cart,TranslationStrings.get(food.name)))
+                        MainActivity.showToast(TranslationStrings.get(R.string.added_cart,food.getTranslatedName()))
                     }
 
                 }
