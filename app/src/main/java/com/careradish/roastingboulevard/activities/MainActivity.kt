@@ -149,6 +149,8 @@ class MainActivity : AppCompatActivity() {
                 orderLayoutButton.visibility = View.VISIBLE
             if (App.delivering)
                 floatingButton.visibility=View.VISIBLE
+            else
+                floatingButton.visibility=View.GONE
         }
 
 

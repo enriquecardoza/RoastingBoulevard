@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.AddressListActivity
@@ -49,7 +48,7 @@ class ProfileFragment : Fragment() {
             App.user = null
             App.erasePrefUser()
             MainActivity.ForceUpdatePagerAdapter(2)
-            Toast.makeText(context,TranslationStrings.get(R.string.session_closed),Toast.LENGTH_LONG).show()
+            MainActivity.showToast(TranslationStrings.get(R.string.session_closed))
         }
         tempInflete.buttonPersonalData.setOnClickListener {
             val intent=Intent(context,EditDataActivity::class.java)

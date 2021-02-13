@@ -216,7 +216,7 @@ class FirebaseConnection(var context: Context) {
                     if (readSucces != null) {
                         for (i in snapshot.children) {
                             var address: Address = i.getValue(Address::class.java)!!
-                            App.user?.addresses?.add(address)
+                            App.user?.addresses?.put(address.label,address)
                         }
                         readSucces()
                     }

@@ -90,15 +90,17 @@ class AddressListActivity : AppCompatActivity() {
         }*/
 
         fun adapterUpdated(address: Address) {
-            val pos = App.user?.addresses!!.indexOf(address)
-            App.user!!.addresses!![pos] = address
-            addressEditAdapter.notifyItemChanged(pos)
+            val keys: MutableCollection<String>? = App.user?.addresses?.keys
+            val pos = keys?.indexOf(address.label)
+            App.user!!.addresses!![address.label] = address
+            addressEditAdapter.notifyItemChanged(pos!!)
         }
 
         fun adapterErased(address: Address) {
-            val pos = App.user?.addresses!!.indexOf(address)
-            App.user!!.addresses?.removeAt(pos)
-            addressEditAdapter.notifyItemRemoved(pos)
+            val keys: MutableCollection<String>? = App.user?.addresses?.keys
+            val pos = keys?.indexOf(address.label)
+            App.user!!.addresses?.remove(address.label)
+            addressEditAdapter.notifyItemRemoved(pos!!)
         }
     }
 }

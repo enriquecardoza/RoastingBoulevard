@@ -8,7 +8,7 @@ data class User(
     var phone: Int?) {
 
     var deliveries:HashMap<String,Delivery>?= hashMapOf()
-    var addresses:MutableList<Address>?= mutableListOf()
+    var addresses:HashMap<String,Address>?= hashMapOf()
 
 
     constructor():this("","","","",null)

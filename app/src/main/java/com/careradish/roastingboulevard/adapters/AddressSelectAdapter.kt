@@ -13,7 +13,6 @@ class AddressSelectAdapter() :
     RecyclerView.Adapter<AddressSelectAdapter.ViewHolder>() {
     var onSelectedAddress: ((result: Address?)->Unit)? = null
 
-    lateinit var selectedAddress:Address
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var label: TextView = itemView.findViewById(R.id.textViewLabelSelectAddress)
@@ -31,15 +30,16 @@ class AddressSelectAdapter() :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val address = App.user?.addresses!![position]
-        holder.label.text = address.label
-        holder.addresWithNumber.text = address.address + " Nº" + address.number
-        holder.postalCodeCity.text = address.postalCode.toString() + " " + address.city
-        holder.addresType.text = address.zoneType
 
+        val address = App.user?.addresses!!.get(App.user?.addresses!!.keys.elementAt(position))
+        if (address != null) {
+            holder.label.text = address.label
+            holder.addresWithNumber.text = address.address + " Nº" + address.number
+            holder.postalCodeCity.text = address.postalCode.toString() + " " + address.city
+            holder.addresType.text = address.zoneType
+        }
         holder.itemView.setOnClickListener {
-            selectedAddress=App.user!!.addresses!![position]
-            onSelectedAddress?.invoke(selectedAddress)
+            onSelectedAddress?.invoke(address)
         }
     }
 

@@ -17,8 +17,7 @@ class EditAddressActivity : AppCompatActivity() {
 
 
         val address = intent.getSerializableExtra(Constants.addressToEdit) as Address
-
-        editTextEditLabel.setText(address.label)
+        toolbarEditAddress.subtitle=address.label
         editTextEditStreetName.setText(address.address)
         editTextEditStreetNumber.setText(address.number.toString())
         editTextEditAddressType.setText(address.zoneType)
@@ -28,7 +27,7 @@ class EditAddressActivity : AppCompatActivity() {
         buttonEditAddress.setOnClickListener {
 
             val newaddress=Address(
-                editTextEditLabel.text.toString(),
+                address.label,
                 editTextEditStreetName.text.toString(),
                 editTextEditStreetNumber.text.toString().toInt(),
                 editTextEditAddressType.text.toString(),

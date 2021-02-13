@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.app.AlertDialog.Builder
 import android.content.DialogInterface.OnShowListener
 import android.content.Intent
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,12 +37,14 @@ class AddressEditAdapter() :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val address = App.user?.addresses!![position]
+        val address = App.user?.addresses!!.get(App.user?.addresses!!.keys.elementAt(position))
 
-        holder.label.text = address.label
-        holder.addresWithNumber.text = address.address + " Nº" + address.number
-        holder.postalCodeCity.text = address.postalCode.toString() + " " + address.city
-        holder.addresType.text = address.zoneType
+        if (address != null) {
+            holder.label.text = address.label
+            holder.addresWithNumber.text = address.address + " Nº" + address.number
+            holder.postalCodeCity.text = address.postalCode.toString() + " " + address.city
+            holder.addresType.text = address.zoneType
+        }
         val context=holder.label.context
         holder.editButton.setOnClickListener {
             val inte = Intent(context, EditAddressActivity::class.java)
@@ -60,7 +61,7 @@ class AddressEditAdapter() :
             builder.setPositiveButton(
                 R.string.yes
             ) { dialog, _ ->
-                FirebaseConnection.eraseAddress(address)
+                FirebaseConnection.eraseAddress(address!!)
                 AddressListActivity.adapterErased(address)
                 dialog.dismiss()
             }

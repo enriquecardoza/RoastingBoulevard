@@ -8,7 +8,5 @@ data class Address(var label:String, var address: String, var number:Int,var zon
 
      fun simpleString(): String {
         return "$address $number $zoneType"
-
-
     }
 }
