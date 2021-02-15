@@ -5,12 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.activities.MainActivity
 import com.careradish.roastingboulevard.classes.Delivery
-import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.FirebaseConnection
 import com.careradish.roastingboulevard.tools.Tools
 import com.careradish.roastingboulevard.tools.TranslationStrings
@@ -52,14 +50,10 @@ class DeliveringSnackBar(
             val customSnackbar = createDeliveringSnackbar(view).apply {
                 duration = Snackbar.LENGTH_INDEFINITE
                 MainActivity.LockTabs()
-                FirebaseConnection.attachToDeliveryState() {
+                FirebaseConnection.attachToDeliveryState( {
                     setState(it)
                     setProgress(it)
-                    if (it==Delivery.DeliveryState.delivered){
-                        App.sendNotification()
-
-                    }
-                }
+                })
             }
 
             return customSnackbar

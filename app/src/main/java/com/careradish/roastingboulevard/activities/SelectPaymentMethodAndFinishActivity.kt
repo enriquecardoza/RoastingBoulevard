@@ -2,7 +2,6 @@ package com.careradish.roastingboulevard.activities
 
 import  android.content.Intent
 import android.os.Bundle
-import android.support.v4.media.MediaBrowserCompat
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -14,10 +13,13 @@ import com.careradish.roastingboulevard.fragments.DatePickerFragment
 import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.DebufAsynDelivering
 import com.careradish.roastingboulevard.tools.FirebaseConnection
+import com.careradish.roastingboulevard.tools.TranslationStrings
 import kotlinx.android.synthetic.main.activity_select_payment_method.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 
-class SelectPaymentMethodActivity : AppCompatActivity() {
+class SelectPaymentMethodAndFinishActivity : AppCompatActivity() {
 
 
     var method = PaymentMethod.Method.Cash
@@ -32,9 +34,9 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
                 showDatePickerDialog()
         }
         editTextExpirationDate.setOnClickListener {
-                showDatePickerDialog()
+            showDatePickerDialog()
         }
-        textViewAmountPayment.text = App.actualDelivery?.totalPrice.toString()+" €"
+        textViewAmountPayment.text = App.actualDelivery?.totalPrice.toString() + " €"
 
         buttonFinishPayment.setOnClickListener {
             FinishPayment()
@@ -48,17 +50,20 @@ class SelectPaymentMethodActivity : AppCompatActivity() {
             payment.expirationDate = editTextExpirationDate.text.toString()
             payment.cvv = editTextCVV.text.toString().toInt()
         }
-        App.user?.deliveries?.put(App.actualDelivery!!.id!!,App.actualDelivery!!)
+        App.user?.deliveries?.put(App.actualDelivery!!.id!!, App.actualDelivery!!)
         FirebaseConnection.writeDelivery(App.actualDelivery!!)
-        App.delivering=true
-        App.deliveringDelivery=App.actualDelivery
+        App.delivering = true
+        App.deliveringDelivery = App.actualDelivery
         App.actualDelivery = null
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         MainActivity.hideOrderButton()
         val mitarea = DebufAsynDelivering()
-        mitarea.execute()
+        Timer("SettingUp", false).schedule(500) {
+            mitarea.execute()
+        }
+        MainActivity.showToast(TranslationStrings.get(R.string.order_cooking))
     }
 
     private fun PrepareSpinnerSelectType() {

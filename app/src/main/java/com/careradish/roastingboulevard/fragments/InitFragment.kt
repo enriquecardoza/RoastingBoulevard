@@ -72,8 +72,9 @@ class InitFragment : Fragment() {
         image.setOnClickListener {
 
 
-            DeveloperFreshData.UploadAllData()
+           // DeveloperFreshData.UploadAllData()
             Toast.makeText(context, "Created", Toast.LENGTH_LONG).show()
+            MainActivity.HideFloatingActionButton()
         }
     }
 

@@ -18,9 +18,9 @@ class FoodSelected : AppCompatActivity() {
         setContentView(R.layout.activity_food_selected)
 
         val food=intent.getSerializableExtra(Constants.selectedFood) as Food
-        foodSelectedTittle.text=food.getTranslatedName()
-        foodSelectedDescription.text=food.getTranslatedDescription()
-        foodSelectedIngredients.text=food.getTranslatedIngredients()
+        foodSelectedTittle.text=food.returnTranslatedName()
+        foodSelectedDescription.text=food.returnTranslatedDescription()
+        foodSelectedIngredients.text=food.returnTranslatedIngredients()
 
         var allergens:String=""
 

@@ -16,14 +16,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="10dp"
-        android:paddingBottom="4dp">
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/textViewLabelSelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Casa de campo"
             android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textViewAddressWithNumberSelectAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,11 +36,10 @@
             android:id="@+id/textViewAddressWithNumberSelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="17dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
             android:text="Calle falsa Nº 123"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewLabelSelectAddress" />
 
@@ -44,27 +47,28 @@
             android:id="@+id/textViewPostalCodeCitySelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center|clip_vertical|fill"
             android:text="58008 Springfield"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewAddressTypeSelectAddress"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumberSelectAddress" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLabelSelectAddress" />
 
         <TextView
             android:id="@+id/textViewAddressTypeSelectAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="224dp"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Portal"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumberSelectAddress" />
+            app:layout_constraintStart_toEndOf="@+id/textViewLabelSelectAddress"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

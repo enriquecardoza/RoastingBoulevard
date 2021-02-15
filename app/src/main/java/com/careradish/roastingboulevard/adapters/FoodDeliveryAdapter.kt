@@ -33,7 +33,7 @@ class FoodDeliveryAdapter() : RecyclerView.Adapter<FoodDeliveryAdapter.ViewHolde
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val food = App.actualDelivery!!.foods[position]
-        holder.name.text = food.getTranslatedName()
+        holder.name.text = food.returnTranslatedName()
         val price = food.price
         holder.price.text = "$price €"
         val amount = App.actualDelivery!!.amountsOfFoods[position]

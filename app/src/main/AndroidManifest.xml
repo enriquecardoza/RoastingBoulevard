@@ -13,7 +13,7 @@
         >
         <activity android:name=".activities.DeliveriesList"></activity>
         <activity android:name=".activities.EditDataActivity" />
-        <activity android:name=".activities.SelectPaymentMethodActivity" />
+        <activity android:name=".activities.SelectPaymentMethodAndFinishActivity" />
         <activity android:name=".activities.FoodListDeliveryActivity" />
         <activity android:name=".activities.FoodSelected" />
         <activity android:name=".activities.EditAddressActivity" />
@@ -23,7 +23,9 @@
         <activity
             android:name=".activities.MainActivity"
             android:windowSoftInputMode="adjustPan"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="sensorPortrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

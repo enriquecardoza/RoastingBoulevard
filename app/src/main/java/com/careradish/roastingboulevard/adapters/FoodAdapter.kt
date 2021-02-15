@@ -40,7 +40,7 @@ class FoodAdapter(var comidas: List<Food>) : RecyclerView.Adapter<FoodAdapter.Vi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val food = comidas[position]
-        holder.name.text = food.getTranslatedName()
+        holder.name.text = food.returnTranslatedName()
         FirebaseConnection.getImageUri(food.photo, {
             Picasso.get().load(it).fit().centerCrop().into(holder.image)
         })

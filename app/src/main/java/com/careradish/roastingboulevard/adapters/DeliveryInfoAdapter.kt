@@ -65,7 +65,7 @@ class DeliveryInfoAdapter() : RecyclerView.Adapter<DeliveryInfoAdapter.ViewHolde
 
         val arr = arrayListOf<String>()
         for (i in delivery.foods)
-            arr.add(i.getTranslatedName())
+            arr.add(i.returnTranslatedName())
         holder.recycler.visibility = View.GONE
         val adapter = DeliverySubInfoListAdapter(delivery)
         holder.recycler.adapter = adapter

@@ -40,7 +40,7 @@
     <string name="label">Label</string>
     <string name="street_name">Street name</string>
     <string name="street_number">Street number</string>
-    <string name="example_address_types">Portal/Ladder/Floor</string>
+    <string name="example_address_types">Portal/Ladder/Floor (Optional)</string>
     <string name="create_address">Create address</string>
     <string name="edit_address">Edit address</string>
     <string name="yes">Yes</string>
@@ -160,4 +160,7 @@
     <string name="distribution">Distribution</string>
     <string name="delivered">Delivered</string>
     <string name="notification_tittle">Your order it\'s here</string>
+    <string name="order_cooking">Your order is being cooked, it will be delivered shortly</string>
+    <string name="error_address">Error: an address with this name already exists.</string>
+    <string name="error_fields_address">Error: all mandatory fields must be filled</string>
 </resources>

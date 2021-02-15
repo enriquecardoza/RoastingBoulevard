@@ -57,7 +57,7 @@ class AddressListActivity : AppCompatActivity() {
                 if (it != null) {
                     App.actualDelivery?.address = it
                 }
-                val inte = Intent(this, SelectPaymentMethodActivity::class.java)
+                val inte = Intent(this, SelectPaymentMethodAndFinishActivity::class.java)
                 startActivity(inte)
             }
         }

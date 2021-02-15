@@ -22,6 +22,8 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:clickable="true"
+        android:fillAfter="true"
+        android:fillEnabled="true"
         app:backgroundTint="@color/paleOrange"
         app:layout_constraintBottom_toBottomOf="@+id/pagerMain"
         app:layout_constraintEnd_toEndOf="parent"

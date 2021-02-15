@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -39,12 +40,14 @@
                 android:orientation="vertical"
                 android:padding="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/buttonCreateNewAddress"
-                app:layout_constraintTop_toBottomOf="@+id/toolbarCreateAddress">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbarCreateAddress"
+                app:layout_constraintVertical_bias="0.0">
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
@@ -54,7 +57,7 @@
                 <EditText
                     android:id="@+id/editTextNewLabel"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -63,7 +66,7 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
@@ -73,7 +76,7 @@
                 <EditText
                     android:id="@+id/editTextNewStreetName"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName" />
@@ -81,7 +84,7 @@
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
@@ -91,7 +94,7 @@
                 <EditText
                     android:id="@+id/editTextNewStreetNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number|phone" />
@@ -99,14 +102,14 @@
                 <View
                     android:id="@+id/view2"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:paddingTop="10dp" />
 
                 <EditText
                     android:id="@+id/editTextNewAddressType"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/example_address_types"
@@ -115,7 +118,7 @@
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
@@ -125,7 +128,7 @@
                 <EditText
                     android:id="@+id/editTextNewPostalCode"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName|phone" />
@@ -133,7 +136,7 @@
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
@@ -143,7 +146,7 @@
                 <EditText
                     android:id="@+id/editTextNewCity"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName" />
@@ -151,7 +154,7 @@
                 <TextView
                     android:id="@+id/textViewErrorCreateAddres"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="43dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/red" />

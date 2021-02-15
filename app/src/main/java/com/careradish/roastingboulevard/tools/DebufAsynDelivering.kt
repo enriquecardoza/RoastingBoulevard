@@ -24,7 +24,6 @@ class DebufAsynDelivering : AsyncTask<Void?, Int?, String>() {
 
     override fun onPostExecute(s: String) {
         super.onPostExecute(s)
-        FirebaseConnection.unAttachToDeliveryState()
     }
 
     override fun onProgressUpdate(vararg values: Int?) {

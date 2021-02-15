@@ -28,7 +28,7 @@ class DeliverySubInfoListAdapter(val delivery:Delivery) : RecyclerView.Adapter<D
 
         val food= delivery.foods[position]
         val amount=delivery.amountsOfFoods[position]
-        holder.name.text=food.getTranslatedName()
+        holder.name.text=food.returnTranslatedName()
         holder.amount.text="X$amount"
         val price=food.price
         holder.price.text="$price€"

@@ -39,24 +39,24 @@
             android:id="@+id/textViewPostalCodeCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:gravity="center|clip_vertical|fill"
             android:text="58008 Springfield"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewAddressType"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumber" />
 
         <TextView
             android:id="@+id/textViewAddressType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Portal"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewPostalCodeCity"
             app:layout_constraintTop_toBottomOf="@+id/textViewAddressWithNumber" />
 
         <ImageButton

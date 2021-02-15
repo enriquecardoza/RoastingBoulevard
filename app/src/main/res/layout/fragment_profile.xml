@@ -7,162 +7,169 @@
     tools:context=".fragments.ProfileFragment">
 
 
-    <androidx.constraintlayout.widget.Group
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="button,buttonMyOrders,buttonPersonalData,buttonCloseSession,button5,buttonAddresses" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="117dp"
-            android:background="@color/paleBrown"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:layout_width="291dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="117dp"
+                android:background="@color/paleBrown"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textViewProfileWelcome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="291dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="fill|fill_horizontal"
-                    android:paddingStart="20dp"
-                    android:text="@string/profile_welcome"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewProfileWelcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="fill|fill_horizontal"
+                        android:paddingStart="20dp"
+                        android:text="@string/profile_welcome"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageViewProfileUser"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/icon_user"
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageViewProfileUser"
-                android:layout_width="118dp"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                app:srcCompat="@mipmap/icon_user"
-                app:tint="@color/white" />
+                android:background="@color/transparent"
+                android:text="@string/payment_method"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkGrey"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/buttonAddresses"
+                style="@style/CustomButtonFullSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/changue_delivery"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkGrey" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/buttonPersonalData"
+                style="@style/CustomButtonFullSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/personal_data"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkGrey" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/buttonMyOrders"
+                style="@style/CustomButtonFullSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/my_orders"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkGrey" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:text="@string/configuration"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkGrey"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/buttonCloseSession"
+                style="@style/CustomButtonFullSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/close_session"
+                android:textAlignment="textStart"
+                android:textColor="@color/darkGrey" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
 
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:text="@string/payment_method"
-            android:textAlignment="textStart"
-            android:textColor="@color/darkGrey"
-            android:visibility="gone" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/buttonAddresses"
-            style="@style/CustomButtonFullSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="@string/changue_delivery"
-            android:textAlignment="textStart"
-            android:textColor="@color/darkGrey" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/buttonPersonalData"
-            style="@style/CustomButtonFullSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="@string/personal_data"
-            android:textAlignment="textStart"
-            android:textColor="@color/darkGrey" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/buttonMyOrders"
-            style="@style/CustomButtonFullSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="@string/my_orders"
-            android:textAlignment="textStart"
-            android:textColor="@color/darkGrey" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:text="@string/configuration"
-            android:textAlignment="textStart"
-            android:textColor="@color/darkGrey"
-            android:visibility="gone" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <Button
-            android:id="@+id/buttonCloseSession"
-            style="@style/CustomButtonFullSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="@string/close_session"
-            android:textAlignment="textStart"
-            android:textColor="@color/darkGrey" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-    </LinearLayout>
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="button,buttonMyOrders,buttonPersonalData,buttonCloseSession,button5,buttonAddresses,constraintLayout" />
 
 </FrameLayout>

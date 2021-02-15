@@ -97,7 +97,7 @@ class App : Application() {
             )
             val email = sharedPref.getString(Constants.prefUserLoggedEmail, "")
             val password = sharedPref.getString(Constants.prefUserLoggedPassword, "")
-            if (email != "" && password != "") {
+            if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
                 FirebaseConnection.LoginUser(email!!, password!!, activity)
             }
         }

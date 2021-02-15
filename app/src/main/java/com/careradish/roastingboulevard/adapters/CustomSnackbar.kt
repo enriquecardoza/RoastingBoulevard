@@ -116,8 +116,8 @@ class CustomSnackbar(
         ): CustomSnackbar {
             val customSnackbar = createCustomSnackbar(view).apply {
                 setDuration(Snackbar.LENGTH_INDEFINITE)
-                setTitle(food.getTranslatedName())
-                setDescription(food.getTranslatedDescription())
+                setTitle(food.returnTranslatedName())
+                setDescription(food.returnTranslatedDescription())
                 setImage(food.photo)
                 setAllergens(food.allergens)
                 setprice(food.price)
@@ -154,7 +154,7 @@ class CustomSnackbar(
                             App.actualDelivery!!.foods.add(food)
                             App.actualDelivery!!.amountsOfFoods.add(1)
                         }
-                        MainActivity.showToast(TranslationStrings.get(R.string.added_cart,food.getTranslatedName()))
+                        MainActivity.showToast(TranslationStrings.get(R.string.added_cart,food.returnTranslatedName()))
                     }
 
                 }

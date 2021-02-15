@@ -11,13 +11,13 @@ data class Food(var id:Int, var name:ArrayList<String>, var description:ArrayLis
     constructor(food: Food):this(food.id,food.name,food.description,food.ingredients,food.allergens,food.photo,food.price){}
     constructor():this(-1,arrayListOf(),arrayListOf(),arrayListOf(), arrayListOf(),"",0f){}
 
-    fun getTranslatedName():String{
+     fun returnTranslatedName():String{
         return  name[App.getFoodLanguagePos(this)]
     }
-    fun getTranslatedDescription():String{
+    fun returnTranslatedDescription():String{
         return  description[App.getFoodLanguagePos(this)]
     }
-    fun getTranslatedIngredients():String{
+    fun returnTranslatedIngredients():String{
         return  ingredients[App.getFoodLanguagePos(this)]
     }
 }

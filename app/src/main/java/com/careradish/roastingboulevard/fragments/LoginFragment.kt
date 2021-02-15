@@ -49,6 +49,8 @@ class LoginFragment : Fragment() {
                    MainActivity.ForceUpdatePagerAdapter(4)
                    FirebaseConnection.onReadedUser = {  }
                }
+           },{
+MainActivity.showToast(  TranslationStrings.get(R.string.error_Login))
            })
 
         }

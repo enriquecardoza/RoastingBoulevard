@@ -52,11 +52,6 @@ class FirebaseConnection(var context: Context) {
                             App.storePrefUser(email, password)
                         })
                     } else {
-                        Toast.makeText(
-                            activity.applicationContext,
-                            TranslationStrings.get(R.string.error_Login),
-                            Toast.LENGTH_SHORT
-                        ).show()
                         if (loginFail != null) {
                             loginFail()
                         }
@@ -287,37 +282,31 @@ class FirebaseConnection(var context: Context) {
             })
         }
 
-        private val listenerDeliveryStateChange =object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val state=snapshot.getValue(Delivery.DeliveryState::class.java)!!
-
-                dataChange?.invoke(state)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        }
-        private var dataChange: ((Delivery.DeliveryState) -> Unit)? = null
-        fun attachToDeliveryState(dataChangued: ((Delivery.DeliveryState) -> Unit)? = null){
-            dataChange=dataChangued
+        fun attachToDeliveryState(
+            dataChangued: ((Delivery.DeliveryState) -> Unit)? = null,
+            removeState:Delivery.DeliveryState=Delivery.DeliveryState.delivered){
             val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(
                 Constants.deliveryTittle
             ).child(
                 App.deliveringDelivery!!.id!!
+
             ).child(Constants.deliveryState)
-            ref.addValueEventListener(listenerDeliveryStateChange)
+            val listener=object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val state=snapshot.getValue(Delivery.DeliveryState::class.java)!!
+                    dataChangued?.invoke(state)
+                    if (state == removeState) {
+                        ref.removeEventListener(this)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            }
+
+            ref.addValueEventListener(listener)
         }
 
-        fun unAttachToDeliveryState(){
-            val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(
-                Constants.deliveryTittle
-            ).child(
-                App.deliveringDelivery!!.id!!
-            ).child(Constants.deliveryState)
-            ref.removeEventListener(listenerDeliveryStateChange)
-            App.delivering=false
-            App.deliveringDelivery=null
-        }
 
         fun updateDeliveryState(newState: Delivery.DeliveryState){
             val ref = referenceRoot.child(Constants.usersTittle).child(App.user!!.id).child(

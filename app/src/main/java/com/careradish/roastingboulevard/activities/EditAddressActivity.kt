@@ -4,8 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.careradish.roastingboulevard.R
 import com.careradish.roastingboulevard.classes.Address
+import com.careradish.roastingboulevard.tools.App
 import com.careradish.roastingboulevard.tools.Constants
 import com.careradish.roastingboulevard.tools.FirebaseConnection
+import com.careradish.roastingboulevard.tools.TranslationStrings
+import kotlinx.android.synthetic.main.activity_create_address.*
 import kotlinx.android.synthetic.main.activity_edit_address.*
 
 class EditAddressActivity : AppCompatActivity() {
@@ -26,14 +29,27 @@ class EditAddressActivity : AppCompatActivity() {
 
         buttonEditAddress.setOnClickListener {
 
+
+            val name= editTextEditStreetName.text.toString()
+            val number=editTextEditStreetNumber.text.toString()
+            val postalCode=editTextEditPostalCode.text.toString()
+            val city=editTextEditCity.text.toString()
+
+
             val newaddress=Address(
                 address.label,
-                editTextEditStreetName.text.toString(),
-                editTextEditStreetNumber.text.toString().toInt(),
+                name,
+                number.toInt(),
                 editTextEditAddressType.text.toString(),
-                editTextEditPostalCode.text.toString().toInt(),
-                editTextEditCity.text.toString(),
+                postalCode.toInt(),
+                city,
             )
+
+
+            if (name.isNullOrEmpty()||number.isNullOrEmpty()||postalCode.isNullOrEmpty()||city.isNullOrEmpty()){
+                textViewErrorCreateAddres.text= TranslationStrings.get(R.string.error_Fields_Filled)
+                return@setOnClickListener
+            }
 
             AddressListActivity.adapterUpdated(address)
             FirebaseConnection.writeAddress(newaddress)

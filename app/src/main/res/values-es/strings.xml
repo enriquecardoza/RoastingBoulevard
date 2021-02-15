@@ -39,7 +39,7 @@
     <string name="label">Etiqueta</string>
     <string name="street_name">Nombre de la calle</string>
     <string name="street_number">Numero de la calle</string>
-    <string name="example_address_types">Portal/Escalerar/Piso</string>
+    <string name="example_address_types">Portal/Escalerar/Piso (Opcional)</string>
     <string name="create_address">Crear dirección</string>
     <string name="edit_address">Editar dirección</string>
     <string name="yes">Si</string>
@@ -139,5 +139,8 @@
     <string name="distribution">En reparto</string>
     <string name="delivered">Entregado</string>
     <string name="notification_tittle">Tu pedido ya esta aqui</string>
+    <string name="order_cooking">Su pedido se está cocinando, será entregado en breve</string>
+    <string name="error_address">Error: ya existe una dirección con ese nombre</string>
+    <string name="error_fields_address">Error: todos los campos obligatorios deben ser rellenados</string>
 
 </resources>
